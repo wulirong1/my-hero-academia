@@ -18,7 +18,21 @@
 </head>
 
 <body>
+<div class="container mt-5">
+    <div class="p-4 mb-4" style="background-color: #EBC053; border: 2px solid #333; border-radius: 10px;">
+        <h3>新增討論</h3>
+        <div class="mb-3">
+            <input type="text" id="userName" class="form-control" placeholder="您的名稱">
+        </div>
+        <div class="mb-3">
+            <textarea id="commentContent" class="form-control" rows="3" placeholder="請輸入討論內容..."></textarea>
+        </div>
+        <button id="submitBtn" class="btn btn-dark w-100">發布留言</button>
+    </div>
 
+    <div id="commentList">
+        </div>
+</div>
         <footer class="container footer">
         <hr>
         <div class="container footer-content">
@@ -41,5 +55,5 @@
         </div>
     </footer>
 
-
+<script type="module" src="js/main.js"></script>
 </body>
