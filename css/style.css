@@ -206,3 +206,57 @@ footer {
         flex-wrap: wrap;
     }
 }
+
+
+/*-------------------header--------------------*/
+/* 全局樣式設定 */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EBC045; /* 黃色背景 */
+}
+
+/* Header 導覽列主容器 */
+.custom-header {
+    background-color: #EBC045;
+    border-bottom: 2px solid #000; /* 底部黑色分隔線 */
+    width: 100%;
+}
+
+/* 內容對齊容器：這是達成左右對齊與邊距的關鍵 */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* 讓內容左右分開 */
+    align-items: center;            /* 垂直置中 */
+    padding: 10px 50px;             /* 上下 10px，左右 50px (與邊緣的間距) */
+    max-width: 100%;                /* 確保寬度延伸 */
+}
+
+/* Logo 大小調整 */
+.header-logo {
+    height: 80px; 
+    display: block;
+}
+
+/* 導覽連結排版 */
+.nav-links {
+    display: flex;
+    gap: 10px; /* 每個連結之間的間距 */
+}
+
+/* 導覽連結基本樣式 */
+.nav-item-link {
+    font-family: 'Koulen', cursive;
+    font-size: 40px; /* 字體大小 40 */
+    color: #000; 
+    text-decoration: none;
+    padding: 5px 20px;
+    transition: all 0.3s ease; /* Hover 動畫效果 */
+}
+
+/* ✨ Hover 效果：底變紅、字變白 */
+.nav-item-link:hover {
+    background-color: #D64535; /* 紅色底 */
+    color: #FFFFFF;           /* 白色字 */
+    border-radius: 5px;
+}
