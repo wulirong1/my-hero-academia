@@ -1,1 +1,208 @@
+body {
 
+    background-color: #f0c040;
+
+}
+
+.container {
+    padding: 5%;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    max-width: 1400px;
+    margin-bottom: 0%;
+
+}
+
+
+.my-extrabold-text {
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
+
+/* ================================================= */
+/* 容器：設定相對定位、固定寬度與隱藏溢出 */
+/* 同時作用於 Anime 區塊的 .anime-item 和 Manga 區塊的 .manga-item-container */
+/* 因為您的 .col-x class 已經提供了寬度，這裡主要提供定位和溢出控制 */
+.anime-item,
+.manga-item-container {
+    position: relative; 
+    overflow: hidden; /* 確保滑出的標題塊在初始狀態被隱藏 */
+    transition: all 0.3s ease-in-out;
+}
+
+/* 圖片：設定過渡效果，並讓它們在懸停時放大 */
+.anime-pic,
+.manga-pic {
+    display: block;
+    width: 100%; 
+    height: auto;
+    transition: transform 0.3s ease-in-out; /* 平滑放大效果 */
+    transform: scale(1);
+}
+
+/* 標題浮現塊：設置透明度、初始位置和過渡 */
+.caption-overlay {
+    position: absolute;
+    left: 0;
+    width: 100%; /* 寬度與圖片一致 */
+    
+    /* 標題塊的高度（請根據字體大小調整） */
+    height: 40px; 
+    
+    /* 初始位置：從底部往下推 40px，完全隱藏 */
+    bottom: -40px; 
+    
+    /* 顏色：純黑色(0,0,0) 搭配 70% 不透明度(0.7) */
+    background-color: rgba(0, 0, 0, 0.7); 
+    
+    color: white; 
+    text-align: center;
+    line-height: 40px; /* 垂直居中 */
+    font-size: 14px;
+    z-index: 2; /* 確保在圖片上方 */
+    border-radius: 10px 10px 0 0;
+    /* 針對 bottom 屬性設置過渡，實現平滑滑入 */
+    transition: bottom 0.3s ease-in-out;
+}
+
+/* ================================================= */
+/* 滑鼠懸停時的動態效果 */
+
+/* 1. 圖片放大效果 */
+.anime-item:hover .anime-pic,
+.manga-item-container:hover .manga-pic {
+    transform: scale(1.05); /* 放大 5% */
+}
+
+/* 2. 標題塊滑入效果 */
+.anime-item:hover .caption-overlay,
+.manga-item-container:hover .caption-overlay {
+    bottom: 0; /* 滑入後，底部與圖片底部完全切齊 */
+}
+
+
+.anime-title {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 0%;
+    padding-bottom: 0%;
+}
+
+.anime-pic {
+    width: 90%;
+    margin: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+}
+
+div a:hover .anime-pic {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.manga-title {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 0%;
+    padding-bottom: 0%;
+}
+
+.manga-pic {
+    width: 100%;
+    margin: 15px;
+    border-radius: 10px;
+    margin-bottom: 0%;
+        transition: all 0.3s ease-in-out;
+    transform: scale(1);
+}
+
+div a:hover .manga-pic {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/*footer*/
+footer {
+    margin-top: 0%;
+    padding-top: 0%;
+}
+
+.footer-content {
+    margin-top: 0%;
+    padding-top: 0%;
+}
+
+.footer-info {
+    margin: 5px;
+    margin-top: 0%;
+    padding-top: 0%;
+}
+
+.footer-p {
+    margin: 5px;
+    margin-top: 0%;
+    padding-top: 0%;
+}
+
+.footer-icons {
+    margin-top: 15px;
+}
+
+.footer-icons-ig {
+    width: 50px;
+    margin-right: 5%;
+}
+
+.footer-icons-x {
+    width: 50px;
+    margin-right: 5%;
+}
+
+.footer-icons-fb {
+    width: 50px;
+}
+
+/*
+========================================
+    RWD 媒體查詢 (Media Queries)
+========================================
+*/
+
+
+/* --- M 尺寸 (平板 >= 768px) --- */
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .footer-info {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+}
+
+/* --- L 尺寸 (桌機 >= 992px) --- */
+@media (min-width: 992px) {
+
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .footer-info {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+}
