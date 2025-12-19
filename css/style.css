@@ -215,3 +215,146 @@ footer {
         flex-wrap: wrap;
     }
 }
+
+
+/*------------------- L 尺寸 header--------------------*/
+/* 全局樣式設定 */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EBC045; /* 黃色背景 */
+}
+
+/* Header 導覽列主容器 */
+.custom-header {
+    background-color: #EBC045;
+    border-bottom: 2px solid #000; /* 底部黑色分隔線 */
+    width: 100%;
+}
+
+/* 內容對齊容器：這是達成左右對齊與邊距的關鍵 */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* 讓內容左右分開 */
+    align-items: center;            /* 垂直置中 */
+    padding: 10px 50px;             /* 上下 10px，左右 50px (與邊緣的間距) */
+    max-width: 100%;                /* 確保寬度延伸 */
+}
+
+/* Logo 大小調整 */
+.header-logo {
+    height: 120px;   /* 數字越大，Logo 越大 */
+    width: auto;     /* 確保寬度依比例縮放 */
+    display: block;
+    transition: transform 0.3s ease; /* 加入平滑過渡效果 */
+}
+
+/* 導覽連結排版 */
+.nav-links {
+    display: flex;
+    gap: 10px; /* 每個連結之間的間距 */
+}
+
+/* 導覽連結基本樣式 */
+.nav-item-link {
+    font-family: 'Koulen', cursive;
+    font-size: 40px; /* 字體大小 40 */
+    color: #000; 
+    text-decoration: none;
+    padding: 5px 20px;
+    transition: all 0.3s ease; /* Hover 動畫效果 */
+}
+
+/* ✨ Hover 效果：底變紅、字變白 */
+.nav-item-link:hover {
+    background-color: #D64535; /* 紅色底 */
+    color: #FFFFFF;           /* 白色字 */
+    border-radius: 5px;
+}
+
+/*------------------- L 尺寸 home--------------------*/
+
+.custom-header {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/* NEWS 區域佈局 */
+
+.section-title {
+    text-align: center;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+.news-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.news-card {
+    background-color: #D64535; /* 紅色小卡背景 */
+    width: calc(50% - 10px); /* 一行顯示兩張卡片 */
+    display: flex;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+}
+
+.news-img-placeholder {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc; /* 圖片預留位 */
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.news-text p {
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* 影片區域 */
+.video-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.video-placeholder {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+/* 輔助線*/
+.divider {
+    border-top: 2px solid #000;
+    opacity: 1;
+    margin: 40px 0;
+}
+
+
+.social-icons img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+
+/* 分割線樣式 */
+.line {
+    border: none;            /* 移除預設的立體邊框 */
+    height: 4px;             /* 控制線條的「粗細」，您可以根據喜好調整 4px, 6px 等 */
+    background-color: #000;  /* 設定線條顏色為黑色 */
+    margin: 0 50px;          /* 兩側縮進 50px，確保與 Header 的文字對齊（若要全螢幕寬則改為 0） */
+    opacity: 1;              /* 確保 Bootstrap 不會把線條變透明 */
+}
