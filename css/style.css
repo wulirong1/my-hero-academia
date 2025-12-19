@@ -126,6 +126,15 @@ div a:hover .manga-pic {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* 讓所有討論內容與留言內容都支援換行 */
+#commentList p, 
+#originalPostArea p, 
+#replyList p {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.6; /* 稍微增加行高，閱讀起來更舒服 */
+}
+
 /*footer*/
 footer {
     margin-top: 0%;
