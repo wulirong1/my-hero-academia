@@ -1,26 +1,109 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY HERO ACADEMIA-RESOURCE</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="css\style.css">
-
-
+    <title>我的英雄學院 - 官網</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 
 <body>
-            <footer class="container footer">
-        <hr>
+
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+    </script>
+
+
+
+
+
+
+    <div class="container main-content">
+        <section class="hero-image mt-4">
+    <div class="container">
+        <div class="line"></div>
+        <img src="img/banner.png" alt="Hero Banner" class="img-fluid hero-img-custom">
+    </div>
+</section>
+        <h2 class="section-title">NEWS</h2>
+
+<div class="news-grid">
+    <a href="連結1" class="news-card-link">
+        <div class="news-card">
+            <div class="news-card-inner">
+                <div class="news-card-front">
+                    <div class="news-img-placeholder"></div>
+                    <div class="news-text"><p>《我的英雄學院最終季》宣布將於 2025 年秋季開播</p></div>
+                </div>
+                <div class="news-card-back"><span>點擊前往</span></div>
+            </div>
+        </div>
+    </a>
+    <a href="連結2" class="news-card-link">
+        <div class="news-card">
+            <div class="news-card-inner">
+                <div class="news-card-front">
+                    <div class="news-img-placeholder"></div>
+                    <div class="news-text"><p>《我的英雄學院最終季》內容描述</p></div>
+                </div>
+                <div class="news-card-back"><span>點擊前往</span></div>
+            </div>
+        </div>
+    </a>
+    <a href="連結3" class="news-card-link">
+        <div class="news-card">
+            <div class="news-card-inner">
+                <div class="news-card-front">
+                    <div class="news-img-placeholder"></div>
+                    <div class="news-text"><p>《我的英雄學院最終季》內容描述</p></div>
+                </div>
+                <div class="news-card-back"><span>點擊前往</span></div>
+            </div>
+        </div>
+    </a>
+    <a href="連結4" class="news-card-link">
+        <div class="news-card">
+            <div class="news-card-inner">
+                <div class="news-card-front">
+                    <div class="news-img-placeholder"></div>
+                    <div class="news-text"><p>《我的英雄學院最終季》內容描述</p></div>
+                </div>
+                <div class="news-card-back"><span>點擊前往</span></div>
+            </div>
+        </div>
+    </a>
+
+
+    
+</div>
+
+        <div class="line"></div>
+
+        *
+
+
+        <h2 class="section-title">COMING SOON</h2>
+        <div class="video-section">
+            <div class="video-container">
+                <div class="video-placeholder">影片 1</div>
+            </div>
+            <div class="video-container">
+                <div class="video-placeholder">影片 2</div>
+            </div>
+        </div>
+        
+        <div class="line"></div>
+    </div>
+
+
+<footer class="container footer">
         <div class="container footer-content">
             <div class="footer-info">
                 <a class="link-dark" href="">隱私條款</a><br>
@@ -40,4 +123,7 @@
             </div>
         </div>
     </footer>
+
+    
 </body>
+</html>

@@ -303,6 +303,8 @@ body {
     color: white;
 }
 
+
+
 .news-img-placeholder {
     width: 100px;
     height: 100px;
@@ -315,6 +317,93 @@ body {
     font-size: 13px;
     margin: 0;
     line-height: 1.4;
+}
+
+/*小卡*/
+
+
+/* 1. 確保外層連結撐開空間 */
+.news-card-link {
+    text-decoration: none !important;
+    display: block;
+    width: calc(50% - 20px); /* 寬度佔一半 */
+    margin-bottom: 10px;
+}
+
+/* 2. 翻轉容器：不要在這裡設定背景色或 padding */
+.news-card {
+    width: 100%;             
+    height: 300px;           /* 【拉長高度】這裡數值越大，卡片越長 */
+    perspective: 1000px;
+    background: transparent !important; 
+    border: none !important;
+}
+
+.news-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.news-card-link:hover .news-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* 3. 正面與背面：這兩層才是真正放內容跟顏色的地方 */
+.news-card-front, .news-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    
+    /* 【加圓角】這裡設定圓角大小，0px 為直角，15px-20px 會有明顯圓角 */
+    border-radius: 15px;      
+    
+    padding: 25px;           /* 增加內邊距讓內容不擁擠 */
+    display: flex;           
+    align-items: center;     
+    border: none;
+}
+
+/* 正面：紅色背景 */
+.news-card-front {
+    background-color: #D64535;
+    color: white;
+    justify-content: flex-start; /* 內容從左開始排，解決縮成一線的問題 */
+}
+
+/* 背面：深色背景 */
+.news-card-back {
+    background-color: #333;
+    color: white;
+    transform: rotateY(180deg);
+    justify-content: center;
+    font-family: "Microsoft JhengHei", sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+/* 4. 內層元素：給予固定大小，防止被擠壓 */
+.news-img-placeholder {
+    width: 170px;            /* 放大配圖 */
+    height: 220px;           /* 放大配圖 */
+    background-color: #eee;
+    margin-right: 25px;      
+    flex-shrink: 0;          /* 【核心修正】防止圖片被擠壓變形 */
+    border-radius: 8px;      /* 圖片也可以加一點小圓角 */
+}
+
+.news-text {
+    flex: 1;                 /* 讓文字自動填滿剩下的長方形空間 */
+}
+
+.news-text p {
+    font-size: 18px;         /* 放大文字 */
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
 }
 
 /* 影片區域 */
@@ -353,8 +442,11 @@ body {
 /* 分割線樣式 */
 .line {
     border: none;            /* 移除預設的立體邊框 */
-    height: 4px;             /* 控制線條的「粗細」，您可以根據喜好調整 4px, 6px 等 */
+    height: 6px;             /* 控制線條的「粗細」，您可以根據喜好調整 4px, 6px 等 */
     background-color: #000;  /* 設定線條顏色為黑色 */
     margin: 0 50px;          /* 兩側縮進 50px，確保與 Header 的文字對齊（若要全螢幕寬則改為 0） */
     opacity: 1;              /* 確保 Bootstrap 不會把線條變透明 */
+    width: calc(100% - 100px); /* 讓線條左右有留白 */
+    /* 修改這裡：第一個數字是「上」，第二個是「左右」，第三個是「下」 */
+    margin: 30px auto 30px auto; 
 }
