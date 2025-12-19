@@ -60,3 +60,5 @@ onSnapshot(query(colRef, orderBy("createdAt", "desc")), (snapshot) => {
         commentList.appendChild(card);
     });
 });
+
+
