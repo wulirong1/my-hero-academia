@@ -135,6 +135,18 @@ div a:hover .manga-pic {
     line-height: 1.6; /* 稍微增加行高，閱讀起來更舒服 */
 }
 
+.comment-border{
+    padding: 10px;
+    background-color: #EBC053; 
+    border: 3px solid #000; 
+    border-radius: 10px;
+}
+
+.comment-words{
+    border: 2px solid #000;
+     background-color: #f0f0f0;
+}
+
 /*footer*/
 footer {
     margin-top: 0%;
@@ -142,8 +154,7 @@ footer {
 }
 
 .footer-content {
-    margin-top: 0%;
-    padding-top: 0%;
+    margin-top: 10px;
 }
 
 .footer-info {
@@ -357,4 +368,5 @@ body {
     background-color: #000;  /* 設定線條顏色為黑色 */
     margin: 0 50px;          /* 兩側縮進 50px，確保與 Header 的文字對齊（若要全螢幕寬則改為 0） */
     opacity: 1;              /* 確保 Bootstrap 不會把線條變透明 */
+    margin-bottom: 20px;
 }
