@@ -135,6 +135,18 @@ div a:hover .manga-pic {
     line-height: 1.6; /* 稍微增加行高，閱讀起來更舒服 */
 }
 
+.comment-border{
+    padding: 10px;
+    background-color: #EBC053; 
+    border: 3px solid #000; 
+    border-radius: 10px;
+}
+
+.comment-words{
+    border: 2px solid #000;
+     background-color: #f0f0f0;
+}
+
 /*footer*/
 footer {
     margin-top: 0%;
@@ -142,8 +154,7 @@ footer {
 }
 
 .footer-content {
-    margin-top: 0%;
-    padding-top: 0%;
+    margin-top: 10px;
 }
 
 .footer-info {
@@ -449,4 +460,5 @@ body {
     width: calc(100% - 100px); /* 讓線條左右有留白 */
     /* 修改這裡：第一個數字是「上」，第二個是「左右」，第三個是「下」 */
     margin: 30px auto 30px auto; 
+    margin-bottom: 20px;
 }
