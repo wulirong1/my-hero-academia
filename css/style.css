@@ -370,3 +370,79 @@ body {
     opacity: 1;              /* 確保 Bootstrap 不會把線條變透明 */
     margin-bottom: 20px;
 }
+
+/*resource*/
+
+
+/* --- 遮罩層 --- */
+#manga-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 900;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.manga-item {
+    position: relative;
+    margin-bottom: 30px;
+    z-index: 1;
+}
+
+/* --- 彈出卡片 --- */
+.manga-detail-card {
+    position: absolute;
+    background-color: #d1433a;
+    padding: 15px;
+    border-radius: 12px;
+    display: none; /* 初始隱藏 */
+    flex-direction: row;
+    z-index: 1000;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    width: 420px;
+    min-height: 280px;
+    top: 50%;
+    opacity: 0;
+}
+
+/* 內容區樣式 */
+.card-left { flex: 1; margin-right: 15px; display: flex; align-items: center; }
+.card-left img { width: 100%; border-radius: 6px; }
+.card-right { flex: 1.2; display: flex; flex-direction: column; }
+
+.info-box {
+    background: #d9d9d9;
+    padding: 15px;
+    color: #333;
+    font-size: 14px;
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    line-height: 1.6;
+}
+
+.buy-button {
+    display: block;
+    background: #d9d9d9;
+    color: #000;
+    text-align: center;
+    padding: 12px 0;
+    font-weight: 900;
+    text-decoration: none !important;
+}
+
+/* 手機版：螢幕置中保護 */
+@media (max-width: 767px) {
+    .manga-detail-card {
+        position: fixed;
+        top: 50% !important;
+        left: 50% !important;
+        width: 90vw;
+        max-width: 350px;
+    }
+}
