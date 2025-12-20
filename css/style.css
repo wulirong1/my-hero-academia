@@ -463,49 +463,52 @@ body {
     margin-bottom: 20px;
 }
 
-/*resource*/
-
-
-/* --- 遮罩層 --- */
+/* --- 全域遮罩層 --- */
 #manga-overlay {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.75);
-    z-index: 900;
+    z-index: 900; /* 遮罩層級 */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.3s ease;
 }
 
+/* --- Manga 項目樣式 --- */
 .manga-item {
     position: relative;
     margin-bottom: 30px;
     z-index: 1;
+    cursor: pointer;
+}
+.manga-pic {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+.manga-item:hover .manga-pic {
+    transform: scale(1.05);
 }
 
-/* --- 彈出卡片 --- */
+/* --- Manga 彈出卡片 (保持 Absolute) --- */
 .manga-detail-card {
     position: absolute;
     background-color: #d1433a;
-    padding: 15px;
+    padding: 20px;
     border-radius: 12px;
-    display: none; /* 初始隱藏 */
+    display: none; 
     flex-direction: row;
     z-index: 1000;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     width: 420px;
     min-height: 280px;
     top: 50%;
     opacity: 0;
 }
-
-/* 內容區樣式 */
 .card-left { flex: 1; margin-right: 15px; display: flex; align-items: center; }
 .card-left img { width: 100%; border-radius: 6px; }
 .card-right { flex: 1.2; display: flex; flex-direction: column; }
-
 .info-box {
     background: #d9d9d9;
     padding: 15px;
@@ -517,20 +520,75 @@ body {
     border-radius: 4px;
     line-height: 1.6;
 }
-
 .buy-button {
     display: block;
-    background: #d9d9d9;
+    background: #f0f0f0;
     color: #000;
     text-align: center;
     padding: 12px 0;
     font-weight: 900;
     text-decoration: none !important;
+    border-radius: 4px;
 }
 
-/* 手機版：螢幕置中保護 */
+/* --- Anime 項目樣式 --- */
+.anime-item {
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+.anime-pic {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+.anime-item:hover .anime-pic {
+    transform: scale(1.05);
+}
+
+/* --- Anime 彈出卡片 (修正版：Portal 固定定位) --- */
+#anime-detail-portal {
+    position: fixed; 
+    background-color: #d1433a;
+    padding: 20px;
+    border-radius: 12px;
+    display: none; 
+    flex-direction: column;
+    z-index: 1005; /* 必須高於遮罩 900 */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    width: 400px;
+    top: 50%; 
+    left: 50%;
+    opacity: 0;
+    align-items: center;
+}
+.card-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.card-video iframe { width: 100%; height: 100%; }
+.watch-button {
+    width: 100%;
+    background-color: #d9d9d9;
+    color: #000;
+    text-align: center;
+    padding: 12px 0;
+    font-weight: 900;
+    font-size: 24px;
+    text-decoration: none !important;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+.watch-button:hover { background-color: #ffffff; }
+.video-info { color: #fff; font-size: 16px; text-align: center; line-height: 1.5; }
+
+/* 響應式 */
 @media (max-width: 767px) {
-    .manga-detail-card {
+    .manga-detail-card, #anime-detail-portal {
         position: fixed;
         top: 50% !important;
         left: 50% !important;

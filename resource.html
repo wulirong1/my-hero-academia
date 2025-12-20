@@ -1,136 +1,69 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MY HERO ACADEMIA-RESOURCE</title>
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-                integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-                crossorigin="anonymous">
-        <link rel="stylesheet" href="css\style.css">
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY HERO ACADEMIA-RESOURCE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-        <div id="manga-overlay"></div>
-        <main class="content-wrapper">
+    <div id="manga-overlay"></div>
+
+    <div id="anime-detail-portal" class="anime-detail-card">
+        <div class="card-video">
+            <iframe src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <a href="#" target="_blank" class="watch-button">點擊觀看</a>
+        <div class="video-info"></div>
+    </div>
+
+    <main class="content-wrapper">
+        <div class="container">
+            <section>
+                <h2 class="container anime-title mt-5 mb-4">Anime</h2>
                 <div class="container">
-
-                        <section>
-                                <h2 class="container anime-title">Anime</h2>
-
-                                <div class="container">
-                                        <div class="row row-cols-2">
-
-                                                <div class="col-6 col-sm-3 col-lg-3 anime-item"><a
-                                                                href="https://ani.gamer.com.tw/animeRef.php?sn=112916"
-                                                                target="_blank"><img class="anime-pic"
-                                                                        src="img\seasons\S1.png" alt="S1">
-                                                                <div class="caption-overlay">Season 1</div>
-                                                        </a></div>
-
-                                                <div class="col-6 col-sm-3 col-lg-3 anime-item"><a
-                                                                href="https://ani.gamer.com.tw/animeRef.php?sn=112945"
-                                                                target="_blank"><img class="anime-pic"
-                                                                        src="img\seasons\S2.png" alt="S2">
-                                                                <div class="caption-overlay">Season 2</div>
-                                                        </a></div>
-
-                                                <div class="col-6 col-sm-3 col-lg-3 anime-item"><a
-                                                                href="https://ani.gamer.com.tw/animeRef.php?sn=91866"
-                                                                target="_blank"><img class="anime-pic"
-                                                                        src="img\seasons\S3.png" alt="S3">
-                                                                <div class="caption-overlay">Season 3</div>
-                                                        </a></div>
-
-                                                <div class="col-6 col-sm-3 col-lg-3 anime-item"><a
-                                                                href="https://ani.gamer.com.tw/animeRef.php?sn=101709"
-                                                                target="_blank"><img class="anime-pic"
-                                                                        src="img\seasons\S4.png" alt="S4">
-                                                                <div class="caption-overlay">Season 4</div>
-                                                        </a></div>
-
-                                                <div class="col-6 col-sm-3 col-lg-3 anime-item"><a
-                                                                href="https://ani.gamer.com.tw/animeRef.php?sn=112643"
-                                                                target="_blank"><img class="anime-pic"
-                                                                        src="img\seasons\S5.png" alt="S5">
-                                                                <div class="caption-overlay">Season 5</div>
-                                                        </a></div>
-
-                                                <div class="col-6 col-sm-3 col-lg-3 anime-item"><a
-                                                                href="https://ani.gamer.com.tw/animeRef.php?sn=113134"
-                                                                target="_blank"><img class="anime-pic"
-                                                                        src="img\seasons\S6.png" alt="S6">
-                                                                <div class="caption-overlay">Season 6</div>
-                                                        </a></div>
-
-                                                <div class="col-6 col-sm-3 col-lg-3 anime-item"><a
-                                                                href="https://ani.gamer.com.tw/animeRef.php?sn=113528"
-                                                                target="_blank"><img class="anime-pic"
-                                                                        src="img\seasons\S7.png" alt="S7">
-                                                                <div class="caption-overlay">Season 7</div>
-                                                        </a></div>
-
-                                                <div class="col-6 col-sm-3 col-lg-3 anime-item"><a
-                                                                href="https://ani.gamer.com.tw/animeRef.php?sn=113886"
-                                                                target="_blank"><img class="anime-pic"
-                                                                        src="img\seasons\S8.png" alt="S8">
-                                                                <div class="caption-overlay">Final Season</div>
-                                                        </a></div>
-                                        </div>
-                                </div>
-
-                                <div class="line"></div>
-
-<h2 class="container manga-title">Manga</h2>
-<div class="container">
-    <div class="row row-cols-2" id="manga-list-container"></div>
-</div>
-                        </section>
-
+                    <div class="row row-cols-2 row-cols-md-4 g-4" id="anime-list-container"></div>
                 </div>
-        </main>
+            </section>
 
+            <div class="line my-5"></div>
 
-
-        <footer class="container footer">
-                <div class="line"></div>
-                <div class="container footer-content">
-                        <div class="footer-info">
-                                <a class="link-dark" href="">隱私條款</a><br>
-                                <a class="link-dark" href="">使用條款</a><br>
-                                <a class="link-dark" href="">贊助商</a><br>
-                        </div>
-                        <div>
-                                <p class="footer-p">聯絡我們: myheroacademia@gmail.com</p>
-                                <p class="footer-p">Copyright © 2025 Roxanne&Potato</p>
-                        </div>
-
-
-                        <div class="footer-icons">
-                                <a href="#"><img class="footer-icons-ig" src="img\ig.svg" alt="ig"></a>
-                                <a href="#"><img class="footer-icons-x" src="img\x.svg" alt="x"></a>
-                                <a href="#"><img class="footer-icons-fb" src="img\fb.png" alt="fb"></a>
-                        </div>
+            <section>
+                <h2 class="container manga-title mb-4">Manga</h2>
+                <div class="container">
+                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-2" id="manga-list-container"></div>
                 </div>
-        </footer>
+            </section>
+        </div>
+    </main>
 
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <footer class="container footer">
+        <div class="line"></div>
+        <div class="container footer-content d-flex justify-content-between align-items-center">
+            <div class="footer-info">
+                <a class="link-dark" href="#">隱私條款</a><br>
+                <a class="link-dark" href="#">使用條款</a><br>
+                <a class="link-dark" href="#">贊助商</a>
+            </div>
+            <div class="text-center">
+                <p class="footer-p mb-0">聯絡我們: myheroacademia@gmail.com</p>
+                <p class="footer-p mb-0">Copyright © 2025 Roxanne&Potato</p>
+            </div>
+            <div class="footer-icons">
+                <a href="#"><img class="footer-icons-ig" src="img/ig.svg" alt="ig" width="24"></a>
+                <a href="#"><img class="footer-icons-x" src="img/x.svg" alt="x" width="24"></a>
+                <a href="#"><img class="footer-icons-fb" src="img/fb.png" alt="fb" width="24"></a>
+            </div>
+        </div>
+    </footer>
 
-        <script src="js/script.js"></script>
-
-        <div id="manga-overlay"></div>
-
-        <script src="js/manga.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="js/anime.js"></script>
+    <script src="js/manga.js"></script>
 </body>
-
-
 </html>
