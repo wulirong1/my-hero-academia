@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的英雄學院 - 角色介紹</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        
+        <div class="display-container">
+            <div class="card-white-bg">
+                <div class="hero-image-box">
+                    <img id="main-img" src="https://api.dicebear.com/7.x/bottts/svg?seed=Aizawa" alt="Hero">
+                </div>
+                <div class="hero-info-box">
+                    <p id="info-ruby" class="ruby-text">あいざわ しょうた</p>
+                    <h2 id="info-name" class="name-text">相澤消太</h2>
+                    <ul class="stats-list">
+                        <li><strong>CV :</strong> <span id="info-cv">諏訪部順一</span></li>
+                        <li><strong>BIRTHDAY :</strong> <span id="info-birthday">11/8</span></li>
+                        <li><strong>HEIGHT :</strong> <span id="info-height">183cm</span></li>
+                        <li><strong>個性 :</strong> <span id="info-quirk">抹消</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-container">
+            <div class="class-label">A班</div>
+            <div class="name-grid" id="name-grid">
+                </div>
+        </div>
+
+    </div>
+
+    <script>
+        const names = [
+            "葉隱透", "障子目藏", "尾白猿夫", "青山優雅",
+            "爆豪勝己", "耳郎響香", "上鳴電氣", "蘆戶三奈",
+            "綠谷出久", "瀨呂範太", "切島銳兒郎", "蛙吹梅雨",
+            "峰田實", "常闇踏陰", "口田甲司", "飯田天哉",
+            "八百萬百", "轟焦凍", "砂藤力道", "麗日御茶子"
+        ];
+
+        const data = {
+            "相澤消太": { ruby: "あいざわ しょうた", cv: "諏訪部順一", birthday: "11/8", height: "183cm", quirk: "抹消" },
+            "上鳴電氣": { ruby: "かみなり でんき", cv: "畠中祐", birthday: "6/29", height: "168cm", quirk: "帶電" },
+            "綠谷出久": { ruby: "みどりや いずく", cv: "山下大輝", birthday: "7/15", height: "166cm", quirk: "One For All" }
+        };
+
+        const grid = document.getElementById('name-grid');
+
+        names.forEach(n => {
+            const div = document.createElement('div');
+            div.className = 'name-btn';
+            div.innerText = n;
+            div.onclick = () => {
+                const char = data[n] || { ruby: "Hero Student", cv: "未設定", birthday: "??/??", height: "???cm", quirk: "未知" };
+                document.getElementById('info-name').innerText = n;
+                document.getElementById('info-ruby').innerText = char.ruby;
+                document.getElementById('info-cv').innerText = char.cv;
+                document.getElementById('info-birthday').innerText = char.birthday;
+                document.getElementById('info-height').innerText = char.height;
+                document.getElementById('info-quirk').innerText = char.quirk;
+                document.getElementById('main-img').src = `https://api.dicebear.com/7.x/bottts/svg?seed=${n}`;
+            };
+            grid.appendChild(div);
+        });
+    </script>
+</body>
+</html>
