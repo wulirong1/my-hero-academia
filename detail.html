@@ -9,6 +9,16 @@
 </head>
 
 <body style="background-color: #F8D34D;">
+
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+    </script>
+    <div class="line"></div>
     <div class="container mt-5">
         <div id="originalPostArea" class="p-4 mb-4"
             style="background-color: #EBC053; border: 3px solid #000; border-radius: 10px;">

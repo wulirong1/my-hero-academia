@@ -13,8 +13,15 @@
 </head>
 
 <body>
-
-
+        <div id="header-placeholder"></div>
+        <script>
+                fetch('header.html')
+                        .then(response => response.text())
+                        .then(data => {
+                                document.getElementById('header-placeholder').innerHTML = data;
+                        });
+        </script>
+        <div class="line"></div>
 
         <div id="manga-overlay"></div>
 
@@ -47,27 +54,27 @@
                 </div>
         </main>
 
-       <footer class="container footer">
-        <div class="line"></div>
-        <div class="container footer-content">
-            <div class="footer-info">
-                <a class="link-dark" href="">隱私條款</a><br>
-                <a class="link-dark" href="">使用條款</a><br>
-                <a class="link-dark" href="">贊助商</a><br>
-            </div>
-            <div>
-                <p class="footer-p">聯絡我們: myheroacademia@gmail.com</p>
-                <p class="footer-p">Copyright © 2025 Roxanne&Potato</p>
-            </div>
+        <footer class="container footer">
+                <div class="line"></div>
+                <div class="container footer-content">
+                        <div class="footer-info">
+                                <a class="link-dark" href="">隱私條款</a><br>
+                                <a class="link-dark" href="">使用條款</a><br>
+                                <a class="link-dark" href="">贊助商</a><br>
+                        </div>
+                        <div>
+                                <p class="footer-p">聯絡我們: myheroacademia@gmail.com</p>
+                                <p class="footer-p">Copyright © 2025 Roxanne&Potato</p>
+                        </div>
 
 
-            <div class="footer-icons">
-                <a href="#"><img class="footer-icons-ig" src="img\ig.svg" alt="ig"></a>
-                <a href="#"><img class="footer-icons-x" src="img\x.svg" alt="x"></a>
-                <a href="#"><img class="footer-icons-fb" src="img\fb.png" alt="fb"></a>
-            </div>
-        </div>
-    </footer>
+                        <div class="footer-icons">
+                                <a href="#"><img class="footer-icons-ig" src="img\ig.svg" alt="ig"></a>
+                                <a href="#"><img class="footer-icons-x" src="img\x.svg" alt="x"></a>
+                                <a href="#"><img class="footer-icons-fb" src="img\fb.png" alt="fb"></a>
+                        </div>
+                </div>
+        </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
         <script src="js/anime.js"></script>
