@@ -94,13 +94,20 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             }
 
- 
-
             if (index === 23) {
                 htmlContent += `
                 <div class="col-12 my-5 text-center manga-middle-text">
                     <h3 style="font-family: 'Inter', sans-serif; font-weight: 800; color: #d1433a; letter-spacing: 2px;">
                         「如果你覺得到了極限就回想一下，回想起自己為了什麼握緊拳頭。」<br>－歐爾麥特
+                    </h3>
+                </div>
+            `;
+            }
+if (index === 35) {
+                htmlContent += `
+                <div class="col-12 my-5 text-center manga-middle-text">
+                    <h3 style="font-family: 'Inter', sans-serif; font-weight: 800; color: #d1433a; letter-spacing: 2px;">
+                    「無論內心有多害怕，都要笑着說我沒事！這世上，笑著的人才是最強的！」<br>－歐爾麥特
                     </h3>
                 </div>
             `;
