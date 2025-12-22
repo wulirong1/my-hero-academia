@@ -4,29 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的英雄學院 - 角色介紹</title>
-    <link rel="stylesheet" href="css/style.css">
+
     <link rel="stylesheet" href="css/character.css">
 </head>
+
 <body>
+
+<div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+    </script>
+
+<div class="main-wrapper">
+    </div>
+
+
 
     <div class="main-wrapper">
         
         <div class="display-container">
-            <div class="card-white-bg">
-                <div class="hero-image-box">
-                    <img id="main-img" src="https://api.dicebear.com/7.x/bottts/svg?seed=Aizawa" alt="Hero">
-                </div>
-                <div class="hero-info-box">
-                    <p id="info-ruby" class="ruby-text">あいざわ しょうた</p>
-                    <h2 id="info-name" class="name-text">相澤消太</h2>
-                    <ul class="stats-list">
-                        <li><strong>CV :</strong> <span id="info-cv">諏訪部順一</span></li>
-                        <li><strong>BIRTHDAY :</strong> <span id="info-birthday">11/8</span></li>
-                        <li><strong>HEIGHT :</strong> <span id="info-height">183cm</span></li>
-                        <li><strong>個性 :</strong> <span id="info-quirk">抹消</span></li>
-                    </ul>
-                </div>
-            </div>
+          <div class="card-image-wrapper">
+    <div class="bg-slide-left"></div>
+    <div class="bg-slide-right"></div>
+    
+    <img id="main-card" src="img/aizawa-card.png" alt="Character" class="flash-animation">
+</div>
         </div>
 
         <div class="list-container">
@@ -38,6 +44,7 @@
     </div>
 
     <script>
+        // 設定名字清單 (4x5 共 20 個)
         const names = [
             "葉隱透", "障子目藏", "尾白猿夫", "青山優雅",
             "爆豪勝己", "耳郎響香", "上鳴電氣", "蘆戶三奈",
@@ -46,10 +53,13 @@
             "八百萬百", "轟焦凍", "砂藤力道", "麗日御茶子"
         ];
 
-        const data = {
-            "相澤消太": { ruby: "あいざわ しょうた", cv: "諏訪部順一", birthday: "11/8", height: "183cm", quirk: "抹消" },
-            "上鳴電氣": { ruby: "かみなり でんき", cv: "畠中祐", birthday: "6/29", height: "168cm", quirk: "帶電" },
-            "綠谷出久": { ruby: "みどりや いずく", cv: "山下大輝", birthday: "7/15", height: "166cm", quirk: "One For All" }
+        // 設定名字對應的圖片路徑 (請確保 img 資料夾內有這些檔案)
+        const cardData = {
+            "相澤消太": "img/aizawa-card.png",
+            "轟焦凍": "img/shoto-card.png",
+            "綠谷出久": "img/izuku-card.png",
+            "爆豪勝己": "img/katsuki-card.png"
+            // 其他角色依此類推...
         };
 
         const grid = document.getElementById('name-grid');
@@ -58,15 +68,17 @@
             const div = document.createElement('div');
             div.className = 'name-btn';
             div.innerText = n;
+            
             div.onclick = () => {
-                const char = data[n] || { ruby: "Hero Student", cv: "未設定", birthday: "??/??", height: "???cm", quirk: "未知" };
-                document.getElementById('info-name').innerText = n;
-                document.getElementById('info-ruby').innerText = char.ruby;
-                document.getElementById('info-cv').innerText = char.cv;
-                document.getElementById('info-birthday').innerText = char.birthday;
-                document.getElementById('info-height').innerText = char.height;
-                document.getElementById('info-quirk').innerText = char.quirk;
-                document.getElementById('main-img').src = `https://api.dicebear.com/7.x/bottts/svg?seed=${n}`;
+                const cardImg = document.getElementById('main-card');
+                
+                // 簡單的淡入淡出切換效果
+                cardImg.style.opacity = '0';
+                setTimeout(() => {
+                    // 如果沒設定圖片，就給一個預設圖或根據名字生成
+                    cardImg.src = cardData[n] || `img/default-card.png`;
+                    cardImg.style.opacity = '1';
+                }, 200);
             };
             grid.appendChild(div);
         });
