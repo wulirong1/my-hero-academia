@@ -632,24 +632,80 @@ body {
     text-align: left;
 }
 
-/* 影片區域 */
+/*------------ 影片區域------------------ */
+
 .video-section {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
     align-items: center;
-}
-
-.video-placeholder {
     width: 100%;
-    max-width: 800px;
-    aspect-ratio: 16 / 9;
-    background-color: #ccc;
+    margin: 40px 0;
+}
+.video-responsive {
+    width: 100%;            /* 寬度填滿父容器 */
+    max-width: 800px;       /* 限制最大寬度 */
+    margin: 0 auto;         /* 置中 */
+    aspect-ratio: 16 / 9;   /* 維持 16:9 比例 */
+}
+.video-responsive iframe {
+    width: 100%;
+    height: 100%;
+}
+.video-container {
+    width: 100%;
+    max-width: 900px;         /* 調整這個數值來改變影片在頁面上的大小 */
+    margin: 40px auto;        /* 置中並與上下保持距離 */
+    aspect-ratio: 16 / 9;     /* 鎖定標準螢幕比例 */
+    background-color: #000;   /* 讀取前顯示黑色 */
+    border: 5px solid #000;   /* 漫畫風粗邊框 */
+    box-shadow: 15px 15px 0px #000; /* 漫畫風硬陰影 */
+    position: relative;       /* 讓內部的 wrapper 可以絕對定位 */
+    overflow: hidden;
+}
+.video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover; /* 確保影片內容填滿區域 */
+}
+.video-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
+    padding: 20px 0;
 }
+
+
+/* 分割線樣式 */
+.line {
+    border: none;
+    height: 6px;
+    background-color: #000;
+    margin: 40px auto;
+    width: 100%;
+}
+
+/* Footer 基礎樣式 (確保與首頁一致) */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.footer-icons img {
+    width: 30px;
+    margin-left: 15px;
+}
+
 
 /* 輔助線*/
 .divider {
@@ -678,5 +734,157 @@ body {
 
 
 
+.card-video iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.watch-button {
+    font-family: 'Inter', sans-serif;
+    border-style: solid;
+    border-width: 5px;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 0;
+    font-weight: 600;
+    font-size: 26px;
+    /* 加大按鈕文字 */
+    text-decoration: none !important;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.watch-button:hover {
+    background-color: #ffffff;
+}
+
+.video-info {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+
+    color: #fff;
+    font-size: 18px;
+    /* 加大內容文字 */
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* 手機版適配 */
+@media (max-width: 767px) {
+
+    .manga-detail-card,
+    #anime-detail-portal {
+        position: fixed;
+        top: 50% !important;
+        left: 50% !important;
+        width: 95vw;
+        max-width: 400px;
+    }
+}
 
 
+
+
+/*--------------介紹頁------------------*/
+
+/* 頁面背景與基礎設定 */
+body {
+    background-color: #EBC045; 
+      font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.intro-page-wrapper {
+    padding-top: 30px; /* 預留給 Header 的空間 */
+    padding-bottom: 100px;
+}
+
+/* 漫畫橫格子排版 */
+.intro-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 80px 0;
+    
+    /* --- 捲動浮現動畫 (純 CSS) --- */
+    view-timeline-name: --revealing-row;
+    view-timeline-axis: block;
+    animation: reveal-linear both;
+    animation-timeline: --revealing-row;
+    animation-range: entry 10% cover 40%;
+}
+
+/* 偶數行反轉：圖左文右 */
+.intro-row.reverse {
+    flex-direction: row-reverse;
+}
+
+/* 文字區塊 */
+.text-box {
+    flex: 1.2;
+}
+
+.section-title-custom {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: inline-block;
+    border-bottom: 5px solid #000;
+}
+
+.content-text {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #1a1a1a;
+    text-align: justify;
+}
+
+/* 圖片區塊 */
+.img-box {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+}
+
+.img-box img {
+    width: 100%;
+    max-width: 400px;
+    border: 5px solid #000;
+    box-shadow: 15px 15px 0px #000; /* 漫畫感硬陰影 */
+    background-color: #fff;
+}
+
+/* 分割線 */
+.line {
+    height: 6px;
+    background-color: #000;
+    margin: 40px 0;
+}
+
+/* --- 動畫關鍵影格 --- */
+@keyframes reveal-linear {
+    from {
+        opacity: 0;
+        transform: translateY(80px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 響應式：手機版改為垂直堆疊 */
+@media (max-width: 768px) {
+    .intro-row, .intro-row.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .section-title-custom {
+        text-align: center;
+    }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的英雄學院 - 影片中心</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/intro.css">
+</head>
+
+<body>
+
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+    </script>
+
+    <div class="container main-content">
+        <div class="video-section">
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        src="https://www.youtube.com/embed/wQgQij8Ry4g?si=NbciIpG6ALeqbasu&start=3&autoplay=1&mute=1" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div> 
+        </div> <div class="intro-page-wrapper">
+            <div class="container">
+                
+                <div class="intro-row">
+                    <div class="text-box">
+                        <h2 class="section-title-custom">故事介紹</h2>
+                        <p class="content-text">
+                            綠谷出久，最初是個沒有「個性」的少年，但他仍憧憬並渴望成為一位英雄，也期望自己能進入培育英雄的雄英高校就讀。但周圍的人都不看好沒有個性的他能成為一名英雄，讓他總是在他人的嘲笑和輕視中度過。直到他遇上了自己最仰慕的英雄，被人稱為「和平的象徵」的歐爾麥特，他的夢想將因此獲得實現的可能性。在經過歐爾麥特的十個月特訓後，獲得歐爾麥特的個性ONE・FOR ALL，之後成功考進了雄英高校。本作的故事主線便環繞在綠谷、雄英師生、親友們和其他人士在這個「個性」普及化的世界裡交織的經歷與冒險。
+                        </p>
+                    </div>
+                    <div class="img-box">
+                        <img src="img/manga/manga1.png" alt="故事介紹">
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="intro-row reverse">
+                    <div class="text-box">
+                        <h2 class="section-title-custom">原作者介紹</h2>
+                        <p class="content-text">
+                            堀越耕平，在名古屋藝術大學設計系的就讀期間，短篇〈ヌケガラ〉獲得第72回手塚獎佳作，2008年刊載了短篇《我的英雄》（僕のヒ一ロ一）是之後連載的《我的英雄學院》的前身。2010年推出連載《逢魔時刻動物園》，2012年推出連載《戰星的巴爾基》，皆因為作品慢熱而人氣不高，結束《戰星的巴爾基》的連載後大受打擊，為了尋求靈感而翻起自己以前的作品，將過去推出的短篇《我的英雄》修改後在2014年推出《我的英雄學院》，相較前兩部作品大受歡迎。
+                        </p>
+                    </div>
+                    <div class="img-box">
+                        <img src="img/Horikoshi.jpg" alt="原作者介紹">
+                    </div>
+                </div>
+
+            </div>
+        </div> </div> <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html>

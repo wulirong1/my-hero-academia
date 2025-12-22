@@ -14,6 +14,20 @@
 </head>
 
 <body>
+
+   <!-- 放HEADER -->
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+    </script>
+
+
+
+
         <div id="loading-screen">
                 <div class="loading-content">
                         <img src="img/all might.png" class="loading-img" alt="Loading">
