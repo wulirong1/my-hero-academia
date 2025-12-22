@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         25: { link: "https://www.books.com.tw/products/0010852995?sloc=main", desc: "【Vol. 25】直到剛剛都讓我頭快要裂開的劇烈頭痛消失了……啊啊……我想起來了……小時候第一次感受到的快感。對我而言，與家人的記憶根本不是悲劇。我不要這種充滿英雄的社會，也不要未來……全都毀滅吧！“Plus Ultra”！" },
         26: { link: "https://www.books.com.tw/products/0010861824?sloc=main", desc: "【Vol. 26】HAWKS跟公安秘密獲得了情資，為了提防敵人將來某一天起釁，他們打算提升學生的實力，當作戰力的保險。就讓我這個現任No.1英雄來徹徹底底地好好鍛練你們３個！“Plus Ultra”！" },
         27: { link: "https://www.books.com.tw/products/0010870862?sloc=main", desc: "【Vol. 27】英雄們的同步襲擊行動終於開始。潛入至今過了不少時間，但這一切全都是為了在這個瞬間確實鎮壓「超常解放戰線」！為了大家，我要比誰跳得更快！“Plus Ultra”！" },
-        28: { link: "https://www.books.com.tw/products/0010878037?sloc=main", desc: "【Vol. 24】聲音的狀態也進入最高潮！YEAHHHHHHH！「敵人（VILLAIN）」與腦無也一樣萬頭鑽動、嗨到最高點啦！為了不讓跟我們經歷過的一樣的惡夢重演，絕對要在這裡阻止他們！“Plus Ultra”！" },
+        28: { link: "https://www.books.com.tw/products/0010878037?sloc=main", desc: "【Vol. 28】聲音的狀態也進入最高潮！YEAHHHHHHH！「敵人（VILLAIN）」與腦無也一樣萬頭鑽動、嗨到最高點啦！為了不讓跟我們經歷過的一樣的惡夢重演，絕對要在這裡阻止他們！“Plus Ultra”！" },
         29: { link: "https://www.books.com.tw/products/0010890189?sloc=main", desc: "【Vol. 29】因為那個大個子男人，附近一帶都變得亂七八糟了！那句「去找主人」的意思是指死柄木？……那可不行！雄英學生也會很危險！蛇腔醫院那邊出了什麼事？“Plus Ultra”！" },
         30: { link: "https://www.books.com.tw/products/0010897949?sloc=main", desc: "【Vol. 30】為什麼事情會變成這樣？大型敵人（VILLAIN）的橫行，讓災情越來越嚴重了！我得把狀況傳遞出去……告訴現在仍在戰鬥的大家！我要維繫……不斷倒下的同伴的意念！我一定要！“Plus Ultra”！" },
         31: { link: "https://www.books.com.tw/products/0010911102?sloc=main", desc: "【Vol. 31】不但讓死柄木逃走，還造成重大災情。但是…即使如此，我們英雄仍然必須懷著沒有絲毫龜裂的信念，持續戰鬥下去才行！“Plus Ultra”！" },
@@ -48,11 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         41: { link: "https://www.books.com.tw/products/0011006953?sloc=main", desc: "【Vol. 41】歐爾麥特，妳看到了嗎？你託付給那少年的意志，逐漸消失的模樣。從與一開始，連綿不斷傳承下來的OFA，已經被得到我的個性的弔打得逐漸凋零。那少年是救不了弔的...“Plus Ultra”！" },
         42: { link: "https://www.books.com.tw/products/0011013057?sloc=main", desc: "【Vol. 42】那一天，得到崇拜的人認同，讓我好高興。也認識到一些無可取代的同伴，實在難以置信，本來「無個性」的我，在許多人的支持下，現在才能站在這裡。這裡就是我的……我們的英雄學院！“Plus Ultra”！" },
 
-        
-
-
-
-        // 你可以在這裡繼續補上 4, 5, 6... 直到 42
     };
 
     // 2. 建立 42 本的完整資料陣列
@@ -102,51 +97,58 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.to(overlay, { autoAlpha: 0, pointerEvents: "none", duration: 0.2, overwrite: true });
     }
 
-    function openMangaCard(item) {
-        if (window.closeAllAnime) window.closeAllAnime();
+function openMangaCard(item) {
+    if (window.closeAllAnime) window.closeAllAnime();
 
-        const detailCard = item.querySelector('.manga-detail-card');
-        item.classList.add('active');
-        item.style.zIndex = "1001";
+    const detailCard = item.querySelector('.manga-detail-card');
+    item.classList.add('active');
+    item.style.zIndex = "1001";
 
-        gsap.to(overlay, { autoAlpha: 1, pointerEvents: "auto", duration: 0.3, overwrite: true });
-        gsap.set(detailCard, { display: 'flex' });
+    gsap.to(overlay, { autoAlpha: 1, pointerEvents: "auto", duration: 0.3 });
+    gsap.set(detailCard, { display: 'flex' });
 
-        const isMobile = window.innerWidth < 768;
-        const rect = item.getBoundingClientRect();
-        const windowWidth = window.innerWidth;
-        const isOnLeftHalf = (rect.left + rect.width / 2) < windowWidth / 2;
+    // --- 判斷滑動方向邏輯 ---
+    const allItems = Array.from(document.querySelectorAll('.manga-item'));
+    const index = allItems.indexOf(item); // 取得當前是第幾本書 (0-41)
+    const winW = window.innerWidth;
+    
+    let isLeft = true;
 
-        if (isMobile) {
-            gsap.fromTo(detailCard,
-                { opacity: 0, scale: 0.8, xPercent: -50, yPercent: -50, left: "50%", top: "50%" },
-                { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.2)", overwrite: true }
-            );
-        } else {
-            // 平板與電腦版：根據點擊位置決定從左邊或右邊滑入中央
-            const startX = isOnLeftHalf ? -200 : 200;
-
-            gsap.fromTo(detailCard,
-                {
-                    opacity: 0,
-                    scale: 0.5,
-                    left: "50%",
-                    top: "50%",
-                    xPercent: -50,
-                    yPercent: -50,
-                    x: startX
-                },
-                {
-                    opacity: 1,
-                    scale: 1,
-                    x: 0,
-                    duration: 0.5,
-                    ease: "power3.out",
-                    overwrite: true
-                }
-            );
-        }
+    if (winW >= 992) { 
+        // 電腦版 (6 欄)：0,1,2 為左，3,4,5 為右
+        isLeft = (index % 6) < 3;
+    } else if (winW >= 768) { 
+        // 平板版 (4 欄)：0,1 為左，2,3 為右
+        isLeft = (index % 4) < 2;
+    } else { 
+        // 手機版 (2 欄)：0 為左，1 為右
+        isLeft = (index % 2) === 0;
     }
+
+    // 根據左/右決定起始 X 位移 (左邊來的往右滑，右邊來的往左滑)
+    const startX = isLeft ? -150 : 150;
+
+    // 執行進場動畫
+    gsap.fromTo(detailCard,
+        {
+            opacity: 0,
+            scale: 0.7,
+            left: "50%",
+            top: "50%",
+            xPercent: -50,
+            yPercent: -50,
+            x: startX // 從側邊偏移開始
+        },
+        {
+            opacity: 1,
+            scale: 1,
+            x: 0, // 回到視窗正中央
+            duration: 0.5,
+            ease: "power2.out",
+            overwrite: true
+        }
+    );
+}
 
     // 事件監聽
     container.addEventListener('click', (e) => {

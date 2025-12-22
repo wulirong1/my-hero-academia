@@ -69,3 +69,13 @@ getDoc(postRef).then((docSnap) => {
     }
 });
 
+// 在 detail.js 的末尾加入
+const replyContent = document.getElementById('replyContent');
+
+replyContent.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        // 觸發送出按鈕的點擊事件
+        document.getElementById('submitReply').click();
+    }
+});

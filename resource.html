@@ -10,18 +10,18 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/resource.css">
 </head>
 
 <body>
-        <div id="header-placeholder"></div>
-        <script>
-                fetch('header.html')
-                        .then(response => response.text())
-                        .then(data => {
-                                document.getElementById('header-placeholder').innerHTML = data;
-                        });
-        </script>
-        <div class="line"></div>
+        <div id="loading-screen">
+                <div class="loading-content">
+                        <img src="img/all might.png" class="loading-img" alt="Loading">
+
+                        <div class="spinner"></div>
+                        <p class="loading-text">LOADING...</p>
+                </div>
+        </div>
 
         <div id="manga-overlay"></div>
 
@@ -79,6 +79,7 @@
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
         <script src="js/anime.js"></script>
         <script src="js/manga.js"></script>
+        <script src="js\loading.js"></script>
 </body>
 
 </html>
