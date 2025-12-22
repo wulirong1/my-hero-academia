@@ -50,21 +50,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     };
 
-    // 2. 建立 42 本的完整資料陣列
+    // 2. 建立資料與渲染 (保持原樣)
     const mangaData = Array.from({ length: 42 }, (_, i) => {
         const id = i + 1;
-        const spec = mangaSpecs[id] || {}; // 如果上面沒填，就給空物件
+        const spec = mangaSpecs[id] || {};
         return {
             id: id,
             img: `img/manga/manga${id}.png`,
-            link: spec.link || "#", // 預設網址
-            desc: spec.desc || `【Vol. ${id}】這是第 ${id} 卷的精彩內容。英雄與敵人的戰鬥進入白熱化，更多個性與故事即將展開。` // 預設簡介
+            link: spec.link || "#",
+            desc: spec.desc || `【Vol. ${id}】英雄與敵人的戰鬥進入白熱化，更多個性與故事即將展開。`
         };
     });
 
-    // 3. 渲染 HTML
     if (container) {
-        container.innerHTML = mangaData.map(manga => `
+        let htmlContent = "";
+        mangaData.forEach((manga, index) => {
+            // 原本的漫畫 HTML
+            htmlContent += `
             <div class="col-6 col-md-3 col-lg-2 manga-item">
                 <div class="manga-card-wrapper">
                     <img class="manga-pic" src="${manga.img}" alt="Vol.${manga.id}">
@@ -77,10 +79,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             </div>
-        `).join('');
-    }
+        `;
 
-    // --- 動畫邏輯 (與 Anime 一致，滑向螢幕中央) ---
+            // 核心邏輯：在第 24 本 (第四排結束) 之後插入文字
+            // 電腦版一排 6 本，4 排 = 24 本；手機版一排 2 本，12 排 = 24 本
+     
+            if (index === 11) {
+                htmlContent += `
+                <div class="col-12 my-5 text-center manga-middle-text">
+                    <h3 style="font-family: 'Inter', sans-serif; font-weight: 800; color: #d1433a; letter-spacing: 2px;">
+                    「愛多管閒事，也是英雄的本質！」<br>－歐爾麥特
+                    </h3>
+                </div>
+            `;
+            }
+
+ 
+
+            if (index === 23) {
+                htmlContent += `
+                <div class="col-12 my-5 text-center manga-middle-text">
+                    <h3 style="font-family: 'Inter', sans-serif; font-weight: 800; color: #d1433a; letter-spacing: 2px;">
+                        「如果你覺得到了極限就回想一下，回想起自己為了什麼握緊拳頭。」<br>－歐爾麥特
+                    </h3>
+                </div>
+            `;
+            }
+
+  
+        });
+        container.innerHTML = htmlContent;
+    }
 
     function closeAllManga() {
         document.querySelectorAll('.manga-item.active').forEach(item => {
@@ -88,72 +117,34 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.remove('active');
             gsap.to(card, {
                 opacity: 0, scale: 0.8, duration: 0.2, overwrite: true,
-                onComplete: () => {
-                    gsap.set(card, { display: 'none' });
-                    item.style.zIndex = "1";
-                }
+                onComplete: () => { gsap.set(card, { display: 'none' }); item.style.zIndex = "1"; }
             });
         });
-        gsap.to(overlay, { autoAlpha: 0, pointerEvents: "none", duration: 0.2, overwrite: true });
+        gsap.to(overlay, { autoAlpha: 0, pointerEvents: "none", duration: 0.2 });
     }
 
-function openMangaCard(item) {
-    if (window.closeAllAnime) window.closeAllAnime();
+    function openMangaCard(item) {
+        if (window.closeAllAnime) window.closeAllAnime();
+        const detailCard = item.querySelector('.manga-detail-card');
+        item.classList.add('active');
+        item.style.zIndex = "1001";
 
-    const detailCard = item.querySelector('.manga-detail-card');
-    item.classList.add('active');
-    item.style.zIndex = "1001";
+        gsap.to(overlay, { autoAlpha: 1, pointerEvents: "auto", duration: 0.3 });
+        gsap.set(detailCard, { display: 'flex' });
 
-    gsap.to(overlay, { autoAlpha: 1, pointerEvents: "auto", duration: 0.3 });
-    gsap.set(detailCard, { display: 'flex' });
+        const rect = item.getBoundingClientRect();
+        const startX = (rect.left + rect.width / 2) < window.innerWidth / 2 ? -150 : 150;
 
-    // --- 判斷滑動方向邏輯 ---
-    const allItems = Array.from(document.querySelectorAll('.manga-item'));
-    const index = allItems.indexOf(item); // 取得當前是第幾本書 (0-41)
-    const winW = window.innerWidth;
-    
-    let isLeft = true;
-
-    if (winW >= 992) { 
-        // 電腦版 (6 欄)：0,1,2 為左，3,4,5 為右
-        isLeft = (index % 6) < 3;
-    } else if (winW >= 768) { 
-        // 平板版 (4 欄)：0,1 為左，2,3 為右
-        isLeft = (index % 4) < 2;
-    } else { 
-        // 手機版 (2 欄)：0 為左，1 為右
-        isLeft = (index % 2) === 0;
+        gsap.fromTo(detailCard,
+            { opacity: 0, scale: 0.5, left: "50%", top: "50%", xPercent: -50, yPercent: -50, x: startX },
+            { opacity: 1, scale: 1, x: 0, duration: 0.5, ease: "power3.out", overwrite: true }
+        );
     }
 
-    // 根據左/右決定起始 X 位移 (左邊來的往右滑，右邊來的往左滑)
-    const startX = isLeft ? -150 : 150;
-
-    // 執行進場動畫
-    gsap.fromTo(detailCard,
-        {
-            opacity: 0,
-            scale: 0.7,
-            left: "50%",
-            top: "50%",
-            xPercent: -50,
-            yPercent: -50,
-            x: startX // 從側邊偏移開始
-        },
-        {
-            opacity: 1,
-            scale: 1,
-            x: 0, // 回到視窗正中央
-            duration: 0.5,
-            ease: "power2.out",
-            overwrite: true
-        }
-    );
-}
-
-    // 事件監聽
     container.addEventListener('click', (e) => {
+        if (e.target.closest('.buy-button')) return; // 跳轉購買時不關閉
         const item = e.target.closest('.manga-item');
-        if (item && !e.target.closest('.buy-button')) {
+        if (item) {
             e.stopPropagation();
             item.classList.contains('active') ? closeAllManga() : openMangaCard(item);
         }
