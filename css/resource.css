@@ -1,155 +1,142 @@
-/*resource*/
-
-
-
-.anime-title {
+/* ==========================================================================
+   1. 基礎佈局與標題
+   ========================================================================== */
+.anime-title, .manga-title {
+    font-size: 42px;
     font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
-    margin: 0%;
-    padding-bottom: 0%;
+    margin: 40px 0 20px 0;
+    font-weight: 800;
 }
 
-.anime-pic {
-    width: 90%;
-    margin: 10px;
-    border-radius: 10px;
-    transition: all 0.3s ease-in-out;
-    transform: scale(1);
-}
-
-
-
-.manga-title {
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    justify-content: center;
-    margin: 0%;
-    padding-bottom: 0%;
-}
-
-.manga-pic {
+.anime-pic, .manga-pic {
     width: 100%;
-    margin: 15px;
     border-radius: 10px;
-    margin-bottom: 0%;
-        transition: all 0.3s ease-in-out;
-    transform: scale(1);
+    transition: transform 0.3s ease;
 }
 
+.anime-item:hover .anime-pic, .manga-item:hover .manga-pic {
+    transform: scale(1.05);
+}
 
-/* --- 全域遮罩層 --- */
+/* ==========================================================================
+   2. 全域遮罩層
+   ========================================================================== */
 #manga-overlay {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.75);
-    z-index: 900; /* 遮罩基準層級 */
+    z-index: 900;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
-/* --- Manga 區塊樣式 --- */
+/* ==========================================================================
+   3. 共用卡片基礎 (Manga & Anime)
+   ========================================================================== */
+.manga-detail-card, #anime-detail-portal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: #d1433a;
+    border-radius: 12px;
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    /* 移除 CSS transform，由 JS 控制位移以支援動畫 */
+}
+
+/* ==========================================================================
+   4. Manga 區塊樣式
+   ========================================================================== */
 .manga-item {
     position: relative;
     margin-bottom: 30px;
     z-index: 1;
     cursor: pointer;
 }
-.manga-pic {
-    width: 100%;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-.manga-item:hover .manga-pic { transform: scale(1.05); }
 
 .manga-detail-card {
-    position: fixed; /* 必須是 fixed 才能相對於視窗中央 */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* 基礎置中 */
-    width: 30%;
-    background-color: #d1433a;
-    padding: 20px;
-    border-radius: 12px;
-    z-index: 1000;
-    display: none;
-    opacity: 0;
-
-    /* 響應式寬度：防止平板/手機超出 */
-    width: 90vw; 
-    max-width: 450px; 
-    box-sizing: border-box;
+    width: 90vw;
+    max-width: 450px;
+    padding: 25px;
+    flex-direction: column; /* 手機版預設垂直 */
+    align-items: center;
+    max-height: 85vh;
+    overflow: hidden;
 }
 
-/* 手機版細節微調 */
-@media (max-width: 576px) {
-    .manga-detail-card {
-
-        flex-direction: column; 
-        align-items: center;
-        max-height: 85vh;
-        overflow-y: auto;
-    }
-    .card-left { margin-right: 0; margin-bottom: 10px; width: 60%; }
+.card-left {
+    width: 90%;
+    max-width: 180px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
 }
-.card-left { flex: 1; margin-right: 15px; display: flex; align-items: center; }
-.card-left img { width: 100%; border-radius: 6px; }
-.card-right { flex: 1.2; display: flex; flex-direction: column; }
-.info-box {
- font-family: 'Inter', sans-serif;
-    font-weight: 800;
 
-    padding: 5px;
-    color: #ffffff;
-    font-size: 14px;
+.card-left img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.card-right {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
-    overflow-y: auto;
-    margin-bottom: 5px;
-    border-radius: 4px;
-    line-height: 1.6;
+    overflow: hidden;
 }
+
+.info-box {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    padding: 10px;
+    color: #ffffff;
+    line-height: 1.6;
+    flex-grow: 1; /* 推動按鈕置底 */
+    overflow-y: auto;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
 .buy-button {
     display: block;
-    border-style: solid;
-    border-width: 5px;
+    width: 100%;
+    border: 5px solid #ffffff;
     color: #ffffff;
     text-align: center;
     padding: 12px 0;
+    font-size: 24px;
     font-weight: 900;
     text-decoration: none !important;
-    border-radius: 4px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s;
 }
 
-/* --- Anime 區塊樣式 --- */
-.anime-item {
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
+.buy-button:hover {
+    background-color: #ffffff;
+    color: #d1433a;
 }
-.anime-pic {
-    width: 100%;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-.anime-item:hover .anime-pic { transform: scale(1.05); }
 
-/* 加大版的 Anime Portal 卡片 */
+/* ==========================================================================
+   5. Anime 區塊樣式
+   ========================================================================== */
 #anime-detail-portal {
-    position: fixed; 
-    background-color: #d1433a;
-    padding: 25px; /* 增加內距 */
-    border-radius: 12px;
-    display: none; 
+    width: 90vw;
+    max-width: 550px;
+    padding: 25px;
     flex-direction: column;
-    z-index: 1010; /* 絕對高於遮罩 900 */
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-    width: 550px;  /* 加大寬度 */
-    top: 50%; 
-    left: 50%;
-    opacity: 0;
     align-items: center;
+    z-index: 1010;
 }
 
 .card-video {
@@ -160,40 +147,87 @@
     border-radius: 6px;
     overflow: hidden;
 }
-.card-video iframe { width: 100%; height: 100%; }
+
+.card-video iframe {
+    width: 100%;
+    height: 100%;
+}
 
 .watch-button {
-     font-family: 'Inter', sans-serif;
-border-style: solid;
-border-width: 5px;
+    font-family: 'Inter', sans-serif;
     width: 100%;
+    border: 5px solid #ffffff;
     color: #ffffff;
     text-align: center;
     padding: 15px 0;
     font-weight: 600;
-    font-size: 26px; /* 加大按鈕文字 */
+    font-size: 26px;
     text-decoration: none !important;
     border-radius: 4px;
     margin-bottom: 15px;
 }
-.watch-button:hover { background-color: #ffffff; }
+
+.watch-button:hover {
+    background-color: #ffffff;
+    color: #d1433a;
+}
 
 .video-info {
-     font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
-
     color: #fff;
-    font-size: 18px; /* 加大內容文字 */
+    font-size: 18px;
     text-align: center;
     line-height: 1.6;
 }
 
-/* 手機版適配 */
-@media (max-width: 767px){
-        .manga-detail-card, #anime-detail-portal {
-        position: fixed;
-        top: 50% !important;
-        left: 50% !important;
+/* ==========================================================================
+   6. 漫畫排間文字 (Manga Middle Text)
+   ========================================================================== */
+.manga-middle-text {
+    width: 100%;
+    pointer-events: none; 
+    margin: 10px 0;
+}
+
+.manga-middle-text h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    color: #d1433a;
+    text-align: center;
+}
+
+/* ==========================================================================
+   7. 響應式適配 (Responsive)
+   ========================================================================== */
+
+/* 電腦版 (寬度 768px 以上) */
+@media (min-width: 768px) {
+    .manga-detail-card {
+        flex-direction: row;
+        align-items: stretch;
+        max-width: 650px;
+        height: 450px;
+    }
+    .card-left {
+        width: 40%;
+        max-width: none;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+    .card-right {
+        width: 60%;
+    }
+}
+
+/* 手機版 (寬度 767px 以下) */
+@media (max-width: 767px) {
+    .manga-middle-text h3 {
+        font-size: 15px;
+    }
+    /* 確保卡片在小螢幕始終居中 */
+    .manga-detail-card, #anime-detail-portal {
         width: 95vw;
         max-width: 400px;
     }
