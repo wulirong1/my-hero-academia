@@ -1,4 +1,43 @@
 /*resource*/
+
+
+
+.anime-title {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 0%;
+    padding-bottom: 0%;
+}
+
+.anime-pic {
+    width: 90%;
+    margin: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+}
+
+
+
+.manga-title {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 0%;
+    padding-bottom: 0%;
+}
+
+.manga-pic {
+    width: 100%;
+    margin: 15px;
+    border-radius: 10px;
+    margin-bottom: 0%;
+        transition: all 0.3s ease-in-out;
+    transform: scale(1);
+}
+
+
 /* --- 全域遮罩層 --- */
 #manga-overlay {
     position: fixed;

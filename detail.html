@@ -8,17 +8,16 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body style="background-color: #F8D34D;">
+<body>
+    <div id="loading-screen">
+        <div class="loading-content">
+            <img src="img/all might.png" class="loading-img" alt="Loading">
 
-    <div id="header-placeholder"></div>
-    <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            });
-    </script>
-    <div class="line"></div>
+            <div class="spinner"></div>
+            <p class="loading-text">LOADING...</p>
+        </div>
+    </div>
+
     <div class="container mt-5">
         <div id="originalPostArea" class="p-4 mb-4"
             style="background-color: #EBC053; border: 3px solid #000; border-radius: 10px;">
@@ -36,10 +35,10 @@
                 </div>
                 <div class="mb-2">
                     您的留言：<input type="text" id="replyContent" class="form-control-sm w-75">
-                    <button id="submitReply" class="btn btn-dark btn-sm">送出</button>
+                    <button id="submitReply" class="comment-btn btn btn-outline-light btn-sm">送出</button>
                 </div>
             </div>
-            <button class="btn btn-outline-dark mt-3" onclick="history.back()">回上一頁</button>
+            <button class="back-btn btn btn-outline-dark mt-3" onclick="history.back()">回上一頁</button>
         </div>
     </div>
 
@@ -65,7 +64,7 @@
         </div>
     </footer>
 
-
+    <script type="module" src="js\loading.js"></script>
     <script type="module" src="js/detail.js"></script>
 </body>
 

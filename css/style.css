@@ -1,4 +1,3 @@
-
 .my-extrabold-text {
 
     font-family: 'Inter', sans-serif;
@@ -12,6 +11,7 @@ body {
 
 }
 
+
 .container {
     padding: 5%;
     padding-bottom: 15px;
@@ -20,134 +20,165 @@ body {
     margin-bottom: 0%;
 
 }
-
-
-
-/* ================================================= */
-/* 容器：設定相對定位、固定寬度與隱藏溢出 */
-/* 同時作用於 Anime 區塊的 .anime-item 和 Manga 區塊的 .manga-item-container */
-/* 因為您的 .col-x class 已經提供了寬度，這裡主要提供定位和溢出控制 */
-.anime-item,
-.manga-item-container {
-    position: relative; 
-    overflow: hidden; /* 確保滑出的標題塊在初始狀態被隱藏 */
-    transition: all 0.3s ease-in-out;
-}
-
-/* 圖片：設定過渡效果，並讓它們在懸停時放大 */
-.anime-pic,
-.manga-pic {
-    display: block;
-    width: 100%; 
-    height: auto;
-    transition: transform 0.3s ease-in-out; /* 平滑放大效果 */
-    transform: scale(1);
-}
-
-/* 標題浮現塊：設置透明度、初始位置和過渡 */
-.caption-overlay {
-    position: absolute;
+/*-------------------*/
+/* 全螢幕載入層 */
+#loading-screen {
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%; /* 寬度與圖片一致 */
-    
-    /* 標題塊的高度（請根據字體大小調整） */
-    height: 40px; 
-    
-    /* 初始位置：從底部往下推 40px，完全隱藏 */
-    bottom: -40px; 
-    
-    /* 顏色：純黑色(0,0,0) 搭配 70% 不透明度(0.7) */
-    background-color: rgba(0, 0, 0, 0.7); 
-    
-    color: white; 
-    text-align: center;
-    line-height: 40px; /* 垂直居中 */
-    font-size: 14px;
-    z-index: 2; /* 確保在圖片上方 */
-    border-radius: 10px 10px 0 0;
-    /* 針對 bottom 屬性設置過渡，實現平滑滑入 */
-    transition: bottom 0.3s ease-in-out;
-}
-
-/* ================================================= */
-/* 滑鼠懸停時的動態效果 */
-
-/* 1. 圖片放大效果 */
-.anime-item:hover .anime-pic,
-.manga-item-container:hover .manga-pic {
-    transform: scale(1.05); /* 放大 5% */
-}
-
-/* 2. 標題塊滑入效果 */
-.anime-item:hover .caption-overlay,
-.manga-item-container:hover .caption-overlay {
-    bottom: 0; /* 滑入後，底部與圖片底部完全切齊 */
-}
-
-
-.anime-title {
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    justify-content: center;
-    margin: 0%;
-    padding-bottom: 0%;
-}
-
-.anime-pic {
-    width: 90%;
-    margin: 10px;
-    border-radius: 10px;
-    transition: all 0.3s ease-in-out;
-    transform: scale(1);
-}
-
-div a:hover .anime-pic {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-
-.manga-title {
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    justify-content: center;
-    margin: 0%;
-    padding-bottom: 0%;
-}
-
-.manga-pic {
     width: 100%;
-    margin: 15px;
-    border-radius: 10px;
-    margin-bottom: 0%;
-        transition: all 0.3s ease-in-out;
-    transform: scale(1);
+    height: 100%;
+    background-color: #f0c040; /* 使用你網頁的黃色 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* 確保在最上層 */
+    transition: opacity 0.5s ease; /* 消失時的過場 */
 }
 
-div a:hover .manga-pic {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+.loading-content {
+    text-align: center;
+}
+
+/* 圖片呼吸動畫 */
+.loading-img {
+    width: 200px; /* 依需求調整大小 */
+    margin-bottom: 20px;
+    animation: breathing 2s ease-in-out infinite;
+}
+
+@keyframes breathing {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); } /* 放大到 1.1 倍 */
+}
+
+/* 旋轉圓圈動畫 */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #ffffff;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+/* =====================pla============================ */
+.newdis {
+    background-color: #EBC053;
+    border: 2px solid #333;
+    border-radius: 10px;
+    border-style: solid;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    border: 3px solid #333;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+/* Rules 與 News 容器樣式 */
+.rules-container, .news-container {
+    background-color: #D13F3F; 
+    border: 3px solid #333;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    padding: 15px;
+    text-align: center;
+    
+    /* 關鍵修改：將所有文字顏色改為白色 */
+    color: #ffffff; 
+}
+
+.rules-container h4, .news-container h4 {
+    font-weight: 900;
+    /* 標題底線顏色也改成白色，與文字統一 */
+    border-bottom: 2px solid #ffffff; 
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+.rules-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rules-container ul li {
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    /* 確保清單項目也是白色 */
+    color: #ffffff; 
+}
+
+/* News 的空白框內文字 */
+.news-box p {
+    color: #ffffff;
+}
+
+.input-btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    border-width: 3px;
+
+}
+
+.back-btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    border-width: 3px;
+
 }
 
 /* 讓所有討論內容與留言內容都支援換行 */
-#commentList p, 
-#originalPostArea p, 
+#commentList p,
+#originalPostArea p,
 #replyList p {
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
     white-space: pre-wrap;
     word-wrap: break-word;
-    line-height: 1.6; /* 稍微增加行高，閱讀起來更舒服 */
+    line-height: 1.6;
+    /* 稍微增加行高，閱讀起來更舒服 */
 }
 
-.comment-border{
+.comment-border {
     padding: 10px;
-    background-color: #EBC053; 
-    border: 3px solid #000; 
+    background-color: #EBC053;
+    border: 3px solid #000;
     border-radius: 10px;
 }
 
-.comment-words{
+.comment-words {
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #ffffff;
     border: 2px solid #000;
-     background-color: #f0f0f0;
+    background-color: #D13F3F;
+    border-radius: 10px;
+}
+
+.comment-btn {
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    border-width: 3px;
 }
 
 /*footer*/
@@ -236,13 +267,15 @@ footer {
 body {
     margin: 0;
     padding: 0;
-    background-color: #EBC045; /* 黃色背景 */
+    background-color: #EBC045;
+    /* 黃色背景 */
 }
 
 /* Header 導覽列主容器 */
 .custom-header {
     background-color: #EBC045;
-    border-bottom: 2px solid #000; /* 底部黑色分隔線 */
+    border-bottom: 2px solid #000;
+    /* 底部黑色分隔線 */
     width: 100%;
 }
 
@@ -258,21 +291,26 @@ body {
 
 .header-container {
     display: flex;
-    justify-content: space-between; /* 讓 Logo 在左，導覽在右 */
-    
+    justify-content: space-between;
+    /* 讓 Logo 在左，導覽在右 */
+
     /* 核心修改：從 center (置中) 改為 baseline (底邊對齊) */
-    align-items: baseline; 
-    
-    padding: 20px 50px; /* 根據您的需求調整間距 */
-    max-width: 100%;    
+    align-items: baseline;
+
+    padding: 20px 50px;
+    /* 根據您的需求調整間距 */
+    max-width: 100%;
 }
 
 /* Logo 大小調整 */
 .header-logo {
-    height: 120px;   /* 數字越大，Logo 越大 */
-    width: auto;     /* 確保寬度依比例縮放 */
+    height: 120px;
+    /* 數字越大，Logo 越大 */
+    width: auto;
+    /* 確保寬度依比例縮放 */
     display: block;
-    transition: transform 0.3s ease; /* 加入平滑過渡效果 */
+    transition: transform 0.3s ease;
+    /* 加入平滑過渡效果 */
 }
 
 /* 導覽連結排版 */
@@ -284,21 +322,24 @@ body {
 }
 
 /* 導覽連結基本樣式 */
- .nav-item-link {
+.nav-item-link {
     font-family: 'Koulen', cursive;
-    font-size: 40px; 
-    color: #000; 
+    font-size: 40px;
+    color: #000;
     text-decoration: none;
     padding: 5px 20px;
-    transition: all 0.3s ease; 
-     line-height: 1; /* 移除行高造成的下方間隙 */
-} 
+    transition: all 0.3s ease;
+    line-height: 1;
+    /* 移除行高造成的下方間隙 */
+}
 
 
 /* ✨ Hover 效果：底變紅、字變白 */
 .nav-item-link:hover {
-    background-color: #D64535; /* 紅色底 */
-    color: #FFFFFF;           /* 白色字 */
+    background-color: #D64535;
+    /* 紅色底 */
+    color: #FFFFFF;
+    /* 白色字 */
     border-radius: 5px;
 }
 
@@ -308,6 +349,7 @@ body {
     border-bottom: none !important;
     box-shadow: none !important;
 }
+
 .hero-image {
     padding-top: 0 !important;
     margin-top: 0 !important;
@@ -334,8 +376,10 @@ body {
 }
 
 .news-card {
-    background-color: #D64535; /* 紅色小卡背景 */
-    width: calc(50% - 10px); /* 一行顯示兩張卡片 */
+    background-color: #D64535;
+    /* 紅色小卡背景 */
+    width: calc(50% - 10px);
+    /* 一行顯示兩張卡片 */
     display: flex;
     padding: 15px;
     border-radius: 5px;
@@ -347,7 +391,8 @@ body {
 .news-img-placeholder {
     width: 100px;
     height: 100px;
-    background-color: #ccc; /* 圖片預留位 */
+    background-color: #ccc;
+    /* 圖片預留位 */
     margin-right: 15px;
     flex-shrink: 0;
 }
@@ -365,16 +410,18 @@ body {
 .news-card-link {
     text-decoration: none !important;
     display: block;
-    width: calc(50% - 20px); /* 寬度佔一半 */
+    width: calc(50% - 20px);
+    /* 寬度佔一半 */
     margin-bottom: 10px;
 }
 
 /* 2. 翻轉容器：不要在這裡設定背景色或 padding */
 .news-card {
-    width: 100%;             
-    height: 300px;           /* 【拉長高度】這裡數值越大，卡片越長 */
+    width: 100%;
+    height: 300px;
+    /* 【拉長高度】這裡數值越大，卡片越長 */
     perspective: 1000px;
-    background: transparent !important; 
+    background: transparent !important;
     border: none !important;
 }
 
@@ -382,7 +429,8 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); ;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    ;
     transform-style: preserve-3d;
 }
 
@@ -391,18 +439,20 @@ body {
 }
 
 /* 3. 正面與背面：這兩層才是真正放內容跟顏色的地方 */
-.news-card-front, .news-card-back {
+.news-card-front,
+.news-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    
+
     /* 【加圓角】這裡設定圓角大小，0px 為直角，15px-20px 會有明顯圓角 */
-    border-radius: 15px;      
-    
-    padding: 25px;           /* 增加內邊距讓內容不擁擠 */
-    display: flex;           
-    align-items: center;     
+    border-radius: 15px;
+
+    padding: 25px;
+    /* 增加內邊距讓內容不擁擠 */
+    display: flex;
+    align-items: center;
     border: none;
 }
 
@@ -410,7 +460,8 @@ body {
 .news-card-front {
     background-color: #D64535;
     color: white;
-    justify-content: flex-start; /* 內容從左開始排，解決縮成一線的問題 */
+    justify-content: flex-start;
+    /* 內容從左開始排，解決縮成一線的問題 */
 }
 
 /* 背面：深色背景 */
@@ -426,20 +477,26 @@ body {
 
 /* 4. 內層元素：給予固定大小，防止被擠壓 */
 .news-img-placeholder {
-    width: 170px;            /* 放大配圖 */
-    height: 220px;           /* 放大配圖 */
+    width: 170px;
+    /* 放大配圖 */
+    height: 220px;
+    /* 放大配圖 */
     background-color: #eee;
-    margin-right: 25px;      
-    flex-shrink: 0;          /* 【核心修正】防止圖片被擠壓變形 */
-    border-radius: 8px;      /* 圖片也可以加一點小圓角 */
+    margin-right: 25px;
+    flex-shrink: 0;
+    /* 【核心修正】防止圖片被擠壓變形 */
+    border-radius: 8px;
+    /* 圖片也可以加一點小圓角 */
 }
 
 .news-text {
-    flex: 1;                 /* 讓文字自動填滿剩下的長方形空間 */
+    flex: 1;
+    /* 讓文字自動填滿剩下的長方形空間 */
 }
 
 .news-text p {
-    font-size: 18px;         /* 放大文字 */
+    font-size: 18px;
+    /* 放大文字 */
     line-height: 1.6;
     margin: 0;
     text-align: left;
@@ -484,7 +541,7 @@ body {
     background-color: #000;
     width: calc(100% - 100px);
     /* 將原本的 30px 改小，例如改為 10px 或 5px */
-    margin: 10px auto 20px auto; 
+    margin: 10px auto 20px auto;
     opacity: 1;
 }
 
@@ -495,10 +552,13 @@ body {
 /* --- 全域遮罩層 --- */
 #manga-overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.75);
-    z-index: 900; /* 遮罩基準層級 */
+    z-index: 900;
+    /* 遮罩基準層級 */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -511,32 +571,52 @@ body {
     z-index: 1;
     cursor: pointer;
 }
+
 .manga-pic {
     width: 100%;
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
-.manga-item:hover .manga-pic { transform: scale(1.05); }
+
+.manga-item:hover .manga-pic {
+    transform: scale(1.05);
+}
 
 .manga-detail-card {
     position: absolute;
     background-color: #d1433a;
     padding: 20px;
     border-radius: 12px;
-    display: none; 
+    display: none;
     flex-direction: row;
     z-index: 1000;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     width: 420px;
     min-height: 280px;
     top: 50%;
     opacity: 0;
 }
-.card-left { flex: 1; margin-right: 15px; display: flex; align-items: center; }
-.card-left img { width: 100%; border-radius: 6px; }
-.card-right { flex: 1.2; display: flex; flex-direction: column; }
+
+.card-left {
+    flex: 1;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.card-left img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.card-right {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+}
+
 .info-box {
- font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 800;
 
     padding: 5px;
@@ -548,6 +628,7 @@ body {
     border-radius: 4px;
     line-height: 1.6;
 }
+
 .buy-button {
     display: block;
     border-style: solid;
@@ -566,25 +647,32 @@ body {
     z-index: 1;
     cursor: pointer;
 }
+
 .anime-pic {
     width: 100%;
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
-.anime-item:hover .anime-pic { transform: scale(1.05); }
+
+.anime-item:hover .anime-pic {
+    transform: scale(1.05);
+}
 
 /* 加大版的 Anime Portal 卡片 */
 #anime-detail-portal {
-    position: fixed; 
+    position: fixed;
     background-color: #d1433a;
-    padding: 25px; /* 增加內距 */
+    padding: 25px;
+    /* 增加內距 */
     border-radius: 12px;
-    display: none; 
+    display: none;
     flex-direction: column;
-    z-index: 1010; /* 絕對高於遮罩 900 */
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-    width: 550px;  /* 加大寬度 */
-    top: 50%; 
+    z-index: 1010;
+    /* 絕對高於遮罩 900 */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    width: 550px;
+    /* 加大寬度 */
+    top: 50%;
     left: 50%;
     opacity: 0;
     align-items: center;
@@ -598,37 +686,48 @@ body {
     border-radius: 6px;
     overflow: hidden;
 }
-.card-video iframe { width: 100%; height: 100%; }
+
+.card-video iframe {
+    width: 100%;
+    height: 100%;
+}
 
 .watch-button {
-     font-family: 'Inter', sans-serif;
-border-style: solid;
-border-width: 5px;
+    font-family: 'Inter', sans-serif;
+    border-style: solid;
+    border-width: 5px;
     width: 100%;
     color: #ffffff;
     text-align: center;
     padding: 15px 0;
     font-weight: 600;
-    font-size: 26px; /* 加大按鈕文字 */
+    font-size: 26px;
+    /* 加大按鈕文字 */
     text-decoration: none !important;
     border-radius: 4px;
     margin-bottom: 15px;
 }
-.watch-button:hover { background-color: #ffffff; }
+
+.watch-button:hover {
+    background-color: #ffffff;
+}
 
 .video-info {
-     font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
 
     color: #fff;
-    font-size: 18px; /* 加大內容文字 */
+    font-size: 18px;
+    /* 加大內容文字 */
     text-align: center;
     line-height: 1.6;
 }
 
 /* 手機版適配 */
-@media (max-width: 767px){
-        .manga-detail-card, #anime-detail-portal {
+@media (max-width: 767px) {
+
+    .manga-detail-card,
+    #anime-detail-portal {
         position: fixed;
         top: 50% !important;
         left: 50% !important;
