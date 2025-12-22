@@ -36,48 +36,48 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.to(overlay, { autoAlpha: 0, pointerEvents: "none", duration: 0.2, overwrite: true });
     }
 
-    function openAnimeCard(item) {
-        if (window.closeAllManga) window.closeAllManga();
+function openAnimeCard(item) {
+    if (window.closeAllManga) window.closeAllManga();
 
-        const videoBase = item.getAttribute('data-video');
-        // 自動播放 + 靜音（確保瀏覽器允許播放）
-        portal.querySelector('iframe').src = `${videoBase}?autoplay=1&mute=1&rel=0`;
-        
-        portal.querySelector('.watch-button').href = item.getAttribute('data-link');
-        portal.querySelector('.video-info').innerText = item.getAttribute('data-desc');
+    const videoBase = item.getAttribute('data-video');
+    
+    // --- 修改重點：移除 mute=1，並確保 autoplay=1 ---
+    // rel=0 表示影片結束後只顯示同頻道的相關影片
+    portal.querySelector('iframe').src = `${videoBase}?autoplay=1&mute=0&rel=0`;
+    
+    portal.querySelector('.watch-button').href = item.getAttribute('data-link');
+    portal.querySelector('.video-info').innerText = item.getAttribute('data-desc');
 
-        item.classList.add('active');
-        gsap.to(overlay, { autoAlpha: 1, pointerEvents: "auto", duration: 0.3, overwrite: true });
-        gsap.set(portal, { display: 'flex' });
+    item.classList.add('active');
+    gsap.to(overlay, { autoAlpha: 1, pointerEvents: "auto", duration: 0.3, overwrite: true });
+    gsap.set(portal, { display: 'flex' });
 
-        // 計算點擊位置
-        const rect = item.getBoundingClientRect();
-        const windowWidth = window.innerWidth;
-        const isOnLeftHalf = (rect.left + rect.width / 2) < windowWidth / 2;
+    // ... 後續動畫邏輯保持不變 ...
+    const rect = item.getBoundingClientRect();
+    const windowWidth = window.innerWidth;
+    const isOnLeftHalf = (rect.left + rect.width / 2) < windowWidth / 2;
+    const startX = isOnLeftHalf ? -150 : 150;
 
-        // 動畫邏輯：統一在螢幕中央 (50%, 50%)，但初始 X 位移方向不同
-        const startX = isOnLeftHalf ? -150 : 150; // 左邊卡片從左邊滑入(-150)，右邊從右邊滑入(150)
-
-        gsap.fromTo(portal, 
-            { 
-                opacity: 0, 
-                scale: 0.5, 
-                left: "50%", 
-                top: "50%", 
-                xPercent: -50, 
-                yPercent: -50, 
-                x: startX // 從側邊出發
-            },
-            { 
-                opacity: 1, 
-                scale: 1, 
-                x: 0, // 回歸到正中央
-                duration: 0.5, 
-                ease: "power3.out", 
-                overwrite: true 
-            }
-        );
-    }
+    gsap.fromTo(portal, 
+        { 
+            opacity: 0, 
+            scale: 0.5, 
+            left: "50%", 
+            top: "50%", 
+            xPercent: -50, 
+            yPercent: -50, 
+            x: startX 
+        },
+        { 
+            opacity: 1, 
+            scale: 1, 
+            x: 0, 
+            duration: 0.5, 
+            ease: "power3.out", 
+            overwrite: true 
+        }
+    );
+}
 
     container.addEventListener('click', (e) => {
         const item = e.target.closest('.anime-item');
