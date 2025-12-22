@@ -76,6 +76,7 @@ body {
 }
 /* =====================pla============================ */
 .newdis {
+    
     background-color: #EBC053;
     border: 2px solid #333;
     border-radius: 10px;
@@ -86,6 +87,8 @@ body {
     margin-bottom: 15px;
     padding-bottom: 15px;
 }
+
+
 
 /* Rules 與 News 容器樣式 */
 .rules-container, .news-container {
@@ -131,7 +134,7 @@ body {
 .input-btn {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    color: #FFFFFF;
+    color: #333333;
     border-width: 3px;
 
 }
@@ -142,6 +145,8 @@ body {
     border-width: 3px;
 
 }
+
+
 
 /* 讓所有討論內容與留言內容都支援換行 */
 #commentList p,
@@ -156,6 +161,50 @@ body {
     /* 稍微增加行高，閱讀起來更舒服 */
 }
 
+/* 討論區卡片懸停效果 */
+.discussion-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 讓變化平滑 */
+}
+
+.discussion-box:hover {
+    transform: scale(1.02); /* 微微放大 1.02 倍 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 增加陰影讓它看起來「浮」起來 */
+    z-index: 5; /* 確保放大時不會被隔壁擋住 */
+}
+
+/* 如果你希望左側的熱門排行側邊欄也有同樣效果 */
+.trending-item {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.trending-item:hover {
+    transform: scale(1.05);
+}
+
+/* 視覺提示：查看更多 */
+.view-more-hint {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 800;
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+.comment-preview-fix {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-top: 10px;
+    color: #000;
+    /* 保留換行空間，但不使用 webkit-box */
+    display: block;
+    max-height: 4.8em; /* 1.6 行高 * 3 行 = 4.8em，確保高度固定 */
+    overflow: hidden;
+    word-break: break-all;
+}
+
+
 .comment-border {
     padding: 10px;
     background-color: #EBC053;
@@ -167,9 +216,9 @@ body {
 
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    color: #ffffff;
+    color: #333;
     border: 2px solid #000;
-    background-color: #D13F3F;
+    background-color: #EBC053;
     border-radius: 10px;
 }
 
@@ -177,9 +226,12 @@ body {
 
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    color: #ffffff;
+    color: #333;
     border-width: 3px;
+    border-radius: 10px;
 }
+
+
 
 /*footer*/
 footer {

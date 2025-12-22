@@ -33,26 +33,43 @@ submitBtn.addEventListener('click', async () => {
 });
 
 // 監聽並渲染討論列表
+// 監聽並渲染討論列表 (修改後的片段)
 onSnapshot(query(colRef, orderBy("createdAt", "desc")), (snapshot) => {
     commentList.innerHTML = ""; 
     snapshot.forEach((doc) => {
         const data = doc.data();
         const dateStr = data.createdAt ? data.createdAt.toDate().toLocaleDateString() : "處理中...";
         
-        // 建立討論框 HTML，加入點擊跳轉事件
+        // --- 處理預覽文字邏輯 ---
+        // 1. 將內容按換行符號拆成陣列
+        const lines = data.content.split('\n');
+        let previewHTML = "";
+
+        if (lines.length > 3) {
+            // 如果超過三行，只取前三行並加上省略號
+            previewHTML = lines.slice(0, 3).join('<br>') + '...';
+        } else {
+            // 如果沒超過三行，保留原始換行顯示
+            previewHTML = data.content.replace(/\n/g, '<br>');
+        }
+        // -----------------------
+
         const card = document.createElement('div');
-        card.className = "p-3 mb-3 discussion-box";
+        card.className = "p-3 mb-3 discussion-box fade-in-bottom"; 
         card.style = "background-color: #EBC053; border: 3px solid #000; border-radius: 8px; cursor: pointer;";
+        
         card.innerHTML = `
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="mb-0"><strong>${data.name}</strong></h5>
                 <small>${dateStr}</small>
             </div>
-            <hr style="border: 1px solid #000;">
-            <p class="mb-0">${data.content}</p>
+            <hr style="border: 1px solid #000; opacity: 1; margin: 10px 0;">
+            
+            <p class="comment-preview-fix">${previewHTML}</p>
+            
+            <div class="view-more-hint">......查看更多</div>
         `;
 
-        // 核心跳轉邏輯
         card.addEventListener('click', () => {
             window.location.href = `detail.html?id=${doc.id}`;
         });

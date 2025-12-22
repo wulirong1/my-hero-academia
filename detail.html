@@ -19,27 +19,54 @@
     </div>
 
     <div class="container mt-5">
-        <div id="originalPostArea" class="p-4 mb-4"
-            style="background-color: #EBC053; border: 3px solid #000; border-radius: 10px;">
-            載入中...
-        </div>
-        <div class="line"></div>
-        <div class="p-4 comment-border">
-            <h4>全部留言</h4>
-            <hr style="border: 1px solid #000;">
-            <div id="replyList" class="mb-4"></div>
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-9">
 
-            <div class="p-3 comment-words">
-                <div class="mb-2">
-                    輸入匿名：<input type="text" id="replyName" class="form-control-sm">
+                <div id="originalPostArea" class="p-4 mb-4"
+                    style="background-color: #EBC053; border: 3px solid #000; border-radius: 10px;">
+                    載入中...
                 </div>
-                <div class="mb-2">
-                    您的留言：<input type="text" id="replyContent" class="form-control-sm w-75">
-                    <button id="submitReply" class="comment-btn btn btn-outline-light btn-sm">送出</button>
+               
+                <div class="p-4 comment-border">
+                    <h4>全部留言</h4>
+                    <hr style="border: 1px solid #000;">
+                    <div id="replyList" class="mb-4"></div>
+
+                    <div class="p-3 comment-words">
+                        <div class="mb-2">
+                            輸入匿名：<input type="text" id="replyName" class="form-control-sm">
+                        </div>
+                        <div class="mb-2">
+                            您的留言：<input type="text" id="replyContent" class="form-control-sm w-75">
+                            <button id="submitReply" class="comment-btn btn btn-outline-dark btn-sm">送出</button>
+                        </div>
+                    </div>
+                    <button class="back-btn btn btn-outline-dark mt-3" onclick="history.back()">回上一頁</button>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-lg-3 d-none d-md-block">
+                <div class="rules-container p-3">
+                    <h4>RULES</h4>
+                    <ul class="list-unstyled">
+                        <li>有關個資隱私權</li>
+                        <li>爭議性</li>
+                        <li>政治性</li>
+                        <li>針對性</li>
+                        <li>洗版騷擾</li>
+                        <li>公審或無從查證的貼文，不代表本網站立場</li>
+                        <li>本網站不負法律責任</li>
+                    </ul>
+                </div>
+
+                <div class="news-container p-3 mt-4">
+                    <h4>NEWS</h4>
+                    <div class="news-box">
+                    </div>
                 </div>
             </div>
-            <button class="back-btn btn btn-outline-dark mt-3" onclick="history.back()">回上一頁</button>
         </div>
+
     </div>
 
     <footer class="container footer">
