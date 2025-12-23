@@ -78,3 +78,8 @@ onSnapshot(query(colRef, orderBy("createdAt", "desc")), (snapshot) => {
     });
 });
 
+// main.js 中的片段
+const card = document.createElement('div');
+// 確保這裡有 discussion-box 這個 class
+card.className = "p-3 mb-3 discussion-box fade-in-bottom"; 
+card.style = "background-color: #EBC053; border: 3px solid #000; border-radius: 8px; cursor: pointer;";

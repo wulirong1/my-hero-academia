@@ -1,16 +1,12 @@
 .my-extrabold-text {
-
     font-family: 'Inter', sans-serif;
     font-weight: 600;
 }
 
 body {
-
+    font-family: 'Inter', sans-serif;
     background-color: #f0c040;
-
-
 }
-
 
 .container {
     padding: 5%;
@@ -20,8 +16,90 @@ body {
     margin-bottom: 0%;
 
 }
-/*-------------------*/
-/* 全螢幕載入層 */
+
+/************************ 回到頂部按鈕樣式 *******************************/
+/* 回到頂部按鈕樣式 */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2000; /* 確保高於卡片和遮罩 */
+    background-color: #d1433a; /* 使用你的主題紅 */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px; /* 增加按鈕寬度以容納圖片和文字 */
+    height: 60px; /* 增加按鈕高度以容納圖片和文字 */
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* 圖片和文字垂直排列 */
+    align-items: center;
+    justify-content: center;
+    font-size: 14px; /* 調整 TOP 文字大小 */
+    
+    /* 動畫過渡 */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    padding: 5px; /* 增加一些內距，防止內容頂到邊緣 */
+    overflow: hidden; /* 確保內容不會超出圓形邊框 */
+}
+
+#back-to-top:hover {
+    background-color: #ffffff;
+    color: #d1433a;
+    transform: translateY(-5px); /* 懸停時往上彈 */
+}
+
+/* 按鈕內的圖片樣式 */
+#back-to-top img {
+    width: 90%; /* 圖片寬度佔按鈕的比例 */
+    height: auto;
+    max-height: 80%; /* 限制圖片高度，防止過高 */
+    display: block; /* 確保圖片能獨立排版 */
+    margin-bottom: 2px; /* 圖片與下方文字的間距 */
+    object-fit: contain; /* 確保圖片完整顯示，不被裁切 */
+    pointer-events: none; /* 防止點擊圖片時，按鈕的點擊事件失效 */
+}
+
+/* 按鈕內的文字樣式 */
+#back-to-top span {
+    font-size: 12px; /* 調整 TOP 文字大小 */
+    font-weight: 900;
+    line-height: 1.2; /* 縮小行高，防止文字佔用過多空間 */
+    pointer-events: none; /* 防止點擊文字時，按鈕的點擊事件失效 */
+}
+
+/* 顯示狀態 */
+#back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 手機版適配 */
+@media (max-width: 767px) {
+    #back-to-top {
+        width: 70px; /* 手機版按鈕略小 */
+        height: 70px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 12px;
+    }
+    #back-to-top img {
+        width: 70%;
+        max-height: 70%;
+    }
+    #back-to-top span {
+        font-size: 12px;
+    }
+}
+/************************ 回到頂部按鈕樣式結束 *******************************/
+
+
+/*-------------------- 全螢幕載入層------------------------- */
 #loading-screen {
     position: fixed;
     top: 0;
@@ -74,7 +152,26 @@ body {
     font-weight: 800;
     letter-spacing: 2px;
 }
+/*-------------------- 全螢幕載入層------------------------- */
+
+
 /* =====================pla============================ */
+
+/* 討論區卡片懸停效果 */
+.discussion-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 讓變化平滑 */
+}
+
+.discussion-box:hover {
+    transform: scale(1.02); /* 微微放大 1.02 倍 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 增加陰影讓它看起來「浮」起來 */
+    z-index: 5; /* 確保放大時不會被隔壁擋住 */
+}
+
+
+.trending-item:hover {
+    transform: scale(1.05);
+}
 .newdis {
     
     background-color: #EBC053;
@@ -211,9 +308,9 @@ body {
     border-radius: 10px;
 }
 
+/* =====================pla============================ */
+/* =====================footer============================ */
 
-
-/*footer*/
 footer {
     margin-top: 0%;
     padding-top: 0%;
@@ -292,6 +389,7 @@ footer {
         flex-wrap: wrap;
     }
 }
+/* =====================footer============================ */
 
 
 /*------------------- L 尺寸 header--------------------*/
@@ -633,41 +731,6 @@ body {
     opacity: 1;
 }
 
-/************************ 回到頂部按鈕樣式 *******************************/
-#back-to-top {
-    position: fixed !important;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background-color: #D64535;
-    border:none;
-    border-radius: 50%;
-    z-index: 9999; /* 絕對最高層級 */
-    cursor: pointer;
-    display: flex; /* 這裡必須是 flex 才能顯示內容 */
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-    /* 初始狀態由 JS 控制 */
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.arrow-up {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    width: 0; 
-    height: 0; 
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 20px solid white;
-}
-
-/************************ 回到頂部按鈕樣式結束 *******************************/
 
 
 

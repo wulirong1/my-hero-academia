@@ -97,7 +97,7 @@
 .info-box {
     font-family: 'Inter', sans-serif;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 22px;
     padding: 10px;
     color: #ffffff;
     line-height: 1.6;
@@ -224,11 +224,14 @@
 /* 手機版 (寬度 767px 以下) */
 @media (max-width: 767px) {
     .manga-middle-text h3 {
-        font-size: 15px;
+        font-size: 20px;
     }
     /* 確保卡片在小螢幕始終居中 */
     .manga-detail-card, #anime-detail-portal {
         width: 95vw;
         max-width: 400px;
+    }
+    .info-box{
+        font-size: 18px;
     }
 }
