@@ -67,19 +67,21 @@ document.addEventListener('DOMContentLoaded', () => {
         mangaData.forEach((manga, index) => {
             // 原本的漫畫 HTML
             htmlContent += `
-            <div class="col-6 col-md-3 col-lg-2 manga-item">
-                <div class="manga-card-wrapper">
-                    <img class="manga-pic" src="${manga.img}" alt="Vol.${manga.id}">
-                    <div class="manga-detail-card">
-                        <div class="card-left"><img src="${manga.img}"></div>
-                        <div class="card-right">
-                            <div class="info-box">${manga.desc}</div>
-                            <a href="${manga.link}" target="_blank" class="buy-button">點擊購買</a>
-                        </div>
-                    </div>
+       <div class="col-6 col-md-3 col-lg-2 manga-item">
+        <div class="manga-card-wrapper">
+            <img class="manga-pic" src="${manga.img}" alt="Vol.${manga.id}">
+            
+            <div class="manga-vol-label">── 第 ${manga.id} 集 ──</div>
+
+            <div class="manga-detail-card">
+                <div class="card-left"><img src="${manga.img}"></div>
+                <div class="card-right">
+                    <div class="info-box">${manga.desc}</div>
+                    <a href="${manga.link}" target="_blank" class="buy-button">點擊購買</a>
                 </div>
             </div>
-        `;
+        </div>
+    </div>`;
 
             // 核心邏輯：在第 24 本 (第四排結束) 之後插入文字
             // 電腦版一排 6 本，4 排 = 24 本；手機版一排 2 本，12 排 = 24 本

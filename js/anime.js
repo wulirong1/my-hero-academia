@@ -13,14 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'S7', video: 'https://www.youtube.com/embed/62jNKrHtzYA', link: 'https://ani.gamer.com.tw/animeRef.php?sn=113528', desc: '【第七季】「架空（夢想）」成為了「現實」！英雄們對死柄木等一夥敵人發起掃蕩作戰，戰鬥之激烈，可謂是「全面戰爭」。這場雙方都付出極大代價的全面戰爭看似告一段落，但社會對於英雄的信賴卻產生動搖。身為ALL FOR ONE目標的ONE FOR ALL繼承者的使命感，以及那不想讓周遭人士置於險境之中的想法，笨久決定離開雄英獨自戰鬥。' },
         { id: 'S8', video: 'https://www.youtube.com/embed/wQgQij8Ry4g', link: 'https://ani.gamer.com.tw/animeRef.php?sn=113886', desc: '【最終季】出久與其他英雄們，終於與由死柄木弔與ALL FOR ONE所率領的敵人展開最終決戰，日本各地都爆發了激烈戰鬥。轟焦凍、奮進人以及荼毘之間的轟家宿命對決；而終於將ONE FOR ALL完全解放的出久，對上了本應被奪取身體、如今卻反被吸收意識而徹底覺醒的死柄木。同時，透過年齡逆轉奪回全盛之力的ALL FOR ONE本體，與雖是「無個性」卻身披強化裝甲的「裝甲歐爾麥特」，也迎來了最終對決。' }
     ];
-
- if (container) {
-        container.innerHTML = animeData.map(item => `
-            <div class="col anime-item" data-video="${item.video}" data-link="${item.link}" data-desc="${item.desc}">
+// 尋找 anime.js 中的這段並替換
+// 找到 anime.js 中渲染 HTML 的部分，修改為以下：
+if (container) {
+    container.innerHTML = animeData.map(item => `
+        <div class="col anime-item" data-video="${item.video}" data-link="${item.link}" data-desc="${item.desc}">
+            <div class="anime-card-wrapper">
                 <img class="anime-pic" src="img/seasons/${item.id}.png" alt="${item.id}">
+                <div class="anime-vol-label">── SEASON ${item.id.replace('S', '')} ──</div>
             </div>
-        `).join('');
-    }
+        </div>
+    `).join('');
+}
 
     function closeAllAnime() {
         const iframe = portal.querySelector('iframe');

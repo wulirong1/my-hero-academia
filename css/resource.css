@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. 基礎佈局與標題
-   ========================================================================== */
 .anime-title, .manga-title {
     font-size: 42px;
     font-family: 'Inter', sans-serif;
@@ -20,9 +17,7 @@
     transform: scale(1.05);
 }
 
-/* ==========================================================================
-   2. 全域遮罩層
-   ========================================================================== */
+/* ======================= 全域遮罩層 =================================== */
 #manga-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -34,9 +29,7 @@
     pointer-events: none;
 }
 
-/* ==========================================================================
-   3. 共用卡片基礎 (Manga & Anime)
-   ========================================================================== */
+/* ===================== Manga & Anime ================================= */
 .manga-detail-card, #anime-detail-portal {
     position: fixed;
     top: 50%;
@@ -51,12 +44,11 @@
     /* 移除 CSS transform，由 JS 控制位移以支援動畫 */
 }
 
-/* ==========================================================================
-   4. Manga 區塊樣式
-   ========================================================================== */
+/* ======================= Manga =============================== */
 .manga-item {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     z-index: 1;
     cursor: pointer;
 }
@@ -65,7 +57,7 @@
     width: 90vw;
     max-width: 450px;
     padding: 25px;
-    flex-direction: column; /* 手機版預設垂直 */
+    flex-direction: column; 
     align-items: center;
     max-height: 85vh;
     overflow: hidden;
@@ -101,7 +93,7 @@
     padding: 10px;
     color: #ffffff;
     line-height: 1.6;
-    flex-grow: 1; /* 推動按鈕置底 */
+    flex-grow: 1; 
     overflow-y: auto;
     margin-bottom: 15px;
     text-align: left;
@@ -127,9 +119,40 @@
     color: #d1433a;
 }
 
-/* ==========================================================================
-   5. Anime 區塊樣式
-   ========================================================================== */
+
+.manga-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+
+.manga-vol-label {
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;      
+    font-weight: 800;     
+    color: #333;           
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+
+.manga-item:hover .manga-vol-label {
+    color: #d1433a;
+}
+
+
+.manga-pic {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+
+/* ======================== Anime 區塊樣式 ============================ */
 #anime-detail-portal {
     width: 90vw;
     max-width: 550px;
@@ -181,9 +204,35 @@
     line-height: 1.6;
 }
 
-/* ==========================================================================
-   6. 漫畫排間文字 (Manga Middle Text)
-   ========================================================================== */
+.anime-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.anime-vol-label {
+    margin-top: 10px;      
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;       
+    font-weight: 800;      
+    color: #333;           
+    text-align: center;
+    transition: color 0.3s ease; 
+}
+
+
+.anime-item:hover .anime-vol-label {
+    color: #d1433a;
+}
+
+
+.anime-item:hover .anime-pic {
+    transform: scale(1.05);
+}
+
+/* ======================= 漫畫中間字 ================================ */
 .manga-middle-text {
     width: 100%;
     pointer-events: none; 
@@ -198,9 +247,7 @@
     text-align: center;
 }
 
-/* ==========================================================================
-   7. 響應式適配 (Responsive)
-   ========================================================================== */
+/* ================= rwd ======================== */
 
 /* 電腦版 (寬度 768px 以上) */
 @media (min-width: 768px) {
@@ -235,3 +282,5 @@
         font-size: 18px;
     }
 }
+
+
