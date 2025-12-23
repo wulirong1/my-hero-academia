@@ -1,26 +1,22 @@
-
-
 /*footer*/
 footer {
- font-family: 'Inter', sans-serif;
-
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
-    margin: 20px;
-    padding: 20px;
+    max-width: 1400px;
+    margin: 10px;
 }
 
 .footer-content {
-    margin-top: 10px;
-    max-width: 1400px;
+    margin: 50px;
 }
 
 .footer-info {
-    
+    margin: 10px;
 }
 
 .footer-p {
-    margin: 5px;
-   
+    margin: 10px;
+
 }
 
 .footer-icons img {
