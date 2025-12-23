@@ -1,55 +1,103 @@
-
+/* --- 全域背景修復 --- */
 * {
     box-sizing: border-box;
 }
 
-/* 修改 Header 容器，減少垂直高度 */
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #EBC045 !important;
+    min-height: 100vh;
+}
+
+/* --- Header 導覽列 --- */
+.custom-header {
+    background-color: #EBC045;
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+    /* 移除之前的 border-bottom，改用下方的 .line 控制 */
+    border-bottom: none !important; 
+}
+
 .header-container {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* 改回 center 會比 baseline 穩定 */
-    padding: 10px 5% ;  /* 使用百分比邊距，增加相容性 */
-    max-width: 1200px;  /* 限制最大寬度，避免在大螢幕拉得太開 */
-    margin: 0 auto;     /* 居中容器 */
+    align-items: center; 
+    padding: 15px 5%;   
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* 縮小 Logo 高度，這是寬度的主要來源 */
 .header-logo {
-    height: 60px;       /* 從 120px 縮小到 60px */
+    height: 90px; /* 依照你的需求放大 */
     width: auto;
     display: block;
+    transition: transform 0.3s ease;
 }
 
-/* 縮小導覽字體與間距 */
 .nav-links {
     display: flex;
-    gap: 5px;           /* 縮小連結間的間隙 */
+    gap: 15px;
+    transform: translateY(10px);
 }
 
 .nav-item-link {
     font-family: 'Koulen', cursive;
-    font-size: 35px;    /* 從 40px 縮小到 20px */
+    font-size: 32px;
     color: #000;
     text-decoration: none;
-    padding: 8px 15px;  /* 適度的點擊範圍 */
-    line-height: 1.2;
+    padding: 8px 18px;
+    line-height: 1;
+    transition: all 0.3s ease;
+    border-radius: 8px;
 }
 
-/* 黑線改進：避免在不同頁面推擠排版 */
+/* ✨ Hover 效果：底變紅、字變白 */
+.nav-item-link:hover {
+    background-color: #D64535 !important; 
+    color: #FFFFFF !important;
+}
+
 .line {
-    height: 4px;
-    background-color: #000;
+    height: 7px !important;      /* 強制高度 */
+    background-color: #000 !important;
+    width: 90%;                  /* 寬度置中 */
+    max-width: 1300px;
+    margin: 0 auto !important;
+    display: block;
+    border: none !important;     /* 關鍵：移除可能存在的預設邊框 */
+    padding: 0 !important;       /* 關鍵：移除內邊距，防止撐開 */
+    box-sizing: content-box;    /* 確保高度只計算內容本身 */
+}
+
+/* --- 新聞與其他組件修復 --- */
+.news-img-placeholder {
+    width: 170px;
+    height: 220px;
+    background-color: #eee;
+    margin-right: 25px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.news-thumbnail {
     width: 100%;
-    margin-top: 0;      /* 確保緊貼 header */
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    backface-visibility: hidden;
 }
 
-/* 加入這段可以防止 padding 撐開寬度導致的排版崩壞 */
-*, *::before, *::after {
-    box-sizing: border-box;
+.news-card-inner {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
 }
 
-/* 確保圖片不會超出容器 */
-img {
-    max-width: 100%;
-    height: auto;
+.news-card-link:hover .news-card-inner {
+    transform: rotateX(180deg);
 }

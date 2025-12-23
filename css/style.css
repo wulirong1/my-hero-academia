@@ -295,256 +295,12 @@ footer {
 
 
 
-/*------------------- L 尺寸 home--------------------*/
-.container, .container-fluid {
-    background-color: transparent !important;
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #EBC045 !important; /* 使用 !important 確保不被覆蓋 */
-    min-height: 100vh;
-}
-.custom-header {
-    border-bottom: none !important;
-    box-shadow: none !important;
-}
-
-.hero-image {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-}
-
-/* 3. 確保 main-content 不要推擠頂部 */
-.main-content {
-    padding-top: 0 !important;
-}
-
-/* NEWS 區域佈局 */
-
-.section-title {
-    text-align: center;
-    font-weight: bold;
-    margin: 30px 0;
-}
-
-.news-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.news-card {
-    background-color: #D64535;
-    /* 紅色小卡背景 */
-    width: calc(50% - 10px);
-    /* 一行顯示兩張卡片 */
-    display: flex;
-    padding: 15px;
-    border-radius: 5px;
-    color: white;
-}
 
 
 
-/* 確保圖片容器溢出隱藏 */
-.news-img-placeholder {
-    width: 170px;
-    height: 220px;
-    background-color: #eee;
-    margin-right: 25px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    
-    /* 新增這行：防止子元素圖片超出容器邊界 */
-    overflow: hidden; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 關鍵：控制圖片本身的顯示方式 */
-.news-thumbnail {
-    width: 100%;      /* 寬度填滿父容器 */
-    height: 100%;     /* 高度填滿父容器 */
-    
-    /* 核心屬性：這會像背景圖片一樣裁切圖片，保持比例不變形 */
-    object-fit: cover; 
-    
-    /* 確保圖片對齊中心 */
-    object-position: center; 
-    
-    display: block;
-}
-
-.news-text p {
-    font-size: 13px;
-    margin: 0;
-    line-height: 1.4;
-}
-
-/*小卡*/
 
 
-/* 1. 確保外層連結撐開空間 */
-.news-card-link {
-    text-decoration: none !important;
-    display: block;
-    width: calc(50% - 20px);
-    /* 寬度佔一半 */
-    margin-bottom: 10px;
-}
 
-/* 2. 翻轉容器：不要在這裡設定背景色或 padding */
-.news-card {
-    width: 100%;
-    height: 300px;
-    /* 【拉長高度】這裡數值越大，卡片越長 */
-    perspective: 1000px;
-    background: transparent !important;
-    border: none !important;
-}
-
-.news-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    ;
-    transform-style: preserve-3d;
-}
-
-.news-card-link:hover .news-card-inner {
-    transform: rotateX(180deg);
-}
-
-/* 3. 正面與背面：這兩層才是真正放內容跟顏色的地方 */
-.news-card-front,
-.news-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-
-    /* 【加圓角】這裡設定圓角大小，0px 為直角，15px-20px 會有明顯圓角 */
-    border-radius: 15px;
-
-    padding: 25px;
-    /* 增加內邊距讓內容不擁擠 */
-    display: flex;
-    align-items: center;
-    border: none;
-}
-
-/* 正面：紅色背景 */
-.news-card-front {
-    background-color: #D64535;
-    color: white;
-    justify-content: flex-start;
-    /* 內容從左開始排，解決縮成一線的問題 */
-}
-
-/* 背面：深色背景 */
-.news-card-back {
-    background-color: #333;
-    color: white;
-    transform: rotateX(180deg);
-    justify-content: center;
-    font-family: "Microsoft JhengHei", sans-serif;
-    font-weight: bold;
-    font-size: 32px;
-}
-
-/* 4. 內層元素：給予固定大小，防止被擠壓 */
-.news-img-placeholder {
-    width: 170px;
-    /* 放大配圖 */
-    height: 220px;
-    /* 放大配圖 */
-    background-color: #eee;
-    margin-right: 25px;
-    flex-shrink: 0;
-    /* 【核心修正】防止圖片被擠壓變形 */
-    border-radius: 8px;
-    /* 圖片也可以加一點小圓角 */
-}
-
-.news-text {
-    flex: 1;
-    /* 讓文字自動填滿剩下的長方形空間 */
-}
-
-.news-text p {
-    font-size: 18px;
-    /* 放大文字 */
-    line-height: 1.6;
-    margin: 0;
-    text-align: left;
-}
-
-/*------------ 影片區域------------------ */
-
-.video-section {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-    width: 100%;
-    margin: 40px 0;
-}
-.video-responsive {
-    width: 100%;            /* 寬度填滿父容器 */
-    max-width: 800px;       /* 限制最大寬度 */
-    margin: 0 auto;         /* 置中 */
-    aspect-ratio: 16 / 9;   /* 維持 16:9 比例 */
-}
-.video-responsive iframe {
-    width: 100%;
-    height: 100%;
-}
-.video-container {
-    width: 100%;
-    max-width: 900px;         /* 調整這個數值來改變影片在頁面上的大小 */
-    margin: 40px auto;        /* 置中並與上下保持距離 */
-    aspect-ratio: 16 / 9;     /* 鎖定標準螢幕比例 */
-    background-color: #000;   /* 讀取前顯示黑色 */
-    border: 5px solid #000;   /* 漫畫風粗邊框 */
-    box-shadow: 15px 15px 0px #000; /* 漫畫風硬陰影 */
-    position: relative;       /* 讓內部的 wrapper 可以絕對定位 */
-    overflow: hidden;
-}
-.video-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover; /* 確保影片內容填滿區域 */
-}
-.video-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-}
-
-* { background-color: transparent; }
-body { background-color: #EBC045 !important; }
-/* 分割線樣式 */
-.line {
-    border: none;
-    height: 6px;
-    background-color: #000;
-    margin: 40px auto;
-    width: 100%;
-}
 
 /* Footer 基礎樣式 (確保與首頁一致) */
 .footer-content {
@@ -572,17 +328,25 @@ body { background-color: #EBC045 !important; }
     margin-left: 10px;
 }
 
-
+/* 分割線樣式 */
+.line {
+    border: none;
+    height: 6px;
+    background-color: #000;
+    margin: 40px auto;
+    width: 100%;
+}
 /* 分割線樣式 */
 .line {
     border: none;
     height: 6px;
     background-color: #000;
     width: calc(100% - 100px);
-    /* 將原本的 30px 改小，例如改為 10px 或 5px */
     margin: 10px auto 20px auto;
     opacity: 1;
 }
+
+/*瘋掉怎麼有兩種分割線*/
 
 /************************ 回到頂部按鈕樣式 *******************************/
 #back-to-top {
@@ -673,85 +437,6 @@ body { background-color: #EBC045 !important; }
 
 
 
-
-/*--------------介紹頁------------------*/
-
-/* 頁面背景與基礎設定 */
-body {
-    background-color: #EBC045; 
-      font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    margin: 0;
-    overflow-x: hidden;
-}
-
-.intro-page-wrapper {
-    padding-top: 30px; /* 預留給 Header 的空間 */
-    padding-bottom: 100px;
-}
-
-/* 漫畫橫格子排版 */
-.intro-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    margin: 80px 0;
-    
-    /* --- 捲動浮現動畫 (純 CSS) --- */
-    view-timeline-name: --revealing-row;
-    view-timeline-axis: block;
-    animation: reveal-linear both;
-    animation-timeline: --revealing-row;
-    animation-range: entry 10% cover 40%;
-}
-
-/* 偶數行反轉：圖左文右 */
-.intro-row.reverse {
-    flex-direction: row-reverse;
-}
-
-/* 文字區塊 */
-.text-box {
-    flex: 1.2;
-}
-
-.section-title-custom {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    display: inline-block;
-    border-bottom: 5px solid #000;
-}
-
-.content-text {
-    font-size: 18px;
-    line-height: 1.8;
-    color: #1a1a1a;
-    text-align: justify;
-}
-
-/* 圖片區塊 */
-.img-box {
-    flex: 0.8;
-    display: flex;
-    justify-content: center;
-}
-
-.img-box img {
-    width: 100%;
-    max-width: 400px;
-    border: 5px solid #000;
-    box-shadow: 15px 15px 0px #000; /* 漫畫感硬陰影 */
-    background-color: #fff;
-}
-
-/* 分割線 */
-.line {
-    height: 6px;
-    background-color: #000;
-    margin: 40px 0;
-}
 
 /* --- 動畫關鍵影格 --- */
 @keyframes reveal-linear {
