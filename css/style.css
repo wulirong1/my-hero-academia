@@ -23,54 +23,72 @@ body {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    z-index: 2000; /* 確保高於卡片和遮罩 */
-    background-color: #d1433a; /* 使用你的主題紅 */
+    z-index: 2000;
+    /* 確保高於卡片和遮罩 */
+    background-color: #d1433a;
+    /* 使用你的主題紅 */
     color: white;
     border: none;
     border-radius: 50%;
-    width: 60px; /* 增加按鈕寬度以容納圖片和文字 */
-    height: 60px; /* 增加按鈕高度以容納圖片和文字 */
+    width: 60px;
+    /* 增加按鈕寬度以容納圖片和文字 */
+    height: 60px;
+    /* 增加按鈕高度以容納圖片和文字 */
     font-family: 'Inter', sans-serif;
     font-weight: 800;
     cursor: pointer;
     display: flex;
-    flex-direction: column; /* 圖片和文字垂直排列 */
+    flex-direction: column;
+    /* 圖片和文字垂直排列 */
     align-items: center;
     justify-content: center;
-    font-size: 14px; /* 調整 TOP 文字大小 */
-    
+    font-size: 14px;
+    /* 調整 TOP 文字大小 */
+
     /* 動畫過渡 */
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    padding: 5px; /* 增加一些內距，防止內容頂到邊緣 */
-    overflow: hidden; /* 確保內容不會超出圓形邊框 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    /* 增加一些內距，防止內容頂到邊緣 */
+    overflow: hidden;
+    /* 確保內容不會超出圓形邊框 */
 }
 
 #back-to-top:hover {
     background-color: #ffffff;
     color: #d1433a;
-    transform: translateY(-5px); /* 懸停時往上彈 */
+    transform: translateY(-5px);
+    /* 懸停時往上彈 */
 }
 
 /* 按鈕內的圖片樣式 */
 #back-to-top img {
-    width: 90%; /* 圖片寬度佔按鈕的比例 */
+    width: 90%;
+    /* 圖片寬度佔按鈕的比例 */
     height: auto;
-    max-height: 80%; /* 限制圖片高度，防止過高 */
-    display: block; /* 確保圖片能獨立排版 */
-    margin-bottom: 2px; /* 圖片與下方文字的間距 */
-    object-fit: contain; /* 確保圖片完整顯示，不被裁切 */
-    pointer-events: none; /* 防止點擊圖片時，按鈕的點擊事件失效 */
+    max-height: 80%;
+    /* 限制圖片高度，防止過高 */
+    display: block;
+    /* 確保圖片能獨立排版 */
+    margin-bottom: 2px;
+    /* 圖片與下方文字的間距 */
+    object-fit: contain;
+    /* 確保圖片完整顯示，不被裁切 */
+    pointer-events: none;
+    /* 防止點擊圖片時，按鈕的點擊事件失效 */
 }
 
 /* 按鈕內的文字樣式 */
 #back-to-top span {
-    font-size: 12px; /* 調整 TOP 文字大小 */
+    font-size: 12px;
+    /* 調整 TOP 文字大小 */
     font-weight: 900;
-    line-height: 1.2; /* 縮小行高，防止文字佔用過多空間 */
-    pointer-events: none; /* 防止點擊文字時，按鈕的點擊事件失效 */
+    line-height: 1.2;
+    /* 縮小行高，防止文字佔用過多空間 */
+    pointer-events: none;
+    /* 防止點擊文字時，按鈕的點擊事件失效 */
 }
 
 /* 顯示狀態 */
@@ -82,20 +100,24 @@ body {
 /* 手機版適配 */
 @media (max-width: 767px) {
     #back-to-top {
-        width: 70px; /* 手機版按鈕略小 */
+        width: 70px;
+        /* 手機版按鈕略小 */
         height: 70px;
         bottom: 20px;
         right: 20px;
         font-size: 12px;
     }
+
     #back-to-top img {
         width: 70%;
         max-height: 70%;
     }
+
     #back-to-top span {
         font-size: 12px;
     }
 }
+
 /************************ 回到頂部按鈕樣式結束 *******************************/
 
 
@@ -106,12 +128,15 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #f0c040; /* 使用你網頁的黃色 */
+    background-color: #f0c040;
+    /* 使用你網頁的黃色 */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10000; /* 確保在最上層 */
-    transition: opacity 0.5s ease; /* 消失時的過場 */
+    z-index: 10000;
+    /* 確保在最上層 */
+    transition: opacity 0.5s ease;
+    /* 消失時的過場 */
 }
 
 .loading-content {
@@ -120,14 +145,24 @@ body {
 
 /* 圖片呼吸動畫 */
 .loading-img {
-    width: 200px; /* 依需求調整大小 */
+    width: 200px;
+    /* 依需求調整大小 */
     margin-bottom: 20px;
     animation: breathing 2s ease-in-out infinite;
 }
 
 @keyframes breathing {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); } /* 放大到 1.1 倍 */
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    /* 放大到 1.1 倍 */
 }
 
 /* 旋轉圓圈動畫 */
@@ -142,8 +177,13 @@ body {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .loading-text {
@@ -152,245 +192,86 @@ body {
     font-weight: 800;
     letter-spacing: 2px;
 }
+
 /*-------------------- 全螢幕載入層------------------------- */
 
 
-/* =====================pla============================ */
-
-/* 討論區卡片懸停效果 */
-.discussion-box {
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 讓變化平滑 */
-}
-
-.discussion-box:hover {
-    transform: scale(1.02); /* 微微放大 1.02 倍 */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 增加陰影讓它看起來「浮」起來 */
-    z-index: 5; /* 確保放大時不會被隔壁擋住 */
-}
 
 
-.trending-item:hover {
-    transform: scale(1.05);
-}
-.newdis {
-    
-    background-color: #EBC053;
-    border: 2px solid #333;
-    border-radius: 10px;
-    border-style: solid;
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    border: 3px solid #333;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-}
-
-
-
-/* Rules 與 News 容器樣式 */
-.rules-container, .news-container {
-    background-color: #D13F3F; 
-    border: 3px solid #333;
-    border-radius: 10px;
-    font-family: 'Inter', sans-serif;
-    padding: 15px;
-    text-align: center;
-    
-    /* 關鍵修改：將所有文字顏色改為白色 */
-    color: #ffffff; 
-}
-
-.rules-container h4, .news-container h4 {
-    font-weight: 900;
-    /* 標題底線顏色也改成白色，與文字統一 */
-    border-bottom: 2px solid #ffffff; 
-    padding-bottom: 8px;
-    margin-bottom: 15px;
-}
-
-.rules-container ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.rules-container ul li {
-    font-weight: 600;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    /* 確保清單項目也是白色 */
-    color: #ffffff; 
-}
-
-/* News 的空白框內文字 */
-.news-box p {
-    color: #ffffff;
-}
-
-.input-btn {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    color: #333333;
-    border-width: 3px;
-
-}
-
-.back-btn {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    border-width: 3px;
-
-}
-
-
-
-/* 讓所有討論內容與留言內容都支援換行 */
-#commentList p,
-#originalPostArea p,
-#replyList p {
-
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    line-height: 1.6;
-    /* 稍微增加行高，閱讀起來更舒服 */
-}
-
-
-/* 視覺提示：查看更多 */
-.view-more-hint {
-    color: #555;
-    font-size: 0.9rem;
-    font-weight: 800;
-    margin-top: 5px;
-    text-decoration: none;
-}
-
-.comment-preview-fix {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    line-height: 1.6;
-    margin-top: 10px;
-    color: #000;
-    /* 保留換行空間，但不使用 webkit-box */
-    display: block;
-    max-height: 4.8em; /* 1.6 行高 * 3 行 = 4.8em，確保高度固定 */
-    overflow: hidden;
-    word-break: break-all;
-}
-
-
-.comment-border {
-    padding: 10px;
-    background-color: #EBC053;
-    border: 3px solid #000;
-    border-radius: 10px;
-}
-
-.comment-words {
-
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    color: #333;
-    border: 2px solid #000;
-    background-color: #EBC053;
-    border-radius: 10px;
-}
-
-.comment-btn {
-
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    color: #333;
-    border-width: 3px;
-    border-radius: 10px;
-}
-
-/* =====================pla============================ */
 /* =====================footer============================ */
-
+/* --- Footer 基礎與線條 --- */
 footer {
-    margin-top: 0%;
-    padding-top: 0%;
+    width: 100%;
+    margin-top: 60px;
+    padding-bottom: 40px;
 }
 
+
+/* --- 手機版佈局 (預設垂直) --- */
 .footer-content {
-    margin-top: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: left;
 }
 
 .footer-info {
-    margin: 5px;
-    margin-top: 0%;
-    padding-top: 0%;
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+}
+
+.footer-info a {
+    justify-content: flex-start;
+    gap: 40px;
+    text-decoration: none;
+    color: #333333;
+    font-weight: 800;
+    font-size: 16px;
 }
 
 .footer-p {
-    margin: 5px;
-    margin-top: 0%;
-    padding-top: 0%;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 .footer-icons {
-    margin-top: 15px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
-.footer-icons-ig {
-    width: 50px;
-    margin-right: 5%;
+.footer-icons img {
+    width: 45px;
+
 }
 
-.footer-icons-x {
-    width: 50px;
-    margin-right: 5%;
-}
-
-.footer-icons-fb {
-    width: 50px;
-}
-
-/*
-========================================
-    RWD 媒體查詢 (Media Queries)
-========================================
-*/
-
-
-/* --- M 尺寸 (平板 >= 768px) --- */
+/* ==========================================================================
+   桌機版適配 (min-width: 768px)
+   ========================================================================== */
 @media (min-width: 768px) {
     .footer-content {
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-end;
         text-align: left;
     }
 
-    .footer-info {
+    .footer-left-group {
         display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-}
-
-/* --- L 尺寸 (桌機 >= 992px) --- */
-@media (min-width: 992px) {
-
-    .footer-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        text-align: left;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
     }
 
     .footer-info {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 40px;
     }
-}
-/* =====================footer============================ */
 
+}
 
 /*------------------- L 尺寸 header--------------------*/
 /* 全局樣式設定 */
@@ -642,27 +523,42 @@ body {
     width: 100%;
     margin: 40px 0;
 }
+
 .video-responsive {
-    width: 100%;            /* 寬度填滿父容器 */
-    max-width: 800px;       /* 限制最大寬度 */
-    margin: 0 auto;         /* 置中 */
-    aspect-ratio: 16 / 9;   /* 維持 16:9 比例 */
+    width: 100%;
+    /* 寬度填滿父容器 */
+    max-width: 800px;
+    /* 限制最大寬度 */
+    margin: 0 auto;
+    /* 置中 */
+    aspect-ratio: 16 / 9;
+    /* 維持 16:9 比例 */
 }
+
 .video-responsive iframe {
     width: 100%;
     height: 100%;
 }
+
 .video-container {
     width: 100%;
-    max-width: 900px;         /* 調整這個數值來改變影片在頁面上的大小 */
-    margin: 40px auto;        /* 置中並與上下保持距離 */
-    aspect-ratio: 16 / 9;     /* 鎖定標準螢幕比例 */
-    background-color: #000;   /* 讀取前顯示黑色 */
-    border: 5px solid #000;   /* 漫畫風粗邊框 */
-    box-shadow: 15px 15px 0px #000; /* 漫畫風硬陰影 */
-    position: relative;       /* 讓內部的 wrapper 可以絕對定位 */
+    max-width: 900px;
+    /* 調整這個數值來改變影片在頁面上的大小 */
+    margin: 40px auto;
+    /* 置中並與上下保持距離 */
+    aspect-ratio: 16 / 9;
+    /* 鎖定標準螢幕比例 */
+    background-color: #000;
+    /* 讀取前顯示黑色 */
+    border: 5px solid #000;
+    /* 漫畫風粗邊框 */
+    box-shadow: 15px 15px 0px #000;
+    /* 漫畫風硬陰影 */
+    position: relative;
+    /* 讓內部的 wrapper 可以絕對定位 */
     overflow: hidden;
 }
+
 .video-wrapper {
     position: absolute;
     top: 0;
@@ -670,12 +566,15 @@ body {
     width: 100%;
     height: 100%;
 }
+
 .video-wrapper iframe {
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: cover; /* 確保影片內容填滿區域 */
+    object-fit: cover;
+    /* 確保影片內容填滿區域 */
 }
+
 .video-section {
     display: flex;
     justify-content: center;
@@ -692,20 +591,6 @@ body {
     margin: 40px auto;
     width: 100%;
 }
-
-/* Footer 基礎樣式 (確保與首頁一致) */
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px 0;
-}
-
-.footer-icons img {
-    width: 30px;
-    margin-left: 15px;
-}
-
 
 /* 輔助線*/
 .divider {
@@ -790,15 +675,16 @@ body {
 
 /* 頁面背景與基礎設定 */
 body {
-    background-color: #EBC045; 
-      font-family: 'Inter', sans-serif;
+    background-color: #EBC045;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
     margin: 0;
     overflow-x: hidden;
 }
 
 .intro-page-wrapper {
-    padding-top: 30px; /* 預留給 Header 的空間 */
+    padding-top: 30px;
+    /* 預留給 Header 的空間 */
     padding-bottom: 100px;
 }
 
@@ -809,7 +695,7 @@ body {
     justify-content: space-between;
     gap: 20px;
     margin: 80px 0;
-    
+
     /* --- 捲動浮現動畫 (純 CSS) --- */
     view-timeline-name: --revealing-row;
     view-timeline-axis: block;
@@ -854,15 +740,18 @@ body {
     width: 100%;
     max-width: 400px;
     border: 5px solid #000;
-    box-shadow: 15px 15px 0px #000; /* 漫畫感硬陰影 */
+    box-shadow: 15px 15px 0px #000;
+    /* 漫畫感硬陰影 */
     background-color: #fff;
 }
 
 /* 分割線 */
 .line {
+    width: 100%;
     height: 6px;
     background-color: #000;
     margin: 40px 0;
+  
 }
 
 /* --- 動畫關鍵影格 --- */
@@ -871,6 +760,7 @@ body {
         opacity: 0;
         transform: translateY(80px) scale(0.9);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -879,11 +769,14 @@ body {
 
 /* 響應式：手機版改為垂直堆疊 */
 @media (max-width: 768px) {
-    .intro-row, .intro-row.reverse {
+
+    .intro-row,
+    .intro-row.reverse {
         flex-direction: column;
         text-align: center;
         gap: 30px;
     }
+
     .section-title-custom {
         text-align: center;
     }

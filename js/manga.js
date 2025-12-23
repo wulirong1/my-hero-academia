@@ -83,12 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 核心邏輯：在第 24 本 (第四排結束) 之後插入文字
             // 電腦版一排 6 本，4 排 = 24 本；手機版一排 2 本，12 排 = 24 本
-     
+
             if (index === 11) {
                 htmlContent += `
                 <div class="col-12 my-5 text-center manga-middle-text">
                     <h3 style="font-family: 'Inter', sans-serif; font-weight: 800; color: #d1433a; letter-spacing: 2px;">
-                    「愛多管閒事，也是英雄的本質！」<br>－歐爾麥特
+                    「愛多管閒事，也是英雄的本質！」
                     </h3>
                 </div>
             `;
@@ -98,22 +98,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 htmlContent += `
                 <div class="col-12 my-5 text-center manga-middle-text">
                     <h3 style="font-family: 'Inter', sans-serif; font-weight: 800; color: #d1433a; letter-spacing: 2px;">
-                        「如果你覺得到了極限就回想一下，回想起自己為了什麼握緊拳頭。」<br>－歐爾麥特
+                        「如果你覺得到了極限就回想一下，回想起自己為了什麼握緊拳頭。」
                     </h3>
                 </div>
             `;
             }
-if (index === 35) {
+            if (index === 35) {
                 htmlContent += `
                 <div class="col-12 my-5 text-center manga-middle-text">
                     <h3 style="font-family: 'Inter', sans-serif; font-weight: 800; color: #d1433a; letter-spacing: 2px;">
-                    「無論內心有多害怕，都要笑着說我沒事！這世上，笑著的人才是最強的！」<br>－歐爾麥特
+                    「無論內心有多害怕，都要笑着說我沒事！這世上，笑著的人才是最強的！」
                     </h3>
                 </div>
             `;
             }
 
-  
+
         });
         container.innerHTML = htmlContent;
     }
