@@ -1,0 +1,142 @@
+/*討論hover*/
+.discussion-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.discussion-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+    z-index: 5; 
+}
+
+
+.trending-item:hover {
+    transform: scale(1.05);
+}
+
+
+
+.newdis {
+    
+    background-color: #EBC053;
+    border: 2px solid #333;
+    border-radius: 10px;
+    border-style: solid;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    border: 3px solid #333;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+/* Rules跟News*/
+.rules-container, .news-container {
+    background-color: #D13F3F; 
+    border: 3px solid #333;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    padding: 15px;
+    text-align: center;
+    color: #ffffff; 
+}
+
+.rules-container h4, .news-container h4 {
+    font-weight: 900;
+    border-bottom: 2px solid #ffffff; 
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+.rules-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rules-container ul li {
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #ffffff; 
+}
+
+/* News字 */
+.news-box p {
+    color: #ffffff;
+}
+
+.input-btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #333333;
+    border-width: 3px;
+
+}
+
+.back-btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    border-width: 3px;
+
+}
+
+/* 讓所有討論內容與留言內容都支援換行 */
+#commentList p,
+#originalPostArea p,
+#replyList p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.6;
+    /* 稍微增加行高，閱讀起來更舒服 */
+}
+
+
+/* 視覺提示：查看更多 */
+.view-more-hint {
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 800;
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+.comment-preview-fix {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-top: 10px;
+    color: #000;
+    /* 保留換行空間，但不使用 webkit-box */
+    display: block;
+    max-height: 4.8em; /* 1.6 行高 * 3 行 = 4.8em，確保高度固定 */
+    overflow: hidden;
+    word-break: break-all;
+}
+
+
+.comment-border {
+    padding: 10px;
+    background-color: #EBC053;
+    border: 3px solid #000;
+    border-radius: 10px;
+}
+
+.comment-words {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #333;
+    border: 2px solid #000;
+    background-color: #EBC053;
+    border-radius: 10px;
+}
+
+.comment-btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #333;
+    border-width: 3px;
+    border-radius: 10px;
+}
