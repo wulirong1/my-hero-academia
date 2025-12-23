@@ -1,0 +1,70 @@
+
+
+/*footer*/
+footer {
+ font-family: 'Inter', sans-serif;
+
+    font-weight: 600;
+    margin: 20px;
+    padding: 20px;
+}
+
+.footer-content {
+    margin-top: 10px;
+    max-width: 1400px;
+}
+
+.footer-info {
+    
+}
+
+.footer-p {
+    margin: 5px;
+   
+}
+
+.footer-icons img {
+    width: 40px;
+    margin-left: 15px;
+}
+
+
+/*
+========================================
+    RWD 媒體查詢 (Media Queries)
+========================================
+*/
+
+
+/* --- M 尺寸 (平板 >= 768px) --- */
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .footer-info {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+}
+
+/* --- L 尺寸 (桌機 >= 992px) --- */
+@media (min-width: 992px) {
+
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .footer-info {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+}
