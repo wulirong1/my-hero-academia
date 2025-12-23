@@ -1,0 +1,55 @@
+
+* {
+    box-sizing: border-box;
+}
+
+/* 修改 Header 容器，減少垂直高度 */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* 改回 center 會比 baseline 穩定 */
+    padding: 10px 5% ;  /* 使用百分比邊距，增加相容性 */
+    max-width: 1200px;  /* 限制最大寬度，避免在大螢幕拉得太開 */
+    margin: 0 auto;     /* 居中容器 */
+}
+
+/* 縮小 Logo 高度，這是寬度的主要來源 */
+.header-logo {
+    height: 60px;       /* 從 120px 縮小到 60px */
+    width: auto;
+    display: block;
+}
+
+/* 縮小導覽字體與間距 */
+.nav-links {
+    display: flex;
+    gap: 5px;           /* 縮小連結間的間隙 */
+}
+
+.nav-item-link {
+    font-family: 'Koulen', cursive;
+    font-size: 20px;    /* 從 40px 縮小到 20px */
+    color: #000;
+    text-decoration: none;
+    padding: 8px 15px;  /* 適度的點擊範圍 */
+    line-height: 1.2;
+}
+
+/* 黑線改進：避免在不同頁面推擠排版 */
+.line {
+    height: 4px;
+    background-color: #000;
+    width: 100%;
+    margin-top: 0;      /* 確保緊貼 header */
+}
+
+/* 加入這段可以防止 padding 撐開寬度導致的排版崩壞 */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* 確保圖片不會超出容器 */
+img {
+    max-width: 100%;
+    height: auto;
+}
