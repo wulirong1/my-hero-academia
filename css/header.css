@@ -28,7 +28,7 @@
 
 .nav-item-link {
     font-family: 'Koulen', cursive;
-    font-size: 20px;    /* 從 40px 縮小到 20px */
+    font-size: 35px;    /* 從 40px 縮小到 20px */
     color: #000;
     text-decoration: none;
     padding: 8px 15px;  /* 適度的點擊範圍 */
