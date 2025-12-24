@@ -24,6 +24,67 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/header.css">
+    <style>
+    #char-layer, 
+    #char-layer-villain, 
+    #char-layer-hero, 
+    #char-layer-staff {
+        opacity: 0; 
+        transform: translateX(50px); /* 從右邊滑進來 */
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); 
+        position: absolute;
+        bottom: 0;
+        right: -10%;       /* 1. 【調整位置】想更靠右，就用負數 (例如 -10% 或 -20px) */
+        left: auto;     
+        width: 80%;    /* 2. 【調整大小】想變小，就改小這個數字 (例如 80%) */
+        height: 100%;   
+        object-fit: contain;
+        object-position: bottom right;
+        z-index: 2; 
+        pointer-events: none;
+    }
+    .show-anim {
+        opacity: 1 !important;
+        transform: translateX(0) !important; /* 回到原位 */
+    }
+    #bg-layer,
+    #bg-layer-villain,
+    #bg-layer-hero,
+    #bg-layer-staff {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* 背景維持比例 */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1; /* 在人物下面 */
+    }
+    .card-image-wrapper {
+        position: relative;
+        aspect-ratio: 3 / 4; /* 強制鎖定 3:4 比例，不准變形 */
+        width: 100%;
+        overflow: hidden; /* 超出框框的部分切掉 */
+        background-color: #fff;
+        border: 4px solid #000;
+        box-shadow: 15px 15px 0px #000;
+    }
+    .reverse-layout {
+        flex-direction: row-reverse;
+    }
+
+    /* 手機版：強制統一 (文上圖下) */
+    @media screen and (max-width: 768px) {
+        .main-wrapper, .main-wrapper.reverse-layout {
+            flex-direction: column-reverse !important;
+            align-items: center;
+            gap: 20px;
+        }
+        .display-container {
+            width: 100%;
+            max-width: 450px; /* 手機版圖片最大寬度 */
+        }
+    }
+</style>
 </head>
 <body>
 
@@ -57,7 +118,7 @@
     </div>
 
 
-
+<!--------------------- 外框----------------------- -->
     <div class="main-wrapper">
         
         <div class="display-container">
@@ -76,142 +137,237 @@
             <div class="name-grid" id="name-grid">
                 </div>
         </div>
+        
 
     </div>
+<div class="main-wrapper reverse-layout">
+    <div class="display-container">
+        <div class="card-image-wrapper">
+            <div class="bg-slide-left"></div>
+            <div class="bg-slide-right"></div>
+            <img id="bg-layer-villain" src="img/default-bg.jpg" alt="Background">
+            <img id="char-layer-villain" src="img/default-char.png" alt="Character">
+        </div>
+    </div>
+    <div class="list-container">
+        <div class="class-label">敵聯合</div>
+        <div class="name-grid" id="grid-villain"></div>
+    </div>
+</div>
 
-    <script>
-        const names = [
-            "葉隱透", "障子目藏", "尾白猿夫", "青山優雅",
-            "爆豪勝己", "耳郎響香", "上鳴電氣", "蘆戶三奈",
-            "綠谷出久", "瀨呂範太", "切島銳兒郎", "蛙吹梅雨",
-            "峰田實", "常闇踏陰", "口田甲司", "飯田天哉",
-            "八百萬百", "轟焦凍", "砂藤力道", "麗日御茶子"
-        ];
+<div class="line"></div>
+<div class="main-wrapper">
+    <div class="display-container">
+        <div class="card-image-wrapper">
+            <div class="bg-slide-left"></div>
+            <div class="bg-slide-right"></div>
+            <img id="bg-layer-hero" src="img/default-bg.jpg" alt="Background">
+            <img id="char-layer-hero" src="img/default-char.png" alt="Character">
+        </div>
+    </div>
+    <div class="list-container">
+        <div class="class-label">職業英雄</div>
+        <div class="name-grid" id="grid-hero"></div>
+    </div>
+</div>
 
-        const cardData = {
-            // 已有的
-            "綠谷出久": {
-                bg: "img/background/A/deku.png",
-                char: "img/characters/A/deku.png"
-            },
-            "爆豪勝己": {
-                bg: "img/background/A/boom.png",
-                char: "img/characters/A/bakugo.png"
-            },
-            "轟焦凍": {
-                bg: "img/background/A/shoto.png",
-                char: "img/characters/A/todoloki.png"
-            },
-            "八百萬百": {
-                bg: "img/background/A/momo.png",
-                char: "img/characters/A/yaoyorozu.png"
-            },
-            "麗日御茶子": {
-                bg: "img/background/A/ochaku.png",
-                char: "img/characters/A/ochako.png"
-            },
-            "飯田天哉": {
-                bg: "img/background/A/rice.png",
-                char: "img/characters/A/tenya.png"
-            },
-            "葉隱透": {
-                bg: "img/background/A/toru.png",
-                char: "img/characters/A/hagakule.png"
-            },
-            "障子目藏": {
-                bg: "img/background/A/mezo.png",
-                char: "img/characters/A/shoji.png"
-            },
-            "尾白猿夫": {
-                bg: "img/background/A/ojiro.png",
-                char: "img/characters/A/ojilo.png"
-            },
-            "青山優雅": {
-                bg: "img/background/A/yuga.png",
-                char: "img/characters/A/aoyama.png"
-            },
-            "耳郎響香": {
-                bg: "img/background/A/kyoka.png",
-                char: "img/characters/A/kyoka.png"
-            },
-            "上鳴電氣": {
-                bg: "img/background/A/denki.png",
-                char: "img/characters/A/kamilani.png"
-            },
-            "蘆戶三奈": {
-                bg: "img/background/A/mina.png",
-                char: "img/characters/A/ashido.png"
-            },
-            "瀨呂範太": {
-                bg: "img/background/A/tape.png",
-                char: "img/characters/A/sero.png"
-            },
-            "切島銳兒郎": {
-                bg: "img/background/A/eijiro.png",
-                char: "img/characters/A/kilishima.png"
-            },
-            "蛙吹梅雨": {
-                bg: "img/background/A/frog.png",
-                char: "img/characters/A/tsuyu.png"
-            },
-            "峰田實": {
-                bg: "img/background/A/grape.png",
-                char: "img/characters/A/mineta.png"
-            },
-            "常闇踏陰": {
-                bg: "img/background/A/dark.png",
-                char: "img/characters/A/tokoyami.png"
-            },
-            "口田甲司": {
-                bg: "img/background/A/koji.png",
-                char: "img/characters/A/koda.png"
-            },
-            "砂藤力道": {
-                bg: "img/background/A/sato.png",
-                char: "img/characters/A/sato.png"
-            }
-        };
+<div class="line"></div>
+<div class="main-wrapper reverse-layout">
+    <div class="display-container">
+        <div class="card-image-wrapper">
+            <div class="bg-slide-left"></div>
+            <div class="bg-slide-right"></div>
+            <img id="bg-layer-staff" src="img/default-bg.jpg" alt="Background">
+            <img id="char-layer-staff" src="img/default-char.png" alt="Character">
+        </div>
+    </div>
+    <div class="list-container">
+        <div class="class-label">校內人士</div>
+        <div class="name-grid" id="grid-staff"></div>
+    </div>
+</div>
 
-const grid = document.getElementById('name-grid');
-        const bgLayer = document.getElementById('bg-layer');
-        const charLayer = document.getElementById('char-layer');
 
-        names.forEach(n => {
+
+
+
+
+
+
+<!-------------------------------------------- 邏輯--------------- -->
+
+  <script>
+    // =========================================================================
+    // 1. 資料庫 (可以在這裡設定 size 和 pos 來微調個人)
+    // =========================================================================
+    const cardData = {
+        // === A班 (目前維持原樣) ===
+        "綠谷出久": { bg: "img/background/A/deku.png", char: "img/characters/A/deku.png" },
+        "爆豪勝己": { bg: "img/background/A/boom.png", char: "img/characters/A/bakugo.png" },
+        "轟焦凍": { bg: "img/background/A/shoto.png", char: "img/characters/A/todoloki.png" },
+        "八百萬百": { bg: "img/background/A/momo.png", char: "img/characters/A/yaoyorozu.png",size: "120%" ,pos:"-20%"},
+        "麗日御茶子": { bg: "img/background/A/ochaku.png", char: "img/characters/A/ochako.png" },
+        "飯田天哉": { bg: "img/background/A/rice.png", char: "img/characters/A/tenya.png" },
+        "葉隱透": { bg: "img/background/A/toru.png", char: "img/characters/A/hagakule.png" },
+        "障子目藏": { bg: "img/background/A/mezo.png", char: "img/characters/A/shoji.png" },
+        "尾白猿夫": { bg: "img/background/A/ojiro.png", char: "img/characters/A/ojilo.png" ,size: "80%"},
+        "青山優雅": { bg: "img/background/A/yuga.png", char: "img/characters/A/aoyama.png",pos: "0%" },
+        "耳郎響香": { bg: "img/background/A/kyoka.png", char: "img/characters/A/kyoka.png" },
+        "上鳴電氣": { bg: "img/background/A/denki.png", char: "img/characters/A/kamilani.png",size: "170%" ,pos: "-30%",tabletSize: "130%",  tabletPos: "-40%"},
+        "蘆戶三奈": { bg: "img/background/A/mina.png", char: "img/characters/A/ashido.png" },
+        "瀨呂範太": { bg: "img/background/A/tape.png", char: "img/characters/A/sero.png" ,pos:"0%"},
+        "切島銳兒郎": { bg: "img/background/A/eijiro.png", char: "img/characters/A/kilishima.png" },
+        "蛙吹梅雨": { bg: "img/background/A/frog.png", char: "img/characters/A/tsuyu.png" },
+        "峰田實": { bg: "img/background/A/grape.png", char: "img/characters/A/mineta.png",size:"50%" },
+        "常闇踏陰": { bg: "img/background/A/dark.png", char: "img/characters/A/tokoyami.png" },
+        "口田甲司": { bg: "img/background/A/koji.png", char: "img/characters/A/koda.png" },
+        "砂藤力道": { bg: "img/background/A/sato.png", char: "img/characters/A/sato.png" ,size:"105%"},
+
+        // === 敵聯合 (範例：假設死柄木要往右移一點) ===
+        "死柄木弔": { 
+            bg: "img/background/enimy/hand.png", 
+            char: "img/characters/ENIMY/tomura.png",
+            pos: "-5%" // (範例) 負數代表往右邊牆壁退
+        },
+        "渡我被身子": { bg: "img/background/enimy/toga.png", char: "img/characters/ENIMY/toga himiko.png" },
+        "黑霧": { bg: "img/background/enimy/kuro.png", char: "img/characters/ENIMY/kurogili.png" },
+        "荼毘": { bg: "img/background/enimy/dabi.png", char: "img/characters/ENIMY/dabi.png" },
+        "雙倍": { bg: "img/background/enimy/TWICE.png", char: "img/characters/ENIMY/twice.png" },
+        "壓縮先生": { bg: "img/background/enimy/compress.png", char: "img/characters/ENIMY/mr.compress.png" },
+        "編織者": { bg: "img/background/enimy/spin.png", char: "img/characters/ENIMY/spin.png" },
+        "AFO": { bg: "img/background/enimy/AFO.png", char: "img/characters/ENIMY/AFO.png" },
+
+        // === 職業英雄 (範例：假設歐爾麥特太大，要縮小) ===
+        "歐爾麥特": { 
+            bg: "img/background/hero/allmight.png", 
+            char: "img/characters/HERO/allmight.png",
+            size: "85%" // (範例) 設定寬度為 85%
+        },
+        "安德瓦": { bg: "img/background/hero/fire.png", char: "img/characters/HERO/endeavor.png" },
+        "霍克斯": { bg: "img/background/hero/bird.png", char: "img/characters/HERO/hawks.png" },
+        "最佳牛仔褲時尚名人": { bg: "img/background/hero/jeans.png", char: "img/characters/HERO/jeans.png" },
+        "暴力虎鯨": { bg: "img/background/V/shigaraki.png", char: "img/characters/HERO/gang orca.png" },
+        "夜目爵士": { bg: "img/background/hero/eye.png", char: "img/characters/HERO/sir nighteye.png" },
+        "紙鋒射手": { bg: "img/background/hero/ninjia.png", char: "img/characters/HERO/edgeshot.png" },
+        "S&S": { bg: "img/background/V/shigaraki.png", char: "img/characters/HERO/star.png" },
+        "經典老爺車": { bg: "img/background/hero/old.png", char: "img/characters/HERO/gran torino.png" },
+        "龍九": { bg: "img/background/V/shigaraki.png", char: "img/characters/HERO/ryukyu.png" },
+        "肥膠": { bg: "img/background/hero/fat.png", char: "img/characters/HERO/fat gum.png" },
+
+        // === 學校人士 ===
+        "根津校長": { bg: "img/background/school/nezu.png", char: "img/characters/SCHOOL/nezu.png" },
+        "相澤消太": { bg: "img/background/school/eraser.png", char: "img/characters/SCHOOL/eraser head.png" },
+        "禮物麥克風": { bg: "img/background/school/mic.png", char: "img/characters/SCHOOL/present mic.png" },
+        "物間寧人": { bg: "img/background/V/shigaraki.png", char: "img/characters/SCHOOL/neito.png" },
+        "心操人使": { bg: "img/background/school/shinso.png", char: "img/characters/SCHOOL/shinso.png" },
+        "通行百萬": { bg: "img/background/school/mirio.png", char: "img/characters/SCHOOL/MIRIO.png" },
+        "天喰環": { bg: "img/background/school/tamaki.png", char: "img/characters/SCHOOL/tamaki.png" },
+        "波動螺卷": { bg: "img/background/school/hado.png", char: "img/characters/SCHOOL/hado.png" },
+    };
+
+    // =========================================================================
+    // 2. 超級工廠函數 (這裡就是 setupSection，它現在負責產生所有按鈕功能)
+    // =========================================================================
+   // =========================================================================
+    // 2. 超級工廠函數 (智慧偵測版：支援平板/手機獨立設定)
+    // =========================================================================
+    function setupSection(namesArray, gridId, bgId, charId) {
+        const grid = document.getElementById(gridId);
+        const bgImg = document.getElementById(bgId);
+        const charImg = document.getElementById(charId);
+
+        if (!grid || !bgImg || !charImg) return;
+
+        namesArray.forEach(name => {
             const div = document.createElement('div');
             div.className = 'name-btn';
-            div.innerText = n;
-            
+            div.innerText = name;
             div.onclick = () => {
-                // 1. 先把人物隱藏 (重置動畫狀態)
-                charLayer.classList.remove('show-anim');
-                charLayer.style.opacity = '0';
+                // --- A. 歸零 ---
+                charImg.classList.remove('show-anim');
+                charImg.style.opacity = '0';
                 
-                // 2. 設定一個極短延遲來換圖
+                // 清除所有舊的樣式設定
+                charImg.style.width = '';  
+                charImg.style.right = '';
+
+                // --- B. 偵測螢幕寬度 ---
+                const screenWidth = window.innerWidth;
+                const isTablet = screenWidth <= 1200 && screenWidth > 768; // 平板區間
+                const isMobile = screenWidth <= 768; // 手機區間
+
+                // --- C. 換圖與應用設定 ---
                 setTimeout(() => {
-                    // 取得對應圖片，如果沒有設定就用預設圖
-                    const data = cardData[n] || { 
-                        bg: "img/default-bg.jpg", 
-                        char: "img/default-char.png" 
-                    };
+                    const data = cardData[name] || { bg: "img/default-bg.jpg", char: "img/default-char.png" };
+                    bgImg.src = data.bg;
+                    charImg.src = data.char;
 
-                    // 換背景圖
-                    bgLayer.src = data.bg;
-                    
-                    // 換人物圖
-                    charLayer.src = data.char;
+                    // 1. 決定大小 (優先順序：手機設定 > 平板設定 > 一般設定)
+                    let finalSize = data.size; // 預設用一般設定
+                    if (isTablet && data.tabletSize) finalSize = data.tabletSize; // 如果是平板且有設定，就覆蓋
+                    if (isMobile && data.mobileSize) finalSize = data.mobileSize; // 如果是手機且有設定，就覆蓋
 
-                    // 3. 背景載入後，人物稍微延遲一點點再滑入
-                    // 這裡的 setTimeout 是為了讓瀏覽器偵測到 class 變化產生動畫
+                    // 2. 決定位置 (優先順序：手機設定 > 平板設定 > 一般設定)
+                    let finalPos = data.pos;
+                    if (isTablet && data.tabletPos) finalPos = data.tabletPos;
+                    if (isMobile && data.mobilePos) finalPos = data.mobilePos;
+
+                    // 3. 套用數值
+                    if (finalSize) charImg.style.width = finalSize;
+                    if (finalPos)  charImg.style.right = finalPos;
+
+                    // --- D. 顯示 ---
                     setTimeout(() => {
-                        charLayer.style.opacity = '1'; // 確保透明度回覆
-                        charLayer.classList.add('show-anim');
-                    }, 100); 
-
+                        charImg.style.opacity = '1';
+                        charImg.classList.add('show-anim');
+                    }, 100);
                 }, 50);
             };
             grid.appendChild(div);
         });
-    </script>
+    }
+    // =========================================================================
+    // 3. 呼叫工廠 (啟動四個區塊)
+    // =========================================================================
+    
+    // A班
+    setupSection(
+        ["葉隱透", "障子目藏", "尾白猿夫", "青山優雅", "爆豪勝己", "耳郎響香", "上鳴電氣", "蘆戶三奈", "綠谷出久", "瀨呂範太", "切島銳兒郎", "蛙吹梅雨", "峰田實", "常闇踏陰", "口田甲司", "飯田天哉", "八百萬百", "轟焦凍", "砂藤力道", "麗日御茶子"],
+        'name-grid', 'bg-layer', 'char-layer'
+    );
+
+    // 敵聯合
+    setupSection(
+        ["死柄木弔", "黑霧", "荼毘", "渡我被身子", "雙倍", "壓縮先生", "編織者", "AFO"],
+        'grid-villain', 'bg-layer-villain', 'char-layer-villain'
+    );
+
+    // 職業英雄
+    setupSection(
+        ["歐爾麥特", "安德瓦", "霍克斯", "最佳牛仔褲時尚名人", "暴力虎鯨", "夜目爵士", "紙鋒射手", "經典老爺車", "龍九", "肥膠", "S&S"],
+        'grid-hero', 'bg-layer-hero', 'char-layer-hero'
+    );
+
+    // 學校人士
+    setupSection(
+        ["根津校長", "相澤消太", "禮物麥克風", "物間寧人", "心操人使", "通行百萬", "天喰環", "波動螺卷"],
+        'grid-staff', 'bg-layer-staff', 'char-layer-staff'
+    );
+
+    // =========================================================================
+    // 4. 漢堡選單 (如果你有的話)
+    // =========================================================================
+    document.addEventListener('DOMContentLoaded', function() {
+        const menu = document.querySelector('#mobile-menu');
+        const nav = document.querySelector('.nav-links');
+        if (menu) {
+            menu.onclick = function() {
+                menu.classList.toggle('active');
+                nav.classList.toggle('show');
+            };
+        }
+    });
+</script>
 
 </body>
 </html>

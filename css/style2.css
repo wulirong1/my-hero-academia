@@ -242,7 +242,87 @@ html, body {
 .container, .container-fluid, .main-content {
     background-color: transparent !important;
 }
+/* =========================================
+   1. 新增：支援 JS 點擊翻轉的樣式
+   ========================================= */
+/* 原本只有 :hover，現在多加一個 .active 讓 JS 控制 */
+.news-card-link:hover .news-card-inner,
+.news-card-link.active .news-card-inner {
+    transform: rotateX(180deg);
+}
 
+/* =========================================
+   2. 響應式設計 (RWD) - 針對平板與手機
+   ========================================= */
+
+/* --- 平板與小螢幕筆電 (寬度 992px 以下) --- */
+@media screen and (max-width: 992px) {
+    /* 讓新聞卡片在平板上比較不擁擠 */
+    .news-text p {
+        font-size: 16px; /* 字稍微縮小 */
+    }
+}
+
+/* --- 手機版 (寬度 768px 以下) --- */
+@media screen and (max-width: 768px) {
+    
+    /* 1. 身體與標題調整 */
+    body {
+        padding-top: 80px; /* 手機版 Header 比較矮，這裡可以減少 */
+    }
+    
+    /* 2. NEWS 卡片改為直向單欄排列 */
+    .news-card-link {
+        width: 100%; /* 手機上一行只放一張 */
+        margin-bottom: 20px;
+    }
+
+    /* 調整卡片高度，如果內容不多可以稍微變矮，或者維持 300px */
+    .news-card {
+        height: 280px; 
+    }
+
+    /* 卡片內容排版微調 */
+    .news-card-front {
+        padding: 15px; /* 內距縮小 */
+    }
+
+    .news-img-placeholder {
+        width: 130px; /* 圖片寬度縮小，留空間給文字 */
+        height: 180px; 
+        margin-right: 15px;
+    }
+
+    .news-text p {
+        font-size: 15px; /* 手機字體調整 */
+    }
+
+    /* 3. Footer 調整 */
+    .footer-content {
+        flex-direction: column; /* 讓內容垂直排列 */
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-left-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-info {
+        margin-bottom: 15px;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .footer-text p {
+        text-align: center; /* 確保文字置中 */
+    }
+}
 
 
 
@@ -553,7 +633,7 @@ body {
     max-width: 600px;
 }
 
-.class-label {
+/* .class-label {
     background-color: #000;
     color: #fff;
     padding: 8px 30px;
@@ -561,6 +641,23 @@ body {
     font-weight: bold;
     margin-bottom: 25px;
     display: inline-block;
+} */
+
+
+.class-label {
+    background-color: #000;
+    color: #fff;
+    padding: 8px 30px;
+    font-size: 22px;
+    font-weight: bold;
+    
+    /*原本是 25px，改成 0 讓它緊貼下面的線 */
+    margin-bottom: 0; 
+    
+    display: inline-block;
+    
+    /* 建議加這行：確保底部沒有奇怪的文字縫隙 */
+    vertical-align: bottom; 
 }
 
 /* 5. 名字 4x5 網格 */
@@ -720,45 +817,50 @@ body {
 @media screen and (max-width: 1200px) {
     
     .main-wrapper {
-        /* 維持左右排列 (不用寫 flex-direction: column) */
-        gap: 30px;        /* 間距稍微縮小 */
+        gap: 30px;       
         padding: 0 20px;
     }
 
-    /* 左邊圖片區：從原本的 450px 縮小到 340px */
     .display-container {
         flex: 0 0 340px; 
     }
-    
-    /* 高度也要等比例縮小，不然會變太長 */
+
     .card-image-wrapper {
         height: 420px; 
     }
 
-    /* 右邊名字網格：空間變擠了，改為 3 欄比較剛好 */
     .name-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 12px;
     }
 }
 
+
 /* --- 階段二：手機 (寬度 768px 以下) --- */
 /* 重點：這裡才變成「上下排列」 */
+
+    
+ /* --- 階段二：手機 (寬度 768px 以下) --- */
 @media screen and (max-width: 768px) {
     
     .main-wrapper {
-        flex-direction: column; /* 關鍵：變成直向 (上圖下文) */
-        align-items: center;    /* 置中 */
+        /* 原本是 column，改成 column-reverse 就能讓下面的東西跑上去 */
+        flex-direction: column-reverse; 
+        
+        align-items: center;    
         margin-top: 20px;
         gap: 20px;
     }
 
-    /* 圖片區塊：解除固定寬度，改為全寬 */
+    /* 其他原本的設定保持不變... */
     .display-container {
         flex: none;        
         width: 100%;      
-        max-width: 450px; /* 手機上限制最大寬度，比較美觀 */
+        max-width: 450px; 
     }
+
+    /* ... */
+}
 
     /* 手機版圖片高度 */
     .card-image-wrapper {
@@ -780,4 +882,51 @@ body {
     #char-layer {
         right: -10px; 
     }
+/* ==================== 新增：左右交錯排版 ==================== */
+
+/* 電腦版：加上這個 class 的區塊，左右會對調 (變成文左、圖右) */
+/* ==================== 微創手術區：防止跑版專用 ==================== */
+
+/* 1. 左右反轉排版 (電腦版圖在右，文在左) */
+.reverse-layout {
+    flex-direction: row-reverse;
 }
+
+/* 2. 手機版強制修正 (不管電腦版怎排，手機一律文字在上、圖在下) */
+@media screen and (max-width: 768px) {
+    .main-wrapper.reverse-layout {
+        flex-direction: column-reverse !important;
+    }
+}
+
+/* 3. 【關鍵】圖片固定劑：防止換圖時撐爆框框 */
+.card-image-wrapper {
+    position: relative;
+    overflow: hidden; /* 超出範圍直接切掉 */
+}
+
+.card-image-wrapper img {
+    /* 確保圖片永遠乖乖待在框框裡，保持比例 */
+    object-fit: contain; 
+    width: 100%;
+    height: 100%;
+}
+/* =========================================
+       新增：平板與手機專用比例調整區
+       (當螢幕寬度小於 1200px 時觸發)
+       ========================================= */
+    @media screen and (max-width: 1200px) {
+        .card-image-wrapper {
+            /* 原本電腦版是 3 / 4 (比較瘦高) */
+            /* 這裡我們把它改得更「方」一點，讓上下白邊消失 */
+            aspect-ratio: 6/7 !important; 
+        }
+    }
+    .bg-slide-left,
+    .bg-slide-right {
+        /* 在這裡輸入你要的顏色，所有區塊都會聽命於此！ */
+        /* 例如黑色：#000 */
+        /* 例如深紅：#8B0000 */
+        
+        background-color: #D64535 !important; /* 加 !important 確保強制覆蓋 */
+    }
