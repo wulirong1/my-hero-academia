@@ -57,13 +57,15 @@
     <div class="main-wrapper">
         
         <div class="display-container">
-          <div class="card-image-wrapper">
-    <div class="bg-slide-left"></div>
-    <div class="bg-slide-right"></div>
-    
-    <img id="main-card" src="img/aizawa-card.png" alt="Character" class="flash-animation">
+    <div class="card-image-wrapper">
+        <div class="bg-slide-left"></div>
+        <div class="bg-slide-right"></div>
+        
+        <img id="bg-layer" src="img/default-bg.jpg" alt="Background Info">
+        
+        <img id="char-layer" src="img/default-char.png" alt="Character Stand">
+    </div>
 </div>
-        </div>
 
         <div class="list-container">
             <div class="class-label">A班</div>
@@ -74,7 +76,6 @@
     </div>
 
     <script>
-        // 設定名字清單 (4x5 共 20 個)
         const names = [
             "葉隱透", "障子目藏", "尾白猿夫", "青山優雅",
             "爆豪勝己", "耳郎響香", "上鳴電氣", "蘆戶三奈",
@@ -83,16 +84,93 @@
             "八百萬百", "轟焦凍", "砂藤力道", "麗日御茶子"
         ];
 
-        // 設定名字對應的圖片路徑 (請確保 img 資料夾內有這些檔案)
         const cardData = {
-            "相澤消太": "img/aizawa-card.png",
-            "轟焦凍": "img/shoto-card.png",
-            "綠谷出久": "img/izuku-card.png",
-            "爆豪勝己": "img/katsuki-card.png"
-            // 其他角色依此類推...
+            // 已有的
+            "綠谷出久": {
+                bg: "img/background/A/deku.png",
+                char: "img/characters/A/deku.png"
+            },
+            "爆豪勝己": {
+                bg: "img/background/A/boom.png",
+                char: "img/characters/A/bakugo.png"
+            },
+            "轟焦凍": {
+                bg: "img/background/A/shoto.png",
+                char: "img/characters/A/todoloki.png"
+            },
+            "八百萬百": {
+                bg: "img/background/A/momo.png",
+                char: "img/characters/A/yaoyorozu.png"
+            },
+            "麗日御茶子": {
+                bg: "img/background/A/ochaku.png",
+                char: "img/characters/A/ochako.png"
+            },
+            "飯田天哉": {
+                bg: "img/background/A/rice.png",
+                char: "img/characters/A/tenya.png"
+            },
+            "葉隱透": {
+                bg: "img/background/A/toru.png",
+                char: "img/characters/A/hagakule.png"
+            },
+            "障子目藏": {
+                bg: "img/background/A/mezo.png",
+                char: "img/characters/A/shoji.png"
+            },
+            "尾白猿夫": {
+                bg: "img/background/A/ojiro.png",
+                char: "img/characters/A/ojilo.png"
+            },
+            "青山優雅": {
+                bg: "img/background/A/yuga.png",
+                char: "img/characters/A/aoyama.png"
+            },
+            "耳郎響香": {
+                bg: "img/background/A/kyoka.png",
+                char: "img/characters/A/kyoka.png"
+            },
+            "上鳴電氣": {
+                bg: "img/background/A/denki.png",
+                char: "img/characters/A/kamilani.png"
+            },
+            "蘆戶三奈": {
+                bg: "img/background/A/mina.png",
+                char: "img/characters/A/ashido.png"
+            },
+            "瀨呂範太": {
+                bg: "img/background/A/tape.png",
+                char: "img/characters/A/sero.png"
+            },
+            "切島銳兒郎": {
+                bg: "img/background/A/eijiro.png",
+                char: "img/characters/A/kilishima.png"
+            },
+            "蛙吹梅雨": {
+                bg: "img/background/A/frog.png",
+                char: "img/characters/A/tsuyu.png"
+            },
+            "峰田實": {
+                bg: "img/background/A/grape.png",
+                char: "img/characters/A/mineta.png"
+            },
+            "常闇踏陰": {
+                bg: "img/background/A/dark.png",
+                char: "img/characters/A/tokoyami.png"
+            },
+            "口田甲司": {
+                bg: "img/background/A/koji.png",
+                char: "img/characters/A/koda.png"
+            },
+            "砂藤力道": {
+                bg: "img/background/A/sato.png",
+                char: "img/characters/A/sato.png"
+            }
         };
 
-        const grid = document.getElementById('name-grid');
+const grid = document.getElementById('name-grid');
+        const bgLayer = document.getElementById('bg-layer');
+        const charLayer = document.getElementById('char-layer');
 
         names.forEach(n => {
             const div = document.createElement('div');
@@ -100,35 +178,36 @@
             div.innerText = n;
             
             div.onclick = () => {
-                const cardImg = document.getElementById('main-card');
+                // 1. 先把人物隱藏 (重置動畫狀態)
+                charLayer.classList.remove('show-anim');
+                charLayer.style.opacity = '0';
                 
-                // 簡單的淡入淡出切換效果
-                cardImg.style.opacity = '0';
+                // 2. 設定一個極短延遲來換圖
                 setTimeout(() => {
-                    // 如果沒設定圖片，就給一個預設圖或根據名字生成
-                    cardImg.src = cardData[n] || `img/default-card.png`;
-                    cardImg.style.opacity = '1';
-                }, 200);
+                    // 取得對應圖片，如果沒有設定就用預設圖
+                    const data = cardData[n] || { 
+                        bg: "img/default-bg.jpg", 
+                        char: "img/default-char.png" 
+                    };
+
+                    // 換背景圖
+                    bgLayer.src = data.bg;
+                    
+                    // 換人物圖
+                    charLayer.src = data.char;
+
+                    // 3. 背景載入後，人物稍微延遲一點點再滑入
+                    // 這裡的 setTimeout 是為了讓瀏覽器偵測到 class 變化產生動畫
+                    setTimeout(() => {
+                        charLayer.style.opacity = '1'; // 確保透明度回覆
+                        charLayer.classList.add('show-anim');
+                    }, 100); 
+
+                }, 50);
             };
             grid.appendChild(div);
         });
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
