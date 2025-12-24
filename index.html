@@ -14,14 +14,25 @@
 
 
 <body>
-    <div id="header-placeholder"></div>
-    <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            });
-    </script>
+  <header class="custom-header">
+    <div class="header-container">
+        <a class="logo-link" href="index.html">
+            <img src="img/logo.png" alt="Logo" class="header-logo">
+        </a>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav class="nav-links">
+            <a href="introduction.html" class="nav-item-link">INTRODUCTION</a>
+            <a href="character.html" class="nav-item-link">CHARACTER</a>
+            <a href="resource.html" class="nav-item-link">RESOURCE</a>
+            <a href="pla.html" class="nav-item-link">PLATFORM</a>
+        </nav>
+    </div>
+</header>
 
 
 
