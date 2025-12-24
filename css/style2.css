@@ -470,3 +470,113 @@ body {
         grid-template-columns: repeat(2, 1fr); /* 手機版改 2 欄 */
     }
 }
+
+/* 定義動畫：剪影 -> 閃光 -> 現身 */
+/* 定義剪影閃現動畫 */
+/* 定義動畫：高速動態滑入 (Cyber Kinetic) */
+/* 定義動畫：剪影掃描加載 (Silhouette Scan Load) *//* 定義動畫：全息投影實體化 (Hologram Stabilization) */
+@keyframes holoStabilize {
+    /* 0% 起始：瞬間出現，但狀態極不穩定
+       - scaleY(1.3): 像光束一樣垂直拉長
+       - brightness(2) contrast(2): 過度曝光和高對比，模擬能量強烈的感覺
+       - hue-rotate(90deg): 色相偏移，讓顏色看起來像故障的數位雜訊
+       - blur(5px): 模糊不清
+    */
+    0% {
+        opacity: 1;
+        transform: scaleY(1.3) scaleX(0.95); 
+        filter: brightness(2) contrast(2) hue-rotate(90deg) blur(5px);
+    }
+    
+    /* 30% 撞擊點：快速縮回正常比例，產生衝擊感
+       - transform: scale(1): 回到正常大小
+       - 濾鏡稍微收斂，但還是不正常的狀態
+    */
+    30% {
+        transform: scale(1);
+        filter: brightness(1.5) contrast(1.2) hue-rotate(45deg) blur(2px);
+    }
+
+    /* 100% 結束：掃描完成，變回正常立繪
+       - 所有濾鏡歸零，變回清晰原圖
+    */
+    100% {
+        transform: scale(1);
+        filter: brightness(1) contrast(1) hue-rotate(0deg) blur(0);
+    }
+}
+
+/* 這是要加在圖片上的 class */
+.show-anim {
+    /* 0.8s = 整個過程快速有力
+       ease-out = 結尾時速度慢下來，有穩定下來的感覺
+    */
+    animation: holoStabilize 0.8s ease-out forwards;
+    
+    /* 加一個從上往下的亮光掃描線效果 (利用偽元素模擬) */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 利用 ::after 偽元素製作一道從上往下的掃描光波 */
+.show-anim::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -25%;
+    width: 150%;
+    height: 50%;
+    /* 一道亮白色的漸層光條 */
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.8), transparent);
+    /* 光條往下移動的動畫 */
+    animation: scanDown 0.8s ease-out forwards;
+    pointer-events: none; /* 確保光波不會擋住滑鼠點擊 */
+}
+
+/* 定義光波移動的動畫 */
+/* 定義動畫：滑入 -> 剪影 -> 顯色 */
+@keyframes slideAndColor {
+    /* 0% ~ 40%: 入場階段 
+       - 從左邊 (-50px) 滑進來
+       - 保持全黑 (brightness 0)
+    */
+    0% {
+        opacity: 0;
+        transform: translateX(-50px); 
+        filter: brightness(0);
+    }
+    40% {
+        opacity: 1;
+        transform: translateX(0); /* 站定位 */
+        filter: brightness(0);    /* 還是全黑 */
+    }
+
+    /* 40% ~ 60%: 停頓階段 (展示剪影)
+       - 讓觀眾看清楚輪廓 0.2~0.3秒
+    */
+    60% {
+        filter: brightness(0); 
+    }
+
+    /* 100%: 顯色階段
+       - 顏色浮現
+    */
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: brightness(1); /* 恢復原色 */
+    }
+}
+
+/* 應用動畫 */
+.show-anim {
+    /* 1s = 總時間
+       ease-out = 減速停止，會有比較帥的煞車感
+    */
+    animation: slideAndColor 1s ease-out forwards;
+}
+
+/* 預設狀態 */
+#char-layer {
+    opacity: 0; /* 預設隱藏 */
+}
