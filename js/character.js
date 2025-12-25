@@ -39,8 +39,8 @@ const cardData = {
         size: "85%" 
     },
     "安德瓦": { bg: "img/background/hero/fire.png", char: "img/characters/HERO/endeavor.png" },
-    "霍克斯": { bg: "img/background/hero/bird.png", char: "img/characters/HERO/hawks.png", size: "120%" },
-    "最佳牛仔褲時尚名人": { bg: "img/background/hero/jeans.png", char: "img/characters/HERO/jeans.png", pos: "-20%" },
+    "霍克斯": { bg: "img/background/hero/bird.png", char: "img/characters/HERO/hawks.png"},
+    "最佳牛仔褲時尚名人": { bg: "img/background/hero/jeans.png", char: "img/characters/HERO/jeans.png", pos: "-35%" },
     "暴力虎鯨": { bg: "img/background/V/shigaraki.png", char: "img/characters/HERO/gang orca.png" },
     "夜目爵士": { bg: "img/background/hero/eye.png", char: "img/characters/HERO/sir nighteye.png" },
     "紙鋒射手": { bg: "img/background/hero/ninjia.png", char: "img/characters/HERO/edgeshot.png" },
@@ -56,7 +56,7 @@ const cardData = {
     "物間寧人": { bg: "img/background/V/shigaraki.png", char: "img/characters/SCHOOL/neito.png" },
     "心操人使": { bg: "img/background/school/shinso.png", char: "img/characters/SCHOOL/shinso.png" },
     "通行百萬": { bg: "img/background/school/mirio.png", char: "img/characters/SCHOOL/MIRIO.png" },
-    "天喰環": { bg: "img/background/school/tamaki.png", char: "img/characters/SCHOOL/tamaki.png", size: "200%", pos: "-30%" },
+    "天喰環": { bg: "img/background/school/tamaki.png", char: "img/characters/SCHOOL/tamaki.png",  pos: "-30%" },
     "波動螺卷": { bg: "img/background/school/hado.png", char: "img/characters/SCHOOL/hado.png" },
 };
 
