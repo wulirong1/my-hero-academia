@@ -126,7 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.remove('active');
             gsap.to(card, {
                 opacity: 0, scale: 0.8, duration: 0.2, overwrite: true,
-                onComplete: () => { gsap.set(card, { display: 'none' }); item.style.zIndex = "1"; }
+                onComplete: () => {
+                    gsap.set(card, { display: 'none' });
+                    item.style.zIndex = "1"; // 關閉時回到原本高度
+                }
             });
         });
         gsap.to(overlay, { autoAlpha: 0, pointerEvents: "none", duration: 0.2 });
@@ -136,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.closeAllAnime) window.closeAllAnime();
         const detailCard = item.querySelector('.manga-detail-card');
         item.classList.add('active');
-        item.style.zIndex = "1001";
+        item.style.zIndex = "3100";
 
         gsap.to(overlay, { autoAlpha: 1, pointerEvents: "auto", duration: 0.3 });
         gsap.set(detailCard, { display: 'flex' });

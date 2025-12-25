@@ -90,11 +90,8 @@
     white-space: pre-wrap;
     word-wrap: break-word;
     line-height: 1.6;
-    /* 稍微增加行高，閱讀起來更舒服 */
 }
 
-
-/* 視覺提示：查看更多 */
 .view-more-hint {
     color: #555;
     font-size: 0.9rem;
@@ -109,9 +106,8 @@
     line-height: 1.6;
     margin-top: 10px;
     color: #000;
-    /* 保留換行空間，但不使用 webkit-box */
     display: block;
-    max-height: 4.8em; /* 1.6 行高 * 3 行 = 4.8em，確保高度固定 */
+    max-height: 4.8em; 
     overflow: hidden;
     word-break: break-all;
 }

@@ -15,16 +15,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
 
 
-        <link rel="stylesheet" href="css/resource.css">
+
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/resource.css">
 </head>
 
 <body>
-
-
-
 
         <div id="loading-screen">
                 <div class="loading-content">
@@ -34,7 +32,26 @@
                         <p class="loading-text">LOADING...</p>
                 </div>
         </div>
+        <header class="custom-header">
+                <div class="header-container">
+                        <a class="logo-link" href="index.html">
+                                <img src="img/logo.png" alt="Logo" class="header-logo">
+                        </a>
 
+                        <div class="menu-toggle" id="mobile-menu">
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                        </div>
+
+                        <nav class="nav-links">
+                                <a href="introduction.html" class="nav-item-link">INTRODUCTION</a>
+                                <a href="character.html" class="nav-item-link">CHARACTER</a>
+                                <a href="resource.html" class="nav-item-link">RESOURCE</a>
+                                <a href="pla.html" class="nav-item-link">PLATFORM</a>
+                        </nav>
+                </div>
+                <div class="line"></div>
+        </header>
         <div id="manga-overlay"></div>
 
         <div id="anime-detail-portal" class="anime-detail-card">
@@ -54,7 +71,7 @@
                                 </div>
                         </section>
 
-                        <div class="line my-5"></div>
+                        <div class="content-line my-5"></div>
 
                         <section>
                                 <h2 class="container manga-title mb-4">Manga</h2>
@@ -64,10 +81,11 @@
                                 </div>
                         </section>
                 </div>
+
         </main>
 
         <footer class="container footer">
-                <div class="line"></div>
+                <div class="content-line"></div>
                 <div class="footer-content">
                         <div class="footer-left-group">
                                 <div class="footer-info">
@@ -90,13 +108,13 @@
         </footer>
 
         <button id="back-to-top" title="Go to top">
-                <img  src="img/feather.png" alt="Top" style="width: 40px;"> TOP
+                <img src="img/feather.png" alt="Top" style="width: 40px;"> TOP
         </button>
         <script src="js\top.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
                 crossorigin="anonymous"></script>
-        
+
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
         <script src="js/anime.js"></script>
         <script src="js/manga.js"></script>

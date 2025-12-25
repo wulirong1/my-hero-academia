@@ -4,6 +4,8 @@ footer {
     font-weight: 600;
     max-width: 1400px;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-content {
@@ -24,15 +26,15 @@ footer {
     margin-left: 15px;
 }
 
+.line {
+    border: none;
+    height: 6px;
+    background-color: #000;
+    width: calc(100% - 100px);
+    margin: 10px auto 20px auto;
+    opacity: 1;
+}
 
-/*
-========================================
-    RWD 媒體查詢 (Media Queries)
-========================================
-*/
-
-
-/* --- M 尺寸 (平板 >= 768px) --- */
 @media (min-width: 768px) {
     .footer-content {
         flex-direction: row;
@@ -48,7 +50,6 @@ footer {
     }
 }
 
-/* --- L 尺寸 (桌機 >= 992px) --- */
 @media (min-width: 992px) {
 
     .footer-content {
