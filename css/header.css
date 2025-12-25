@@ -1,304 +1,601 @@
 /* --- 1. 全域背景與基礎重設 --- */
+
 * { box-sizing: border-box; }
+
 html, body { margin: 0; padding: 0; background-color: #EBC045 !important; min-height: 100vh; }
 
+
+
 /* --- 2. 電腦版 Header 樣式 --- */
+
 /* .custom-header {
+
     background-color: #EBC045;
+
     width: 100%;
+
     position: relative;
+
     z-index: 2000;
+
 } */
+
 body {
-    padding-top: 120px; 
+
+    padding-top: 120px;
+
 }
+
 .custom-header {
+
     background-color: #EBC045;
+
     width: 100%;
+
     /* --- 關鍵修改：變更為固定定位 --- */
-    position: fixed; 
+
+    position: fixed;
+
     top: 0;
+
     left: 0;
+
     /* -------------------------- */
+
     z-index: 2000;
+
 }
+
+
 
 .header-container {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     padding: 15px 5%;
+
     max-width: 1400px;
+
     margin: 0 auto;
+
 }
+
+
 
 .header-logo {
+
     height: 90px;
+
     width: auto;
+
     display: block;
+
 }
+
+
 
 .nav-links {
+
     display: flex;
+
     gap: 15px;
+
     transform: translateY(10px); /* 字體下移 */
+
 }
+
+
 
 .nav-item-link {
+
     font-family: 'Koulen', cursive;
+
     font-size: 32px;
+
     color: #000;
+
     text-decoration: none;
+
     padding: 8px 18px;
+
     line-height: 1;
+
     transition: all 0.3s ease;
+
     border-radius: 8px;
+
 }
+
+
 
 .nav-item-link:hover {
+
     background-color: #D64535 !important;
+
     color: #FFFFFF !important;
+
 }
+
+
 
 /* --- 3. 置中黑線：完全固定位置 --- */
-.header-line {
-    position: fixed;
-    top: 110px;     
-    left: 50%;
-    transform: translateX(-50%); 
-    height: 7px;
-    background-color: #000;
-    width: 90%;      
+
+.line {
+
+    height: 7px !important;
+
+    background-color: #000 !important;
+
+    width: 90% !important;
+
     max-width: 1300px;
-    z-index: 2000;
-    border: none;
-    padding-bottom: 0;
-    margin-bottom: 0   ;
+
+    margin: 0 auto !important;
+
+    display: block;
+
+    border: none !important;
+
+    position: fixed;
+
+    z-index: 500;
+
+    transform: translateX(-50%);
+
+    left: 50%;
+
 }
 
-/* 手機版 RWD */
-@media screen and (max-width: 768px) {
-    .header-line {
-        top: 50px;     /* 配合你手機版 Header 的高度 */
-        width: 90% !important;
-    }
-}
+/* .line {
+
+    position: fixed;
+
+    top: 110px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 1999;
+
+} */
+
 
 
 /* --- 4. 漢堡按鈕：兩條線樣式 --- */
+
 .menu-toggle {
+
     display: none;
+
     flex-direction: column;
+
     cursor: pointer;
+
     gap: 10px;
+
     padding: 10px;
+
     z-index: 2100;
+
 }
+
+
 
 .bar {
+
     display: block;
+
     width: 35px;
+
     height: 4px;
+
     background-color: #000;
+
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
     border-radius: 2px;
+
 }
+
+
 
 /* --- 平板版樣式 (769px - 1024px) --- */
+
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-    body { 
+
+    body {
+
         padding-top: 120px;
-        padding-top: 80px !important; 
+
+        padding-top: 80px !important;
+
     }
+
+
 
     .custom-header {
+
         position: fixed;
+
         top: 0;
+
         left: 0;
+
         width: 100%;
-        height: 65px; 
+
+        height: 65px;
+
         background-color: #EBC045;
+
         z-index: 2000;
+
         display: flex;
+
         align-items: center;
+
     }
+
+
 
     .header-container {
+
         width: 100% !important;
+
         max-width: none !important;
+
         /* 調整這裡：30px 是離左右邊界的距離，你可以根據感覺調成 20px 或 40px */
-        padding: 0 30px !important; 
+
+        padding: 0 30px !important;
+
         display: flex;
+
         justify-content: space-between;
+
         align-items: center;
+
         margin: 0 !important;
+
     }
+
+
 
     .header-logo {
-        height: 40px !important; 
+
+        height: 40px !important;
+
         width: auto;
+
     }
 
+
+
     .nav-links {
+
         display: flex !important;
+
         transform: none !important;
+
         gap: 12px; /* 稍微加大一點選單之間的間距 */
+
     }
+
+
 
     .nav-item-link {
+
         font-size: 18px !important;
+
         padding: 5px 12px !important;
+
     }
+
 .line {
+
         position: fixed;
+
         top: 65px;
+
         left: 50%;               /* 移至畫面中間 */
+
         transform: translateX(-50%); /* 修正置中偏移 */
+
         width: 92% !important;   /* 控制黑線長度，92% 代表左右各留 4% 空白 */
+
         height: 5px !important;
+
         margin: 0 !important;
+
         z-index: 1999;
+
             /* 可選：讓線段兩端變圓潤，更有設計感 */
+
     }
+
 }
+
 /* @media screen and (max-width: 768px) {
+
     .menu-toggle { display: flex; }
+
     .menu-toggle.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+
     .menu-toggle.active .bar:nth-child(2) { transform: translateY(-7px) rotate(-45deg); }
 
+
+
     .nav-links {
+
         display: flex;
-        position: absolute; 
-        top: 100%; 
+
+        position: absolute;
+
+        top: 100%;
+
         left: 0;
+
         width: 100%;
+
         background-color: #D64535;
+
         flex-direction: column;
+
         gap: 0;
+
         transform: translateY(0);
-        max-height: 0; 
+
+        max-height: 0;
+
         overflow: hidden;
+
         z-index: 1500;
+
         text-align: center;
+
         transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s;
+
         margin: 0;
-        padding: 0; 
+
+        padding: 0;
+
     }
+
+
+
 
 
     .nav-links.show {
+
         max-height: 300px;
+
         padding: 15px 0;
+
         border-bottom: 5px solid #000;
+
     }
 
+
+
     .nav-item-link {
-        color: #FFF !important; 
+
+        color: #FFF !important;
+
         font-size: 32px;
+
         padding: 12px;
+
         width: 100%;
+
         display: block;
+
     }
+
 } */
+
+
+
+
 
 
 
 /* --- ------------------手機--------------- --- */
 
+
+
 @media screen and (max-width: 768px) {
+
     /* 1. 讓 Header 本體變細 */
+
     .custom-header {
+
         position: fixed;
+
         top: 0;
+
         left: 0;
+
         width: 100%;
+
         height: 50px; /* 縮減高度，原本可能很厚，現在只有 50px */
+
         background-color: #EBC045;
+
         z-index: 99999 !important;
+
         display: flex;
+
         align-items: center;
+
     }
+
+
 
     .header-container {
+
         width: 100% !important;
+
         padding: 0 20px !important;
+
         display: flex;
+
         justify-content: space-between;
+
         align-items: center;
+
     }
+
+
 
     /* 2. Logo 隨之縮小 */
+
     .header-logo {
+
         height: 32px !important; /* 配合 50px 的 Header，Logo 32px 最精緻 */
+
         width: auto;
+
     }
+
+
 
     /* 3. 漢堡按鈕 (完美保留你的邏輯，僅縮小尺寸) */
-    .menu-toggle { 
-        display: flex; 
+
+    .menu-toggle {
+
+        display: flex;
+
         gap: 6px; /* 稍微縮小間距，看起來更精緻 */
+
     }
+
+
 
     .bar {
+
         width: 25px; /* 稍微變短 */
+
         height: 3px; /* 稍微變細 */
+
     }
+
+
 
     /* 兩條線變叉叉 (保留你原本的 transform 數值) */
+
     .menu-toggle.active .bar:nth-child(1) { transform: translateY(4.5px) rotate(45deg); }
+
     .menu-toggle.active .bar:nth-child(2) { transform: translateY(-4.5px) rotate(-45deg); }
 
+
+
     /* 4. 黑線設定：不要碰邊 + 緊貼 Header */
+
     .line {
+
         position: fixed;
+
         top: 50px; /* 對齊 50px 的 Header */
+
         left: 50%;
+
         transform: translateX(-50%);
+
         width: 90% !important;
+
         height: 4px !important;
+
         margin: 0 !important;
+
         z-index: 1999;
+
     }
+
+
 
     /* 5. 下拉選單 (保留你完美的動畫邏輯) */
+
     .nav-links {
+
         display: flex;
-        position: absolute; 
+
+        position: absolute;
+
         top: 50px; /* 修改為 50px 以貼合瘦身後的 Header */
+
         left: 0;
+
         width: 100%;
+
         background-color: #D64535;
+
         flex-direction: column;
+
         gap: 0;
+
         transform: translateY(0);
-        
-        max-height: 0; 
+
+       
+
+        max-height: 0;
+
         overflow: hidden;
+
         z-index: 1500;
+
         text-align: center;
-        
+
+       
+
         transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s;
+
         margin: 0;
-        padding: 0; 
+
+        padding: 0;
+
     }
+
+
 
     /* 展開狀態 */
+
     .nav-links.show {
-        max-height: 300px; 
+
+        max-height: 300px;
+
         padding: 10px 0; /* 縮減一點 padding 讓選單也細一點 */
+
         border-bottom: 5px solid #000;
+
     }
+
+
 
     .nav-item-link {
-        color: #FFF !important; 
+
+        color: #FFF !important;
+
         font-size: 26px; /* 原本 32px 有點大，縮到 26px 比較符合「細小」感 */
+
         padding: 10px;
+
         width: 100%;
+
         display: block;
+
     }
 
+
+
     /* 6. Body 預留空間修正 */
+
     body {
-        padding-top: 65px !important; 
+
+        padding-top: 65px !important;
+
     }
+
 }
