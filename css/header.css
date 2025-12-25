@@ -1,8 +1,16 @@
 /* --- 1. 全域背景與基礎重設 --- */
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
-html, body { margin: 0; padding: 0; background-color: #EBC045 !important; min-height: 100vh; }
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EBC045 !important;
+    min-height: 100vh;
+}
 
 
 
@@ -84,7 +92,8 @@ body {
 
     gap: 15px;
 
-    transform: translateY(10px); /* 字體下移 */
+    transform: translateY(10px);
+    /* 字體下移 */
 
 }
 
@@ -280,7 +289,8 @@ body {
 
         transform: none !important;
 
-        gap: 12px; /* 稍微加大一點選單之間的間距 */
+        gap: 12px;
+        /* 稍微加大一點選單之間的間距 */
 
     }
 
@@ -294,17 +304,20 @@ body {
 
     }
 
-.line {
+    .line {
 
         position: fixed;
 
         top: 65px;
 
-        left: 50%;               /* 移至畫面中間 */
+        left: 50%;
+        /* 移至畫面中間 */
 
-        transform: translateX(-50%); /* 修正置中偏移 */
+        transform: translateX(-50%);
+        /* 修正置中偏移 */
 
-        width: 92% !important;   /* 控制黑線長度，92% 代表左右各留 4% 空白 */
+        width: 92% !important;
+        /* 控制黑線長度，92% 代表左右各留 4% 空白 */
 
         height: 5px !important;
 
@@ -312,7 +325,7 @@ body {
 
         z-index: 1999;
 
-            /* 可選：讓線段兩端變圓潤，更有設計感 */
+        /* 可選：讓線段兩端變圓潤，更有設計感 */
 
     }
 
@@ -420,7 +433,8 @@ body {
 
         width: 100%;
 
-        height: 50px; /* 縮減高度，原本可能很厚，現在只有 50px */
+        height: 50px;
+        /* 縮減高度，原本可能很厚，現在只有 50px */
 
         background-color: #EBC045;
 
@@ -454,7 +468,8 @@ body {
 
     .header-logo {
 
-        height: 32px !important; /* 配合 50px 的 Header，Logo 32px 最精緻 */
+        height: 32px !important;
+        /* 配合 50px 的 Header，Logo 32px 最精緻 */
 
         width: auto;
 
@@ -468,7 +483,8 @@ body {
 
         display: flex;
 
-        gap: 6px; /* 稍微縮小間距，看起來更精緻 */
+        gap: 6px;
+        /* 稍微縮小間距，看起來更精緻 */
 
     }
 
@@ -476,9 +492,11 @@ body {
 
     .bar {
 
-        width: 25px; /* 稍微變短 */
+        width: 25px;
+        /* 稍微變短 */
 
-        height: 3px; /* 稍微變細 */
+        height: 3px;
+        /* 稍微變細 */
 
     }
 
@@ -486,9 +504,13 @@ body {
 
     /* 兩條線變叉叉 (保留你原本的 transform 數值) */
 
-    .menu-toggle.active .bar:nth-child(1) { transform: translateY(4.5px) rotate(45deg); }
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(4.5px) rotate(45deg);
+    }
 
-    .menu-toggle.active .bar:nth-child(2) { transform: translateY(-4.5px) rotate(-45deg); }
+    .menu-toggle.active .bar:nth-child(2) {
+        transform: translateY(-4.5px) rotate(-45deg);
+    }
 
 
 
@@ -498,7 +520,8 @@ body {
 
         position: fixed;
 
-        top: 50px; /* 對齊 50px 的 Header */
+        top: 50px;
+        /* 對齊 50px 的 Header */
 
         left: 50%;
 
@@ -524,7 +547,8 @@ body {
 
         position: absolute;
 
-        top: 50px; /* 修改為 50px 以貼合瘦身後的 Header */
+        top: 50px;
+        /* 修改為 50px 以貼合瘦身後的 Header */
 
         left: 0;
 
@@ -538,7 +562,7 @@ body {
 
         transform: translateY(0);
 
-       
+
 
         max-height: 0;
 
@@ -548,7 +572,7 @@ body {
 
         text-align: center;
 
-       
+
 
         transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s;
 
@@ -566,7 +590,8 @@ body {
 
         max-height: 300px;
 
-        padding: 10px 0; /* 縮減一點 padding 讓選單也細一點 */
+        padding: 10px 0;
+        /* 縮減一點 padding 讓選單也細一點 */
 
         border-bottom: 5px solid #000;
 
@@ -578,7 +603,8 @@ body {
 
         color: #FFF !important;
 
-        font-size: 26px; /* 原本 32px 有點大，縮到 26px 比較符合「細小」感 */
+        font-size: 26px;
+        /* 原本 32px 有點大，縮到 26px 比較符合「細小」感 */
 
         padding: 10px;
 
