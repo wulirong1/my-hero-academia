@@ -1,10 +1,8 @@
-
 const cardData = {
-    // === A班 (目前維持原樣) ===
     "綠谷出久": { bg: "img/background/A/deku.png", char: "img/characters/A/deku.png" },
     "爆豪勝己": { bg: "img/background/A/boom.png", char: "img/characters/A/bakugo.png" },
     "轟焦凍": { bg: "img/background/A/shoto.png", char: "img/characters/A/todoloki.png" },
-    "八百萬百": { bg: "img/background/A/momo.png", char: "img/characters/A/yaoyorozu.png", size: "120%", pos: "-20%" },
+    "八百萬百": { bg: "img/background/A/momo.png", char: "img/characters/A/yaoyorozu.png", pos: "-20%" },
     "麗日御茶子": { bg: "img/background/A/ochaku.png", char: "img/characters/A/ochako.png" },
     "飯田天哉": { bg: "img/background/A/rice.png", char: "img/characters/A/tenya.png" },
     "葉隱透": { bg: "img/background/A/toru.png", char: "img/characters/A/hagakule.png" },
@@ -22,7 +20,6 @@ const cardData = {
     "口田甲司": { bg: "img/background/A/koji.png", char: "img/characters/A/koda.png" },
     "砂藤力道": { bg: "img/background/A/sato.png", char: "img/characters/A/sato.png", size: "105%" },
 
-    // === 敵聯合 ===
     "死柄木弔": {
         bg: "img/background/enimy/hand.png",
         char: "img/characters/ENIMY/tomura.png",
@@ -36,7 +33,6 @@ const cardData = {
     "編織者": { bg: "img/background/enimy/spin.png", char: "img/characters/ENIMY/spin.png" },
     "AFO": { bg: "img/background/enimy/AFO.png", char: "img/characters/ENIMY/AFO.png" },
 
-    // === 職業英雄 ===
     "歐爾麥特": {
         bg: "img/background/hero/allmight.png",
         char: "img/characters/HERO/allmight.png",
@@ -64,11 +60,7 @@ const cardData = {
     "波動螺卷": { bg: "img/background/school/hado.png", char: "img/characters/SCHOOL/hado.png" },
 };
 
-// =========================================================================
-// 2. 超級工廠函數 (這裡就是 setupSection，它現在負責產生所有按鈕功能)
-// =========================================================================
-
-function setupSection(namesArray, gridId, bgId, charId, backId) { // <--- 新增 backId 參數
+function setupSection(namesArray, gridId, bgId, charId, backId) { 
     const grid = document.getElementById(gridId);
     const bgImg = document.getElementById(bgId);
     const charImg = document.getElementById(charId);
@@ -76,29 +68,20 @@ function setupSection(namesArray, gridId, bgId, charId, backId) { // <--- 新增
 
     if (!grid || !bgImg || !charImg || !backImg) return;
 
-    // --- 定義：核心切換功能的函數 (讓按鈕和卡背都可以呼叫它) ---
     function performSwitch(name) {
-        // 1. 先把卡背「翻開」(隱藏)
         backImg.classList.add('flipped');
-
-        // 2. 歸零舊人物狀態
         charImg.classList.remove('show-anim');
         charImg.style.opacity = '0';
         charImg.style.width = '';
         charImg.style.right = '';
-
-        // 3. 偵測螢幕
         const screenWidth = window.innerWidth;
         const isTablet = screenWidth <= 1200 && screenWidth > 768;
         const isMobile = screenWidth <= 768;
-
-        // 4. 換圖與應用設定
         setTimeout(() => {
             const data = cardData[name] || { bg: "img/default-bg.jpg", char: "img/default-char.png" };
             bgImg.src = data.bg;
             charImg.src = data.char;
 
-            // 尺寸與位置邏輯
             let finalSize = data.size;
             if (isTablet && data.tabletSize) finalSize = data.tabletSize;
             if (isMobile && data.mobileSize) finalSize = data.mobileSize;
@@ -107,10 +90,20 @@ function setupSection(namesArray, gridId, bgId, charId, backId) { // <--- 新增
             if (isTablet && data.tabletPos) finalPos = data.tabletPos;
             if (isMobile && data.mobilePos) finalPos = data.mobilePos;
 
-            if (finalSize) charImg.style.width = finalSize;
-            if (finalPos) charImg.style.right = finalPos;
+            if (finalSize) {
+                charImg.style.width = finalSize;
+                charImg.style.height = 'auto'; 
+            } else {
+                charImg.style.width = '';
+                charImg.style.height = ''; 
+            }
 
-            // 5. 顯示人物動畫
+            if (finalPos) {
+                charImg.style.right = finalPos;
+            } else {
+                charImg.style.right = '';
+            }
+
             setTimeout(() => {
                 charImg.style.opacity = '1';
                 charImg.classList.add('show-anim');
@@ -118,56 +111,53 @@ function setupSection(namesArray, gridId, bgId, charId, backId) { // <--- 新增
         }, 50);
     }
 
-    // --- A. 設定卡背點擊事件 ---
-    // 點擊卡背 -> 顯示列表中的「第一個人」
     backImg.onclick = () => {
+        if (backId === 'back-layer-A') {
+            const handHint = document.querySelector('.click-hint-hand');
+            if (handHint) {
+                handHint.style.display = 'none';
+            }
+        }
         if (namesArray.length > 0) {
-            performSwitch(namesArray[0]); // 呼叫第一個人
+            performSwitch(namesArray[0]); 
         }
     };
 
-    // --- B. 產生名字按鈕 ---
     namesArray.forEach(name => {
         const div = document.createElement('div');
         div.className = 'name-btn';
         div.innerText = name;
         div.onclick = () => {
-            performSwitch(name); // 點擊按鈕也呼叫同一個切換函數
+            if (backId === 'back-layer-A') {
+                const handHint = document.querySelector('.click-hint-hand');
+                if (handHint) handHint.style.display = 'none';
+            }
+            performSwitch(name); 
         };
         grid.appendChild(div);
     });
 }
-// =========================================================================
-// 3. 呼叫工廠 (啟動四個區塊)
-// =========================================================================
 
-// A班
 setupSection(
     ["葉隱透", "障子目藏", "尾白猿夫", "青山優雅", "爆豪勝己", "耳郎響香", "上鳴電氣", "蘆戶三奈", "綠谷出久", "瀨呂範太", "切島銳兒郎", "蛙吹梅雨", "峰田實", "常闇踏陰", "口田甲司", "飯田天哉", "八百萬百", "轟焦凍", "砂藤力道", "麗日御茶子"],
     'name-grid', 'bg-layer', 'char-layer', 'back-layer-A'
 );
 
-// 敵聯合
 setupSection(
     ["死柄木弔", "黑霧", "荼毘", "渡我被身子", "雙倍", "壓縮先生", "編織者", "AFO"],
     'grid-villain', 'bg-layer-villain', 'char-layer-villain', 'back-layer-villain'
 );
 
-// 職業英雄
 setupSection(
     ["歐爾麥特", "安德瓦", "霍克斯", "最佳牛仔褲時尚名人", "夜目爵士", "紙鋒射手", "經典老爺車", "肥膠"],
     'grid-hero', 'bg-layer-hero', 'char-layer-hero', 'back-layer-hero'
 );
 
-// 學校人士
 setupSection(
     ["根津校長", "相澤消太", "禮物麥克風", "心操人使", "通行百萬", "天喰環", "波動螺卷"],
     'grid-staff', 'bg-layer-staff', 'char-layer-staff', 'back-layer-staff'
 );
 
-// =========================================================================
-// 4. 漢堡選單 (如果你有的話)
-// =========================================================================
 document.addEventListener('DOMContentLoaded', function () {
     const menu = document.querySelector('#mobile-menu');
     const nav = document.querySelector('.nav-links');

@@ -126,7 +126,7 @@
                 <div class="text-box">
                     <h2 class="section-title-custom">動畫製作團隊</h2>
                     <p class="content-text">
-                        電視動畫由日本知名的動畫製作公司「BONES」（骨頭社）操刀製作，該公司以極高水準的戰鬥作畫與流暢的動作場面聞名業界。自2016年首播以來，製作團隊不僅忠實還原了堀越耕平筆下獨特的美式漫畫風格，更透過導演長崎健司與劇本統籌黑田洋介的精心編排，將原作的熱血與感動完美呈現。此外，由林友樹負責的配樂（OST）更是動畫的一大亮點，激昂的旋律成功打造了無數經典的名場面。
+                        電視動畫由日本知名的動畫製作公司「BONES」（骨頭社）操刀製作，該公司以極高水準的戰鬥作畫與流暢的動作場面聞名業界。自2016年首播以來，製作團隊不僅忠實還原了堀越耕平筆下獨特的漫畫風格，更透過導演長崎健司與劇本統籌黑田洋介的精心編排，將原作的熱血與感動完美呈現。此外，由林友樹負責的配樂（OST）更是動畫的一大亮點，激昂的旋律成功打造了無數經典的名場面。
                     </p>
                 </div>
                 <div class="img-box">
@@ -172,6 +172,51 @@
     crossorigin="anonymous"></script>
 <script src="js\loading.js"></script>
 <script src="js/burger.js"></script>    
+
+
+<button id="back-to-top" title="Go to top">
+    <img src="img/feather.png" alt="Top" style="width: 40px;"> TOP
+</button>
+<script src="js/top.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+<script src="js/loading.js"></script>
+<script src="js/burger.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 設定觀察選項：只要看到 20% 的區塊，就觸發
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                // 如果進入視窗
+                if (entry.isIntersecting) {
+                    // 幫該區塊加上 .show class，CSS 動畫就會開始跑
+                    entry.target.classList.add('show');
+                    // 動畫跑一次就好，跑完取消觀察
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        // 抓取所有的 .intro-row 進行觀察
+        document.querySelectorAll('.intro-row').forEach(el => {
+            observer.observe(el);
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
 </body>
 
 </html>

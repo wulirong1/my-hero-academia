@@ -191,7 +191,49 @@
         crossorigin="anonymous"></script>
     <script src="js\loading.js"></script>
     <script src="js/burger.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const charImg = document.getElementById('scroll-char-img');
+                const flyImg = "img/deku_fly.png";   
+        const landImg = "img/deku_land.png"; 
 
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', function() {
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const currentScroll = window.scrollY;
+            let scrollPercent = currentScroll / scrollableHeight;
+            if (scrollPercent < 0) scrollPercent = 0;
+            if (scrollPercent > 1) scrollPercent = 1;
+            const trackLength = window.innerHeight - charImg.offsetHeight;
+            const yPos = scrollPercent * trackLength;
+
+            const wobble = Math.sin(currentScroll * 0.005) * 20;
+            let transformStyle = `translate(${wobble}px, ${yPos}px)`; 
+          
+            if (currentScroll < lastScrollTop) {
+                transformStyle += ` scaleY(-1)`;
+            }
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            charImg.style.transform = transformStyle;
+
+            if (scrollPercent >= 0.99) {
+                if (charImg.getAttribute('src') !== landImg) {
+                    charImg.src = landImg;
+                }
+            } else {
+                if (charImg.getAttribute('src') !== flyImg) {
+                    charImg.src = flyImg;
+                }
+            }
+        });
+    });
+</script>
+
+<div id="scroll-character-container">
+        <img id="scroll-char-img" src="img/deku_fly.png" alt="Scroll Character">
+    </div>
 </body>
 
 </html>
