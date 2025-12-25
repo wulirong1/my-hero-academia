@@ -18,6 +18,12 @@ body {
     margin-bottom: 0%;
 
 }
+
+.item{
+    margin: 0%;
+    padding: 0%;
+}
+
 /* 全螢幕載入層 */
 #loading-screen {
     position: fixed;
