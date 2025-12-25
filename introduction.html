@@ -40,7 +40,29 @@
     </div>
     <div class="line"></div>
 </header>
+<script>
+    // 1. 漢堡選單邏輯
+    document.addEventListener('DOMContentLoaded', function() {
+        const menu = document.querySelector('#mobile-menu');
+        const nav = document.querySelector('.nav-links');
+        
+        if (menu) {
+            menu.onclick = function() {
+                // 切換 active class，讓漢堡變叉叉
+                menu.classList.toggle('active');
+                // 切換 show class，讓選單滑出來
+                nav.classList.toggle('show');
+            };
+        }
+    });
 
+    // 2. Footer 載入邏輯 (保留你原本的)
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        });
+</script>
 </body>
 </html>
 
@@ -88,6 +110,19 @@
                     </div>
                     <div class="img-box">
                         <img src="img/Horikoshi.jpg" alt="原作者介紹">
+                    </div>
+                </div>
+                <div class="content-line"></div>
+
+                <div class="intro-row">
+                    <div class="text-box">
+                        <h2 class="section-title-custom">動畫製作團隊</h2>
+                        <p class="content-text">
+                            電視動畫由日本知名的動畫製作公司「BONES」（骨頭社）操刀製作，該公司以極高水準的戰鬥作畫與流暢的動作場面聞名業界。自2016年首播以來，製作團隊不僅忠實還原了堀越耕平筆下獨特的美式漫畫風格，更透過導演長崎健司與劇本統籌黑田洋介的精心編排，將原作的熱血與感動完美呈現。此外，由林友樹負責的配樂（OST）更是動畫的一大亮點，激昂的旋律成功打造了無數經典的名場面。
+                        </p>
+                    </div>
+                    <div class="img-box">
+                        <img src="img\animalogo.png" alt="動畫製作團隊">
                     </div>
                 </div>
 

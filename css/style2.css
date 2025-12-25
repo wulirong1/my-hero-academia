@@ -36,7 +36,7 @@ html, body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px;
+    gap: 8px;
 }
 
 .news-card {
@@ -95,10 +95,9 @@ html, body {
 .news-card-link {
     text-decoration: none !important;
     display: block;
-    width: calc(50% - 20px);
+    width: calc(50% - 8px);
     /* 寬度佔一半 */
-    margin-bottom: 10px;
-}
+margin-bottom: 0;}
 
 /* 2. 翻轉容器：不要在這裡設定背景色或 padding */
 .news-card {
@@ -261,6 +260,16 @@ html, body {
     .news-text p {
         font-size: 16px; /* 字稍微縮小 */
     }
+    .news-grid {
+        gap: 10px; /* 原本可能是 20px，改成 10px */
+    }
+
+    /* 2. 卡片寬度配合間距調整 (維持一排兩個) */
+    .news-card-link {
+        /* 公式：(100% - gap) / 2 */
+        width: calc(50% - 5px); 
+        margin-bottom: 0; /* 移除額外的下邊距，交給 gap 控制 */
+    }
 }
 
 /* --- 手機版 (寬度 768px 以下) --- */
@@ -270,11 +279,16 @@ html, body {
     body {
         padding-top: 80px; /* 手機版 Header 比較矮，這裡可以減少 */
     }
-    
+    .news-grid {
+        gap: 5px; /* 上下卡片距離 15px，想要更緊湊可改 10px */
+    }
     /* 2. NEWS 卡片改為直向單欄排列 */
-    .news-card-link {
-        width: 100%; /* 手機上一行只放一張 */
-        margin-bottom: 20px;
+  .news-card-link {
+        width: 100%; /* 滿寬 */
+        
+        /* 關鍵：把原本的 margin-bottom: 20px 歸零 */
+        /* 因為我們已經用上面的 gap 來控制距離了 */
+        margin-bottom: 0; 
     }
 
     /* 調整卡片高度，如果內容不多可以稍微變矮，或者維持 300px */
@@ -330,7 +344,7 @@ html, body {
 
 
 
-/*-------------------------------------------------介紹頁--------------------------------------------------------------*/
+/*-------------------------------------------------介紹頁-------------------------------*/
 
 /* 頁面背景與基礎設定 */
 body {
