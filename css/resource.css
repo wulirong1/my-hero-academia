@@ -247,6 +247,24 @@
     text-align: center;
 }
 
+/* 在 resource.css 或 style.css 中修改 */
+.line {
+    display: block;    /* 確保它是塊級元素 */
+    width: calc(100% - 100px); /* 或者是固定寬度如 80% */
+    height: 6px;
+    background-color: #000;
+    border: none;
+    
+    /* 置中關鍵：左右 margin 設定為 auto */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    
+    position: relative; /* 確保它不會被 Fixed 定位蓋掉 */
+    opacity: 1;
+}
+
 /* ================= rwd ======================== */
 
 /* 電腦版 (寬度 768px 以上) */

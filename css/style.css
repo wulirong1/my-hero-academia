@@ -20,7 +20,6 @@ body {
     margin-bottom: 0%;
 
 }
-/*-------------------*/
 /* 全螢幕載入層 */
 #loading-screen {
     position: fixed;
@@ -42,14 +41,14 @@ body {
 
 /* 圖片呼吸動畫 */
 .loading-img {
-    width: 200px; /* 依需求調整大小 */
+    width: 200px;
     margin-bottom: 20px;
     animation: breathing 2s ease-in-out infinite;
 }
 
 @keyframes breathing {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); } /* 放大到 1.1 倍 */
+    50% { transform: scale(1.1); } 
 }
 
 /* 旋轉圓圈動畫 */
@@ -85,7 +84,7 @@ body {
     opacity: 1;
 }
 
-/************************ 回到頂部按鈕樣式 *******************************/
+/************************ 回到頂部按鈕 *******************************/
 /* 回到頂部按鈕樣式 */
 #back-to-top {
     position: fixed;
@@ -135,7 +134,7 @@ body {
         right: 20px;
     }
 }
-/************************ 回到頂部按鈕樣式結束 *******************************/
+/************************ 回到頂部按鈕結束 *******************************/
 
 
 
@@ -154,7 +153,6 @@ body {
     padding: 15px 0;
     font-weight: 600;
     font-size: 26px;
-    /* 加大按鈕文字 */
     text-decoration: none !important;
     border-radius: 4px;
     margin-bottom: 15px;
@@ -170,12 +168,11 @@ body {
 
     color: #fff;
     font-size: 18px;
-    /* 加大內容文字 */
     text-align: center;
     line-height: 1.6;
 }
 
-/* 手機版適配 */
+
 @media (max-width: 767px) {
 
     .manga-detail-card,
