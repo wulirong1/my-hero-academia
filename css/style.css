@@ -75,12 +75,17 @@ body {
 }
 
 /* 分割線樣式 */
-.line {
-    border: none;
+.content-line {
+    display: block; 
+    width: calc(100% - 100px); 
     height: 6px;
     background-color: #000;
-    width: calc(100% - 100px);
-    margin: 10px auto 20px auto;
+    border: none;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    position: relative;
     opacity: 1;
 }
 
