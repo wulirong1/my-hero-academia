@@ -583,30 +583,14 @@ body {
     max-width: 600px;
 }
 
-/* .class-label {
-    background-color: #000;
-    color: #fff;
-    padding: 8px 30px;
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 25px;
-    display: inline-block;
-} */
-
-
 .class-label {
     background-color: #000;
     color: #fff;
     padding: 8px 30px;
     font-size: 22px;
     font-weight: bold;
-    
-    /*原本是 25px，改成 0 讓它緊貼下面的線 */
     margin-bottom: 0; 
-    
     display: inline-block;
-    
-    /* 建議加這行：確保底部沒有奇怪的文字縫隙 */
     vertical-align: bottom; 
 }
 
