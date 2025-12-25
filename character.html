@@ -125,7 +125,7 @@
     <div class="card-image-wrapper">
         <div class="bg-slide-left"></div>
         <div class="bg-slide-right"></div>
-        
+        <img id="back-layer-A" src="img/cardback.png" class="card-back" alt="Card Back">
         <img id="bg-layer" src="img/default-bg.jpg" alt="Background Info">
         
         <img id="char-layer" src="img/default-char.png" alt="Character Stand">
@@ -145,6 +145,7 @@
         <div class="card-image-wrapper">
             <div class="bg-slide-left"></div>
             <div class="bg-slide-right"></div>
+            <img id="back-layer-villain" src="img/cardback.png" class="card-back" alt="Card Back">
             <img id="bg-layer-villain" src="img/default-bg.jpg" alt="Background">
             <img id="char-layer-villain" src="img/default-char.png" alt="Character">
         </div>
@@ -161,6 +162,7 @@
         <div class="card-image-wrapper">
             <div class="bg-slide-left"></div>
             <div class="bg-slide-right"></div>
+            <img id="back-layer-hero" src="img/cardback.png" class="card-back" alt="Card Back">
             <img id="bg-layer-hero" src="img/default-bg.jpg" alt="Background">
             <img id="char-layer-hero" src="img/default-char.png" alt="Character">
         </div>
@@ -177,6 +179,7 @@
         <div class="card-image-wrapper">
             <div class="bg-slide-left"></div>
             <div class="bg-slide-right"></div>
+            <img id="back-layer-staff" src="img/cardback.png" class="card-back" alt="Card Back">
             <img id="bg-layer-staff" src="img/default-bg.jpg" alt="Background">
             <img id="char-layer-staff" src="img/default-char.png" alt="Character">
         </div>
@@ -230,7 +233,7 @@
             pos: "-5%" // (範例) 負數代表往右邊牆壁退
         },
         "渡我被身子": { bg: "img/background/enimy/toga.png", char: "img/characters/ENIMY/toga himiko.png" },
-        "黑霧": { bg: "img/background/enimy/kuro.png", char: "img/characters/ENIMY/kurogili.png" },
+        "黑霧": { bg: "img/background/enimy/kuro.png", char: "img/characters/ENIMY/kurogili.png",size: "130%" },
         "荼毘": { bg: "img/background/enimy/dabi.png", char: "img/characters/ENIMY/dabi.png" },
         "雙倍": { bg: "img/background/enimy/TWICE.png", char: "img/characters/ENIMY/twice.png" },
         "壓縮先生": { bg: "img/background/enimy/compress.png", char: "img/characters/ENIMY/mr.compress.png" },
@@ -244,24 +247,24 @@
             size: "85%" // (範例) 設定寬度為 85%
         },
         "安德瓦": { bg: "img/background/hero/fire.png", char: "img/characters/HERO/endeavor.png" },
-        "霍克斯": { bg: "img/background/hero/bird.png", char: "img/characters/HERO/hawks.png" },
+        "霍克斯": { bg: "img/background/hero/bird.png", char: "img/characters/HERO/hawks.png",size: "120%" },
         "最佳牛仔褲時尚名人": { bg: "img/background/hero/jeans.png", char: "img/characters/HERO/jeans.png" },
         "暴力虎鯨": { bg: "img/background/V/shigaraki.png", char: "img/characters/HERO/gang orca.png" },
         "夜目爵士": { bg: "img/background/hero/eye.png", char: "img/characters/HERO/sir nighteye.png" },
         "紙鋒射手": { bg: "img/background/hero/ninjia.png", char: "img/characters/HERO/edgeshot.png" },
-        "S&S": { bg: "img/background/V/shigaraki.png", char: "img/characters/HERO/star.png" },
+        "S&S": { bg: "img/background/V/shigaraki.png", char: "img/characters/HERO/star.png",size: "600%" },
         "經典老爺車": { bg: "img/background/hero/old.png", char: "img/characters/HERO/gran torino.png" },
         "龍九": { bg: "img/background/V/shigaraki.png", char: "img/characters/HERO/ryukyu.png" },
         "肥膠": { bg: "img/background/hero/fat.png", char: "img/characters/HERO/fat gum.png" },
 
         // === 學校人士 ===
-        "根津校長": { bg: "img/background/school/nezu.png", char: "img/characters/SCHOOL/nezu.png" },
+        "根津校長": { bg: "img/background/school/nezu.png", char: "img/characters/SCHOOL/nezu.png",size: "50%" },
         "相澤消太": { bg: "img/background/school/eraser.png", char: "img/characters/SCHOOL/eraser head.png" },
         "禮物麥克風": { bg: "img/background/school/mic.png", char: "img/characters/SCHOOL/present mic.png" },
         "物間寧人": { bg: "img/background/V/shigaraki.png", char: "img/characters/SCHOOL/neito.png" },
         "心操人使": { bg: "img/background/school/shinso.png", char: "img/characters/SCHOOL/shinso.png" },
         "通行百萬": { bg: "img/background/school/mirio.png", char: "img/characters/SCHOOL/MIRIO.png" },
-        "天喰環": { bg: "img/background/school/tamaki.png", char: "img/characters/SCHOOL/tamaki.png" },
+        "天喰環": { bg: "img/background/school/tamaki.png", char: "img/characters/SCHOOL/tamaki.png",size: "200%",pos: "-30%" },
         "波動螺卷": { bg: "img/background/school/hado.png", char: "img/characters/SCHOOL/hado.png" },
     };
 
@@ -271,57 +274,71 @@
    // =========================================================================
     // 2. 超級工廠函數 (智慧偵測版：支援平板/手機獨立設定)
     // =========================================================================
-    function setupSection(namesArray, gridId, bgId, charId) {
+   function setupSection(namesArray, gridId, bgId, charId, backId) { // <--- 新增 backId 參數
         const grid = document.getElementById(gridId);
         const bgImg = document.getElementById(bgId);
         const charImg = document.getElementById(charId);
+        const backImg = document.getElementById(backId); // 抓取卡背
 
-        if (!grid || !bgImg || !charImg) return;
+        if (!grid || !bgImg || !charImg || !backImg) return;
 
+        // --- 定義：核心切換功能的函數 (讓按鈕和卡背都可以呼叫它) ---
+        function performSwitch(name) {
+            // 1. 先把卡背「翻開」(隱藏)
+            backImg.classList.add('flipped');
+
+            // 2. 歸零舊人物狀態
+            charImg.classList.remove('show-anim');
+            charImg.style.opacity = '0';
+            charImg.style.width = '';  
+            charImg.style.right = '';
+
+            // 3. 偵測螢幕
+            const screenWidth = window.innerWidth;
+            const isTablet = screenWidth <= 1200 && screenWidth > 768;
+            const isMobile = screenWidth <= 768;
+
+            // 4. 換圖與應用設定
+            setTimeout(() => {
+                const data = cardData[name] || { bg: "img/default-bg.jpg", char: "img/default-char.png" };
+                bgImg.src = data.bg;
+                charImg.src = data.char;
+
+                // 尺寸與位置邏輯
+                let finalSize = data.size;
+                if (isTablet && data.tabletSize) finalSize = data.tabletSize;
+                if (isMobile && data.mobileSize) finalSize = data.mobileSize;
+
+                let finalPos = data.pos;
+                if (isTablet && data.tabletPos) finalPos = data.tabletPos;
+                if (isMobile && data.mobilePos) finalPos = data.mobilePos;
+
+                if (finalSize) charImg.style.width = finalSize;
+                if (finalPos)  charImg.style.right = finalPos;
+
+                // 5. 顯示人物動畫
+                setTimeout(() => {
+                    charImg.style.opacity = '1';
+                    charImg.classList.add('show-anim');
+                }, 100);
+            }, 50);
+        }
+
+        // --- A. 設定卡背點擊事件 ---
+        // 點擊卡背 -> 顯示列表中的「第一個人」
+        backImg.onclick = () => {
+            if (namesArray.length > 0) {
+                performSwitch(namesArray[0]); // 呼叫第一個人
+            }
+        };
+
+        // --- B. 產生名字按鈕 ---
         namesArray.forEach(name => {
             const div = document.createElement('div');
             div.className = 'name-btn';
             div.innerText = name;
             div.onclick = () => {
-                // --- A. 歸零 ---
-                charImg.classList.remove('show-anim');
-                charImg.style.opacity = '0';
-                
-                // 清除所有舊的樣式設定
-                charImg.style.width = '';  
-                charImg.style.right = '';
-
-                // --- B. 偵測螢幕寬度 ---
-                const screenWidth = window.innerWidth;
-                const isTablet = screenWidth <= 1200 && screenWidth > 768; // 平板區間
-                const isMobile = screenWidth <= 768; // 手機區間
-
-                // --- C. 換圖與應用設定 ---
-                setTimeout(() => {
-                    const data = cardData[name] || { bg: "img/default-bg.jpg", char: "img/default-char.png" };
-                    bgImg.src = data.bg;
-                    charImg.src = data.char;
-
-                    // 1. 決定大小 (優先順序：手機設定 > 平板設定 > 一般設定)
-                    let finalSize = data.size; // 預設用一般設定
-                    if (isTablet && data.tabletSize) finalSize = data.tabletSize; // 如果是平板且有設定，就覆蓋
-                    if (isMobile && data.mobileSize) finalSize = data.mobileSize; // 如果是手機且有設定，就覆蓋
-
-                    // 2. 決定位置 (優先順序：手機設定 > 平板設定 > 一般設定)
-                    let finalPos = data.pos;
-                    if (isTablet && data.tabletPos) finalPos = data.tabletPos;
-                    if (isMobile && data.mobilePos) finalPos = data.mobilePos;
-
-                    // 3. 套用數值
-                    if (finalSize) charImg.style.width = finalSize;
-                    if (finalPos)  charImg.style.right = finalPos;
-
-                    // --- D. 顯示 ---
-                    setTimeout(() => {
-                        charImg.style.opacity = '1';
-                        charImg.classList.add('show-anim');
-                    }, 100);
-                }, 50);
+                performSwitch(name); // 點擊按鈕也呼叫同一個切換函數
             };
             grid.appendChild(div);
         });
@@ -333,25 +350,25 @@
     // A班
     setupSection(
         ["葉隱透", "障子目藏", "尾白猿夫", "青山優雅", "爆豪勝己", "耳郎響香", "上鳴電氣", "蘆戶三奈", "綠谷出久", "瀨呂範太", "切島銳兒郎", "蛙吹梅雨", "峰田實", "常闇踏陰", "口田甲司", "飯田天哉", "八百萬百", "轟焦凍", "砂藤力道", "麗日御茶子"],
-        'name-grid', 'bg-layer', 'char-layer'
+        'name-grid', 'bg-layer', 'char-layer','back-layer-A'
     );
 
     // 敵聯合
     setupSection(
         ["死柄木弔", "黑霧", "荼毘", "渡我被身子", "雙倍", "壓縮先生", "編織者", "AFO"],
-        'grid-villain', 'bg-layer-villain', 'char-layer-villain'
+        'grid-villain', 'bg-layer-villain', 'char-layer-villain','back-layer-villain'
     );
 
     // 職業英雄
     setupSection(
-        ["歐爾麥特", "安德瓦", "霍克斯", "最佳牛仔褲時尚名人", "暴力虎鯨", "夜目爵士", "紙鋒射手", "經典老爺車", "龍九", "肥膠", "S&S"],
-        'grid-hero', 'bg-layer-hero', 'char-layer-hero'
+        ["歐爾麥特", "安德瓦", "霍克斯", "最佳牛仔褲時尚名人", "暴力虎鯨", "夜目爵士", "紙鋒射手", "經典老爺車", "肥膠"],
+        'grid-hero', 'bg-layer-hero', 'char-layer-hero','back-layer-hero'
     );
 
     // 學校人士
     setupSection(
-        ["根津校長", "相澤消太", "禮物麥克風", "物間寧人", "心操人使", "通行百萬", "天喰環", "波動螺卷"],
-        'grid-staff', 'bg-layer-staff', 'char-layer-staff'
+        ["根津校長", "相澤消太", "禮物麥克風", "心操人使", "通行百萬", "天喰環", "波動螺卷"],
+        'grid-staff', 'bg-layer-staff', 'char-layer-staff','back-layer-staff'
     );
 
     // =========================================================================
