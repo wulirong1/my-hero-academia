@@ -4,6 +4,8 @@
 }
 
 html, body {
+     font-family: 'Inter', sans-serif;
+    font-weight: 600;
     margin: 0;
     padding: 0;
     background-color: #EBC045 !important; /* 使用 !important 確保不被覆蓋 */
@@ -72,11 +74,8 @@ html, body {
 .news-thumbnail {
     width: 100%;      /* 寬度填滿父容器 */
     height: 100%;     /* 高度填滿父容器 */
-    
-    /* 核心屬性：這會像背景圖片一樣裁切圖片，保持比例不變形 */
     object-fit: cover; 
-    
-    /* 確保圖片對齊中心 */
+
     object-position: center; 
     
     display: block;
