@@ -690,7 +690,6 @@ body {
         gap: 12px;
     }
 }
-
 @media screen and (max-width: 768px) {
     .main-wrapper {
         flex-direction: column-reverse; 
