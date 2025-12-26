@@ -31,26 +31,27 @@
         </div>
     </div>
 
-    <header class="custom-header">
-        <div class="header-container">
-            <a class="logo-link" href="index.html">
-                <img src="img/logo.png" alt="Logo" class="header-logo">
-            </a>
 
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+<header class="custom-header">
+    <div class="header-container">
+        <a class="logo-link" href="index.html">
+            <img src="img/logo.png" alt="Logo" class="header-logo">
+        </a>
 
-            <nav class="nav-links">
-                <a href="introduction.html" class="nav-item-link">INTRODUCTION</a>
-                <a href="character.html" class="nav-item-link">CHARACTER</a>
-                <a href="resource.html" class="nav-item-link">RESOURCE</a>
-                <a href="pla.html" class="nav-item-link">PLATFORM</a>
-            </nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
-        <div class="line"></div>
-    </header>
+
+        <nav class="nav-links">
+            <a href="introduction.html" class="nav-item-link">INTRODUCTION</a>
+            <a href="character.html" class="nav-item-link">CHARACTER</a>
+            <a href="resource.html" class="nav-item-link">RESOURCE</a>
+            <a href="pla.html" class="nav-item-link">PLATFORM</a>
+        </nav>
+    </div>
+    <div class="line"></div>
+</header>
 
 
     <div class="container mt-5">
@@ -114,6 +115,22 @@
             </div>
         </div>
     </footer>
+
+     
+<script>
+    // 確保網頁載入後才執行
+    document.addEventListener('DOMContentLoaded', function() {
+        const menu = document.querySelector('#mobile-menu');
+        const nav = document.querySelector('.nav-links');
+
+        if (menu) {
+            menu.onclick = function() {
+                menu.classList.toggle('active');
+                nav.classList.toggle('show');
+            };
+        }
+    });
+</script>
 
     <button id="back-to-top" title="Go to top">
         <img src="img/feather.png" alt="Top" style="width: 40px;"> TOP
