@@ -690,11 +690,10 @@ body {
         gap: 12px;
     }
 }
-
 @media screen and (max-width: 768px) {
     .main-wrapper {
         flex-direction: column-reverse; 
-        align-items: center;     
+        align-items: center;    
         margin-top: 20px;
         gap: 20px;
         padding: 0 50px;
@@ -705,22 +704,25 @@ body {
     }
 
     .display-container {
-        flex: none;         
-        width: 100%;       
+        flex: none;        
+        width: 100%;      
         max-width: 450px; 
     }
 
     .card-image-wrapper {
-        height: 480px; 
+        width: 100%;
+        height: auto;
+        /* 這裡控制比例，5/6 比之前的 3/4 更接近正方形 */
+        aspect-ratio: 5 / 6 !important; 
     }
 
     .list-container {
-        width: 100%;        
+        width: 100%;       
     }
 
     .name-grid {
         grid-template-columns: repeat(3, 1fr); 
-        gap: 10px;         
+        gap: 10px;        
     }
     
     #char-layer,
@@ -728,11 +730,5 @@ body {
     #char-layer-hero,
     #char-layer-staff {
         right: -10px; 
-    }
-
-    .click-hint-hand {
-        width: 50px;
-        top: 10%;
-        left: 10%;
     }
 }
