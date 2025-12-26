@@ -197,6 +197,8 @@ body {
     .menu-toggle {
         display: flex;
         gap: 6px;
+        position: relative; /* 確保它在 header 內部有獨立層級 */
+    z-index: 100001;
     }
 
     .bar {
