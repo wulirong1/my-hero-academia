@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="col anime-item" data-video="${item.video}" data-link="${item.link}" data-desc="${item.desc}">
                 <div class="anime-card-wrapper">
                     <img class="anime-pic" src="img/seasons/${item.id}.png" alt="${item.id}">
-                    <div class="anime-vol-label">── SEASON ${item.id.replace('S', '')} ──</div>
+                    <div class="anime-vol-label"> SEASON ${item.id.replace('S', '')} </div>
                 </div>
             </div>
         `).join('');
